@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "SPORTIX Communities",
+      "hasCanvas": false,
+      "bodyTextLen": 2725,
+      "bodyTextHash": "548952a06f9303ef37813e02abc446a9264d953565d8bc883484d74ee83ab686",
+      "bodyTextPrefix": "ADD SPORTIX COMMUNITIES 3 Feed Achievements Matches Discover Peo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "SPORTIX Communities",
+      "hasCanvas": false,
+      "bodyTextLen": 2725,
+      "bodyTextHash": "548952a06f9303ef37813e02abc446a9264d953565d8bc883484d74ee83ab686",
+      "bodyTextPrefix": "ADD SPORTIX COMMUNITIES 3 Feed Achievements Matches Discover Peo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
