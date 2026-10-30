@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as CommunitiesRouteImport } from './routes/communities'
 import { Route as GoSportixRouteImport } from './routes/go-sportix'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
@@ -19,6 +20,11 @@ import { Route as WeeklyLegendsRouteImport } from './routes/weekly-legends'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademyRoute = AcademyRouteImport.update({
+  id: '/academy',
+  path: '/academy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommunitiesRoute = CommunitiesRouteImport.update({
@@ -49,6 +55,7 @@ const WeeklyLegendsRoute = WeeklyLegendsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/communities': typeof CommunitiesRoute
   '/go-sportix': typeof GoSportixRoute
   '/marketplace': typeof MarketplaceRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/communities': typeof CommunitiesRoute
   '/go-sportix': typeof GoSportixRoute
   '/marketplace': typeof MarketplaceRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/communities': typeof CommunitiesRoute
   '/go-sportix': typeof GoSportixRoute
   '/marketplace': typeof MarketplaceRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/academy'
     | '/communities'
     | '/go-sportix'
     | '/marketplace'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/academy'
     | '/communities'
     | '/go-sportix'
     | '/marketplace'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/academy'
     | '/communities'
     | '/go-sportix'
     | '/marketplace'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcademyRoute: typeof AcademyRoute
   CommunitiesRoute: typeof CommunitiesRoute
   GoSportixRoute: typeof GoSportixRoute
   MarketplaceRoute: typeof MarketplaceRoute
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academy': {
+      id: '/academy'
+      path: '/academy'
+      fullPath: '/academy'
+      preLoaderRoute: typeof AcademyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/communities': {
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcademyRoute: AcademyRoute,
   CommunitiesRoute: CommunitiesRoute,
   GoSportixRoute: GoSportixRoute,
   MarketplaceRoute: MarketplaceRoute,
