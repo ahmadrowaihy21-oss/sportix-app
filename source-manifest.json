@@ -6,13 +6,13 @@
   },
   {
     "path": "COMPLETION-2026-11-07.md",
-    "sha256": "ec818998408b698f6488629c62523aa3c3425802228a6bd31736dc7af234c083",
-    "bytes": 2492
+    "sha256": "af01b4ed9655db325ea7145c9843bbeda5dbe9a6d2b6085fdc27e25ac5671d4f",
+    "bytes": 3595
   },
   {
     "path": "README.md",
-    "sha256": "51ce8846fba7e1be6f381141bc4ddeb5acb29106728db540e0c836a71d06af0c",
-    "bytes": 8056
+    "sha256": "e41e40e4695c19bd10a90e1555835d6c9a0811e23f29b2feb86302263bf061f5",
+    "bytes": 8320
   },
   {
     "path": "hayvra/.gitignore",
@@ -1061,8 +1061,8 @@
   },
   {
     "path": "recovery-changes.json",
-    "sha256": "cd3ac1e5521b41f2c08aa903398da2f3672ee13b996940c3b257c98d1cbdc6cc",
-    "bytes": 4506
+    "sha256": "7346352ea2eb74f5cb4423f2e647d1f735fc90b1d63f27a6a4957e9598bd954c",
+    "bytes": 4810
   },
   {
     "path": "sportix-academy-os/DEPLOY_AR.md",
@@ -2581,8 +2581,13 @@
   },
   {
     "path": "studio/README.md",
-    "sha256": "4e341d22fa89cbfb90ed57339f39f6c6075f7ecab146c398cb7743bb04ecb9c4",
-    "bytes": 2306
+    "sha256": "5fed652e3ade855759c88487c2e1f950de2743238420c64f835b57ff19b08452",
+    "bytes": 2511
+  },
+  {
+    "path": "studio/RESTORATION_STATUS.json",
+    "sha256": "a4403b89e7a9ec204ae721ba095c0aed545e3b47ef57d9bf7507c3c95b1b18c4",
+    "bytes": 1067
   },
   {
     "path": "studio/admin-entry.tsx",

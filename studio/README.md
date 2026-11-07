@@ -29,6 +29,9 @@ preserved. These identifiers are provenance, not credentials.
 
 Production requests require Netlify team-login protection for `context.user` to
 be populated; a public production site cannot use this founder-only bridge.
-Bridge credentials must be configured as a secret in the Netlify Functions
-production environment and applied by a new deployment. Never embed the Sites
+Bridge credentials are configured as a production secret with the standard Netlify
+secret scopes (`builds`, `functions`, `runtime`), excluding post-processing. The
+current plan does not offer scope selection. Only the server function reads this
+key; the build does not inject it into public assets. Apply changes with a new
+deployment. Never embed the Sites
 bearer token or shared HMAC key in this source or the public build.

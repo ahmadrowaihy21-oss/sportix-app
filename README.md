@@ -54,4 +54,7 @@ Creating a new private `sportix-netlify-recovered` repository was denied by the 
 Portfolio's Netlify project still points at the stale `ahmadrowaihy21-oss/passport` Git continuous-deployment source, which differs from this recovered source snapshot. Its corrected manual deployment will be kept locked while that source link is unresolved, so a later push to the stale repository cannot silently replace the repaired site. Verify the published deploy's lock and the intended repository before changing that project's publishing settings. This backup does not change those settings or assert that the link has been corrected.
 
 
-The [2026-11-07 completion record](COMPLETION-2026-11-07.md) records the verified production deploys, Portfolio lock, Studio access control, and the remaining bridge-configuration approval. It also distinguishes the merged root-site source fix from the unchanged live Manus deployment.
+The [2026-11-07 completion record](COMPLETION-2026-11-07.md) records the verified production deploys, Portfolio lock, Studio access control, and the final approved bridge configuration and redeploy checks. It also distinguishes the merged root-site source fix from the unchanged live Manus deployment.
+
+
+Studio's final production configuration and verification metadata are retained in `studio/RESTORATION_STATUS.json`. These checks do not claim full interactive owner-browser end-to-end coverage or completion of all planned demonstration features.

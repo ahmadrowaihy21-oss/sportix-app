@@ -7,8 +7,15 @@
         "path": "README.md",
         "change": "modified",
         "original_sha256": "1980e254cc73c1416fd1c1548839b3e2d1cb8d50fc6093f0d2ddd6996a5c4a0d",
-        "current_sha256": "4e341d22fa89cbfb90ed57339f39f6c6075f7ecab146c398cb7743bb04ecb9c4",
-        "reason": "Document separately recovered private Sites backend and authentication requirements; no runtime secrets"
+        "current_sha256": "5fed652e3ade855759c88487c2e1f950de2743238420c64f835b57ff19b08452",
+        "reason": "Document recovered private Sites backend and completed supported protected-secret configuration; no runtime values"
+      },
+      {
+        "path": "RESTORATION_STATUS.json",
+        "change": "added",
+        "original_sha256": null,
+        "current_sha256": "a4403b89e7a9ec204ae721ba095c0aed545e3b47ef57d9bf7507c3c95b1b18c4",
+        "reason": "Credential-free final deployment and verification metadata"
       }
     ]
   },

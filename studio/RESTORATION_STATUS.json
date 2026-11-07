@@ -1,0 +1,36 @@
+{
+  "site_id": "2b399d8b-828c-4629-9f24-bcd6f73bb362",
+  "production_url": "https://studio.sportixpartners.com",
+  "deploy_id": "6aef961f64d0f71e48b6b41d",
+  "deploy_status": "ready",
+  "api_function_count": 1,
+  "team_sso_protection": "all deploys",
+  "bridge_configuration": {
+    "key": "PROJECT_R_BRIDGE_CONFIG",
+    "is_secret": true,
+    "contexts": [
+      "production"
+    ],
+    "scopes": [
+      "builds",
+      "functions",
+      "runtime"
+    ],
+    "post_processing": false,
+    "credential_value_in_backup": false
+  },
+  "backend": {
+    "host": "private Sites",
+    "version": 47,
+    "source_sha": "6388eebb1228707b7f4e3e27ec7aa94fb11a0c56",
+    "existing_D1_preserved": true
+  },
+  "verification": {
+    "anonymous_root_and_protected_API": 401,
+    "signed_backend_session_and_core_identity_metadata": 200,
+    "public_static_files_scanned": 71,
+    "contains_transferred_secret": false,
+    "interactive_owner_browser_E2E_observed": false
+  },
+  "source": "Coordinating and source agents verified deployment and metadata; no credentials included"
+}
