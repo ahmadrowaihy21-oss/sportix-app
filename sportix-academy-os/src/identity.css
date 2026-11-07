@@ -1,0 +1,15 @@
+
+.sportix-auth-backdrop{position:fixed;inset:0;z-index:4000;background:#000c;display:grid;place-items:center;padding:16px;backdrop-filter:blur(8px)}
+.sportix-auth-dialog{width:min(460px,100%);position:relative;border:1px solid #465b37;border-radius:20px;padding:30px;background:#111b19;color:#eef5eb;box-shadow:0 35px 130px #000d;font-family:inherit}
+.sportix-auth-close{position:absolute;left:16px;top:16px;border:0;background:transparent;color:#d3dfd4;cursor:pointer}
+.sportix-auth-dialog h2{margin:10px 0 8px;font-size:24px}.sportix-auth-dialog p{color:#a9b8ad;line-height:1.8;font-size:13px}
+.sportix-auth-eyebrow{font:800 10px Arial;letter-spacing:2px;color:#c4ff24;margin-top:10px}
+.sportix-auth-dialog form{display:grid;gap:14px;margin:20px 0}
+.sportix-auth-dialog label{display:grid;gap:7px;font-size:13px}
+.sportix-auth-dialog input{font:inherit;outline:0;background:#09110f;border:1px solid #455949;border-radius:9px;color:#fff;padding:13px;width:100%}
+.sportix-auth-dialog input:focus{border-color:#c4ff24}
+.sportix-auth-submit{background:#c4ff24;color:#091008;border:0;border-radius:10px;padding:13px;font-weight:900;cursor:pointer;font:inherit}
+.sportix-auth-submit:disabled{opacity:.6;cursor:wait}
+.sportix-auth-switch{border:0;background:transparent;color:#c4ff24;cursor:pointer;padding:10px 0;font:inherit}
+.sportix-auth-message{border:1px solid #6c7e4c;border-radius:9px;padding:10px;color:#dff4a6;font-size:12px}
+.sportix-auth-dialog small{color:#82968a;font-size:10px;line-height:1.8}

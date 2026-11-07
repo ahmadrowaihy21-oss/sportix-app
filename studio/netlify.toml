@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+[build.environment]
+  NODE_VERSION = "24"
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+[[redirects]]
+  from = "/signin-with-chatgpt"
+  to = "/login.html"
+  status = 302
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "same-origin"
+    Cache-Control = "private, no-store"

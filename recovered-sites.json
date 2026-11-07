@@ -1,0 +1,62 @@
+[
+  {
+    "directory": "studio",
+    "site_id": "2b399d8b-828c-4629-9f24-bcd6f73bb362",
+    "project": "project-r-studio",
+    "domain": "studio.sportixpartners.com",
+    "source_deploy_id": "6aef4657a57ee2902bb0a15f",
+    "source_kind": "editable source archive",
+    "recovered_on": "2026-11-07",
+    "configured_repo": "https://hgit.services-prod.nsvcs.net/ahmad-rowaihy21/project-r-studio.git"
+  },
+  {
+    "directory": "stadium-os",
+    "site_id": "8f5cc319-3469-4bfc-b4b6-59f9d99a3303",
+    "project": "stadium-os",
+    "domain": "osstadium.sportixpartners.com",
+    "source_deploy_id": "6aeb670fe25addc9fafbe743",
+    "source_kind": "compiled deployment snapshot",
+    "recovered_on": "2026-11-07",
+    "configured_repo": null
+  },
+  {
+    "directory": "sportix-ecosystem-portfolio",
+    "site_id": "66e83427-e543-4504-9052-9fffede38c44",
+    "project": "sportix-ecosystem-portfolio",
+    "domain": "ecopf.sportixpartners.com",
+    "source_deploy_id": "6aeb594de3f4286868ebd46d",
+    "source_kind": "editable source archive",
+    "recovered_on": "2026-11-07",
+    "configured_repo": null
+  },
+  {
+    "directory": "sportix-academy-os",
+    "site_id": "a73df692-1fca-469d-ab0c-6683cfb5d5e2",
+    "project": "sportix-academy-os",
+    "domain": "academyos.sportixpartners.com",
+    "source_deploy_id": "6aeb5f0f4e66703994b322d1",
+    "source_kind": "editable source archive",
+    "recovered_on": "2026-11-07",
+    "configured_repo": null
+  },
+  {
+    "directory": "hayvra",
+    "site_id": "3e99f7c3-7b78-4574-aa51-725d0e27aa63",
+    "project": "hayvra",
+    "domain": "hayvra.sportixpartners.com",
+    "source_deploy_id": "6ae828feb675cad30b83d023",
+    "source_kind": "editable source archive",
+    "recovered_on": "2026-11-07",
+    "configured_repo": null
+  },
+  {
+    "directory": "sportix-portfolio",
+    "site_id": "983e28e2-5279-4077-8163-2a6e9108d8d1",
+    "project": "sportix-portfolio",
+    "domain": "portfolio.sportixpartners.com",
+    "source_deploy_id": "6aab433c18ae861ea25b48ce",
+    "source_kind": "editable source archive",
+    "recovered_on": "2026-11-07",
+    "configured_repo": "https://github.com/ahmadrowaihy21-oss/passport"
+  }
+]

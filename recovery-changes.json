@@ -1,0 +1,108 @@
+[
+  {
+    "site": "studio",
+    "baseline": "original current-deploy ZIP recovered on 2026-11-07",
+    "changes_from_recovered_archive": []
+  },
+  {
+    "site": "stadium-os",
+    "baseline": "original current-deploy ZIP recovered on 2026-11-07",
+    "changes_from_recovered_archive": [
+      {
+        "path": "__grok/manifest.webmanifest",
+        "change": "added",
+        "original_sha256": null,
+        "current_sha256": "f01950dd29729e38318a4b5caa3fd8aa4ad1f8c385ddebb4274ba002ba9d20ed"
+      },
+      {
+        "path": "index.html",
+        "change": "modified",
+        "original_sha256": "493e4683d966bdb1824cd76db018cf32542a830c6cae5537ab0d64893787b131",
+        "current_sha256": "bdc8a1c700a43ceb2774288461ea8b0bdb774496542e32886d5ef6246e8ef0d1"
+      }
+    ]
+  },
+  {
+    "site": "sportix-academy-os",
+    "baseline": "original current-deploy ZIP recovered on 2026-11-07",
+    "changes_from_recovered_archive": [
+      {
+        "path": "netlify/functions/academy.mts",
+        "change": "modified",
+        "original_sha256": "d9d407d02f75e997d1562e85fe7ea7f3db694af047486b5756c06917824e2f24",
+        "current_sha256": "044fb29f63464b13e755946da2e19602335ccd03ddb3e1de341ef6d7991a3049"
+      },
+      {
+        "path": "tests/academy.test.ts",
+        "change": "modified",
+        "original_sha256": "839d7a90f20b79386d0d23e307c0283c69c5c2e75c0dd88d517a53d5652488be",
+        "current_sha256": "d426a6fbe3e88274817fd9e8b39f4bfe761fbf39589c9eb48665e42fb0bd442c"
+      }
+    ]
+  },
+  {
+    "site": "sportix-ecosystem-portfolio",
+    "baseline": "original current-deploy ZIP recovered on 2026-11-07",
+    "changes_from_recovered_archive": []
+  },
+  {
+    "site": "hayvra",
+    "baseline": "original current-deploy ZIP recovered on 2026-11-07",
+    "changes_from_recovered_archive": [
+      {
+        "path": "netlify.toml",
+        "change": "modified",
+        "original_sha256": "a478804811efcab268751ada0775254154afed0dd016b6747a41508bff52972a",
+        "current_sha256": "453baa72a24d0e4fab5bfdd1b5813cf830f973c64641c4cbb86df41d28088886"
+      },
+      {
+        "path": "package-lock.json",
+        "change": "modified",
+        "original_sha256": "ca792d89a2cc29915ebeb76001b3b6a04bfcb001bee3fdebb3b99adf4884eca6",
+        "current_sha256": "947943603109693d5b305c6065878822ac666a422439ff11f7ca7f3f0838df20"
+      },
+      {
+        "path": "package.json",
+        "change": "modified",
+        "original_sha256": "c138a44993e23d255bdc0d2054f692f0ef61df5718deb44701d756fa3b99cb50",
+        "current_sha256": "0c4aa5cadab13a7f2ad09fcec78a0319a879389a7ea1ffa230f5002ddd356abd"
+      },
+      {
+        "path": "scripts/check-built-assets.mjs",
+        "change": "added",
+        "original_sha256": null,
+        "current_sha256": "28590f0eb772fddfe998938c114ffa94ff38aa856d239c775a4345c5025bce78"
+      },
+      {
+        "path": "src/lib/auth/preview.ts",
+        "change": "modified",
+        "original_sha256": "d52a3654a5cef7e841cbca789fd106dc464ea55db574f02aa5d295b7350f8664",
+        "current_sha256": "358145b18e291752a057089e716a23d786e95693b84e183d350a11e5a2f4f454"
+      },
+      {
+        "path": "src/routes/__root.tsx",
+        "change": "modified",
+        "original_sha256": "4d862b46270cd9f2614e4eee0889a46a52937d735056d554fba142b46887071f",
+        "current_sha256": "ae70f8af8db4d39e04e625cf4416aa5d44f4e3ad459928e91b791ec0c0d60c5d"
+      }
+    ]
+  },
+  {
+    "site": "sportix-portfolio",
+    "baseline": "original current-deploy ZIP recovered on 2026-11-07",
+    "changes_from_recovered_archive": [
+      {
+        "path": "src/components/deck/DeckShell.tsx",
+        "change": "modified",
+        "original_sha256": "42ae617a6e3293760a455655e20c1facae0b366680a276881fce2bab42a036b9",
+        "current_sha256": "d182839be501a6df564c598facf7dddd71fe76fbc6cf2b42cde1f23b418ed2bf"
+      },
+      {
+        "path": "src/lib/auth/preview.ts",
+        "change": "modified",
+        "original_sha256": "d52a3654a5cef7e841cbca789fd106dc464ea55db574f02aa5d295b7350f8664",
+        "current_sha256": "358145b18e291752a057089e716a23d786e95693b84e183d350a11e5a2f4f454"
+      }
+    ]
+  }
+]

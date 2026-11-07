@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Request a demo — HAYVRA</title>
+    <meta
+      name="description"
+      content="A Netlify form for a HAYVRA demo request. Email notification does not work until it is turned on in the Netlify dashboard and tested."
+    />
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        background: #0b1420;
+        color: #f8f5ee;
+        font-family: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+        line-height: 1.7;
+      }
+      main { max-width: 36rem; margin: 0 auto; padding: 4rem 1.25rem 5rem; }
+      .kicker { color: #d4af7f; letter-spacing: 0.18em; font-size: 0.75rem; text-transform: uppercase; }
+      h1 { font-weight: 400; font-size: 2.6rem; line-height: 1.15; }
+      a { color: #d4af7f; }
+      form { display: grid; gap: 1rem; margin-top: 2rem; }
+      label { display: grid; gap: 0.35rem; }
+      input, select {
+        min-height: 2.75rem;
+        background: #070d16;
+        color: #f8f5ee;
+        border: 1px solid rgba(212, 175, 127, 0.4);
+        padding-inline: 0.8rem;
+        font: inherit;
+      }
+      button {
+        min-height: 2.75rem;
+        background: #d4af7f;
+        color: #0b1420;
+        border: 0;
+        font: inherit;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .row { display: grid; grid-template-columns: 9rem 1fr; gap: 0.5rem; }
+      .err { margin: 0; }
+      .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+      .note { color: #d9d0c5; font-size: 0.95rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="kicker" lang="en" dir="ltr">HAYVRA · Netlify form</p>
+      <h1>Request a demo</h1>
+      <p class="note">
+        This form exists so Netlify Forms can discover it on deploy. To try the experience on the site, use
+        <a href="/demo">the demo page</a>.
+        Email is not sent until you add the notification in the Netlify dashboard and test it.
+      </p>
+      <form
+        name="hayvra-demo"
+        method="POST"
+        action="/request-thanks.html"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="hayvra-demo" />
+        <p class="hp">
+          <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+        <label>
+          Full name
+          <input name="full-name" id="full-name" required autocomplete="name" />
+        </label>
+        <p class="err" id="name-msg" role="alert" hidden></p>
+        <label>
+          Mobile number with country code
+          <span class="row">
+            <input name="phone" id="phone" required inputmode="tel" autocomplete="tel" placeholder="+9665xxxxxxxx" />
+          </span>
+        </label>
+        <p class="err" id="phone-msg" role="alert" hidden></p>
+        <label>
+          Email
+          <input name="email" id="email" type="email" required inputmode="email" autocomplete="email" />
+        </label>
+        <p class="err" id="email-msg" role="alert" hidden></p>
+        <button type="submit">Send the request</button>
+      </form>
+    </main>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (event) => {
+        let ok = true;
+        const name = document.getElementById("full-name");
+        const phone = document.getElementById("phone");
+        const email = document.getElementById("email");
+        const show = (id, input, message) => {
+          const el = document.getElementById(id);
+          if (message) {
+            ok = false;
+            el.hidden = false;
+            el.textContent = message;
+            input.setAttribute("aria-invalid", "true");
+          } else {
+            el.hidden = true;
+            input.removeAttribute("aria-invalid");
+          }
+        };
+        const cleanName = name.value.trim();
+        show("name-msg", name, cleanName.length < 5 || !/\s/.test(cleanName) ? "Enter at least a first and last name." : "");
+        const digits = phone.value.replace(/\D/g, "");
+        show("phone-msg", phone, phone.value.trim().startsWith("+") && digits.length >= 8 ? "" : "Enter the number with the country code, for example +9665xxxxxxxx.");
+        show("email-msg", email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()) ? "" : "The email format is not valid.");
+        if (!ok) event.preventDefault();
+      });
+    </script>
+  </body>
+</html>

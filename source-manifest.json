@@ -1,0 +1,3032 @@
+[
+  {
+    "path": ".gitignore",
+    "sha256": "f4cc4919802d6a78d87cf31c1c7e377b2d005fed264c0bbb3d6f736972c163b4",
+    "bytes": 215
+  },
+  {
+    "path": "README.md",
+    "sha256": "6c0860e5784b5ee5a0ed10ebaa8ad6722287e9c08d8fdb576a437fb4cafe211b",
+    "bytes": 6526
+  },
+  {
+    "path": "hayvra/.gitignore",
+    "sha256": "fe2d3ae154dcd1c0884adb35aa8348100f3c741948a14bf5b5df3c6b8aad05db",
+    "bytes": 9
+  },
+  {
+    "path": "hayvra/.grok/app-env.json",
+    "sha256": "62dea7bb1344fbbdca7057eea06791c27b1488f25203d25bcfd8035c44280151",
+    "bytes": 76
+  },
+  {
+    "path": "hayvra/.grok/references/browser-qa.md",
+    "sha256": "5299e34aa070cd6877d2217df6fe4fa3f7a7db94df03c41ac1402b540b289150",
+    "bytes": 9097
+  },
+  {
+    "path": "hayvra/.grok/references/data-and-auth.md",
+    "sha256": "1e8373c5e00108ff8b84014040f5c66d80aa2668f8660139356869c55706ba7a",
+    "bytes": 5614
+  },
+  {
+    "path": "hayvra/.grok/references/deploy-target.md",
+    "sha256": "ff612fd0ac29e2d2e8c7ac2864ee92549086baf34fb741fcabfd7de841eebdc8",
+    "bytes": 2435
+  },
+  {
+    "path": "hayvra/.grok/references/generated-art.md",
+    "sha256": "7485ecf0311612b97c0e3c24fbfac6bd118b1c82429a3ed2f272214fe6a6d994",
+    "bytes": 3854
+  },
+  {
+    "path": "hayvra/.grok/references/hibernate-revive.md",
+    "sha256": "12125da78e1932bfbfc29edec96d2c0790f535e6a093d1207fc1da559dd04cc3",
+    "bytes": 1796
+  },
+  {
+    "path": "hayvra/.grok/references/scaffold.md",
+    "sha256": "d27932d3939f9a2fc3f2477d9be032d5361c63a407d873676b15ba9e66e1a7df",
+    "bytes": 2392
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/SKILL.md",
+    "sha256": "887ef562db59f644f4353e69aa8cb22a1c212488840a8c274f73c36e97cbbfad",
+    "bytes": 6345
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/references/grok-identity.md",
+    "sha256": "f6e944c2b028690382d7fb1d66d34ede55bd5f92257d17f33d48f70e56d92188",
+    "bytes": 3746
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/references/per-user-data.md",
+    "sha256": "8538db1b761d2dce033e751eb7513e5d1012998b9d7599f8d1725e3b90830298",
+    "bytes": 2402
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/references/prewired-and-env.md",
+    "sha256": "de580b328cc403f6b6d5638764c8f42fa6f17d461969f95eaed913c0a6ddabe5",
+    "bytes": 3392
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/references/session-ui.md",
+    "sha256": "326773404dd10a2ff0ba9bfa02045852175007f9e8e52c68d47f45532bc532fe",
+    "bytes": 6437
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/references/sign-in-methods.md",
+    "sha256": "f768048704e997511b46d9f8162bad5bf3faf749977f5fb014c9325e738c0277",
+    "bytes": 2892
+  },
+  {
+    "path": "hayvra/.grok/skills/auth/references/wiring.md",
+    "sha256": "75d840d1eedb9ce17fbb3ffd10a09ac9ac90a469f9f185338b14b8079fbb407c",
+    "bytes": 2627
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/SKILL.md",
+    "sha256": "527814d9d39d29b7a291cb696eceb6a121b9923e833876bf888916a6a29771d1",
+    "bytes": 12235
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/3d-libs.md",
+    "sha256": "db472820a65a16e4928a68a50fd31885b945ec2f9fa45a17a8152a0d48cf12bf",
+    "bytes": 3092
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/ai-pathfinding.md",
+    "sha256": "e815831ca67d68e4bc7a649f63ae129abdd3d996040b2c446c2c574e72c8424b",
+    "bytes": 9974
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/audio.md",
+    "sha256": "1de8c85a9fd6cb9594e11b6b1da7e54cdca8de512c0778eb35959f8f0fbe210c",
+    "bytes": 9423
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/babylon.md",
+    "sha256": "065934f53c6c8a1d5fd27a98f1311df2b4f2f194eb694355a98cc3c802a3ebd6",
+    "bytes": 16504
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/collision-physics.md",
+    "sha256": "af213fa9079d38742fc4d95a9c6a34907b85fb039e6c8cdb058dcbf5c7bd8672",
+    "bytes": 10990
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/ecs-architecture.md",
+    "sha256": "6b0de85d73be9725c3989136c968b85ceec70c333cc0ef9993e58aff0f1b0d5f",
+    "bytes": 9185
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/game-feel-juice.md",
+    "sha256": "24742ba2d5455f10c85c06ae279c636921f983a696b844a7f2505b988a5bef83",
+    "bytes": 10693
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/board-card-chess.md",
+    "sha256": "c2103f928e917c02729f00696165426ba106d9f235948347147d73ac53a50d65",
+    "bytes": 8859
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/endless-runner.md",
+    "sha256": "2c0026ab6e57f6b025fbe3673aab24f7dff0fb70fb89f1b047486f1346049a54",
+    "bytes": 6912
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/fps.md",
+    "sha256": "a3df7b29b964c3850e01d10fd4df131d3488f9064acac49ddc34386ec13d1ca2",
+    "bytes": 10039
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/platformer-2d.md",
+    "sha256": "2262c7c914409746971a9b1eef445b026011260ddb5a39af2f3904fc44ef8104",
+    "bytes": 8785
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/puzzle-match3-tetris.md",
+    "sha256": "1011844cbe7d65184ecbc541ad0f3060b04ee22197d6b6bc22fa671b2329ed47",
+    "bytes": 10324
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/racing-kart.md",
+    "sha256": "2afc99aadd556321973c8ae3ef2f8270dd5bb7bb8ad896abcac27c9a7221e0ff",
+    "bytes": 9169
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/topdown-twin-stick.md",
+    "sha256": "f1dfeca4990b1fc37a49ca82f1246f5564a4fae24dfc3ac8b1d01f95aab43da6",
+    "bytes": 7517
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/tower-defense.md",
+    "sha256": "a52c28421da0d3710c21fa19421a172b0bc75add64b5dee35abd3b8299add76a",
+    "bytes": 7411
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/genres/voxel-minecraft.md",
+    "sha256": "cdd5746e5496945694fd8e8d0fed9cf0314d4fae6dc107cfdf44a0824fdebdc6",
+    "bytes": 8658
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/input.md",
+    "sha256": "00e030e3a28118bfc9d2f6a633b9d56cc31f60d015181b668dcd09914d15f8ce",
+    "bytes": 10311
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/phaser.md",
+    "sha256": "08abc9cb20cfe356e3376f216aef6a62df72e654f542c7770ab69f2cdfc17b2a",
+    "bytes": 19739
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/procedural-generation.md",
+    "sha256": "f03bd0390726bc7f823ad15f9309aef5317aa7f27fb7611e6648ec3fa0ca7ace",
+    "bytes": 10441
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/save-persistence.md",
+    "sha256": "6751d65f6b0dc76e19be0827286a1753efc8161a3f66a080c8e23999ef5063a4",
+    "bytes": 9041
+  },
+  {
+    "path": "hayvra/.grok/skills/building-games/references/threejs-foundational.md",
+    "sha256": "90f75bc167ae9b4e4e980689ad5fdd81ccfc5efef457cdec01234dccd0b8dd8e",
+    "bytes": 14380
+  },
+  {
+    "path": "hayvra/.grok/skills/controls/SKILL.md",
+    "sha256": "85b80f2812d0d141e97dbb294c3678c3192fd051651e9460ed6ca6317d717141",
+    "bytes": 11509
+  },
+  {
+    "path": "hayvra/.grok/skills/design-ui/SKILL.md",
+    "sha256": "5ac56024db2287e485d03e208423fad29909d3b323647c5568243bfa96f42acf",
+    "bytes": 5995
+  },
+  {
+    "path": "hayvra/.grok/skills/design-ui/references/animations.md",
+    "sha256": "33e01727f60c34872f3f0a52c92513f9af1681449ebaa35b51123127c31bf51f",
+    "bytes": 11106
+  },
+  {
+    "path": "hayvra/.grok/skills/design-ui/references/performance.md",
+    "sha256": "f4537590cca884143b8e628123810286b4bfef29b9283f900265190bd3d8bd5e",
+    "bytes": 2884
+  },
+  {
+    "path": "hayvra/.grok/skills/design-ui/references/refined-ui.md",
+    "sha256": "9abf1b1e34632f0788fec8f49a8ade216a72aab06f6cf18528b6c502c7f5a56d",
+    "bytes": 20469
+  },
+  {
+    "path": "hayvra/.grok/skills/design-ui/references/surfaces.md",
+    "sha256": "c2eac605c207ba67b2e3bf6a3918f293a6fe02ce8c72c630a51faceb321b445d",
+    "bytes": 6586
+  },
+  {
+    "path": "hayvra/.grok/skills/design-ui/references/typography.md",
+    "sha256": "b91125ab0edf02a7f582bae434ae957af2f6729e7be038304bb2d0c983697eb8",
+    "bytes": 3180
+  },
+  {
+    "path": "hayvra/.grok/skills/game-animation-frames/SKILL.md",
+    "sha256": "3840f8166d8784d672531fee4c25b618867820e97ff4faf17135f26399e0e097",
+    "bytes": 4386
+  },
+  {
+    "path": "hayvra/.grok/skills/game-asset-core/SKILL.md",
+    "sha256": "690bb8a77495bc12c2e95b60d907a1529de87b5f65856281bb67bc67839c4cfc",
+    "bytes": 3858
+  },
+  {
+    "path": "hayvra/.grok/skills/game-character-consistency/SKILL.md",
+    "sha256": "5fc49d9364193607cf3bca8f1884a43ccd4d3cbe63df69ef67b9b53346881afd",
+    "bytes": 2795
+  },
+  {
+    "path": "hayvra/.grok/skills/game-tilesets/SKILL.md",
+    "sha256": "38eb784765e1b5adaee3cca138978be12f968521a80e14f3c83e096b6308e10b",
+    "bytes": 3028
+  },
+  {
+    "path": "hayvra/.grok/skills/game-ui-icons/SKILL.md",
+    "sha256": "18fd7d9a86bbba018c2eb05ffbad99bda9a8d876d7f61a80de6e6f7771771028",
+    "bytes": 2274
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/LICENSE",
+    "sha256": "d63ddc781bf0d15753fe0ba22c7cd5828dabb7776465ea4d4939558d4909b0fa",
+    "bytes": 1065
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/SKILL.md",
+    "sha256": "992eeaa76ce3c06220e58867c9ff7554117c4af703539d7796f048e22b868f17",
+    "bytes": 7738
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/SOURCE.md",
+    "sha256": "a3667d46be6cda6ec841c482ca371b9bae081445bc9fb15e08e5ef5e22386d31",
+    "bytes": 303
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/deliverables.md",
+    "sha256": "0513bc2e2b406142f1cab3139e861c1a69de6865b686bde7e7499ba53afc7630",
+    "bytes": 7345
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/layered-map-contract.md",
+    "sha256": "0af8127a5188d9d09fcf9913cf2804c5e40eb6b2be422c48d356d22c649b10a2",
+    "bytes": 8102
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/map-strategies.md",
+    "sha256": "91659c967efd0edde10ca3bd1cc136b17b7820c0da7279078d5020827935095d",
+    "bytes": 26755
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/object-production-gate.md",
+    "sha256": "f26eddd69b5561b6cae7945222e9212f5bf6e534fda427f48a58746238ac8bb8",
+    "bytes": 3192
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/pipeline.md",
+    "sha256": "e227cdc348607228f3474fe4ea1d533d65e377dd17e36a8ca61e4708fabc37c0",
+    "bytes": 16554
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/prop-pack-contract.md",
+    "sha256": "93be2245aa4f3ff9e591127a7318f34843b6458a85d7c614ca024500d30107f9",
+    "bytes": 9458
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/references/side-scroll-stages.md",
+    "sha256": "0926d20385024052bab2044645f49657552d0bb2f259aa1958a809e3332275b0",
+    "bytes": 5627
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/scripts/compose_layered_preview.py",
+    "sha256": "29d256385961475de142d2701231a9e67c369e5270c193a66df3c51b6c888855",
+    "bytes": 5256
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dmap/scripts/extract_prop_pack.py",
+    "sha256": "c02a2726497e6771e0a5a1e5105591ce98b9f161b8f6a36e04863bf7592f8e36",
+    "bytes": 13050
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/LICENSE",
+    "sha256": "d63ddc781bf0d15753fe0ba22c7cd5828dabb7776465ea4d4939558d4909b0fa",
+    "bytes": 1065
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/SKILL.md",
+    "sha256": "d620ac32acdb5946a41e41269aefab0b295e8038df57c2e89ce3749415e896e6",
+    "bytes": 21260
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/SOURCE.md",
+    "sha256": "a3667d46be6cda6ec841c482ca371b9bae081445bc9fb15e08e5ef5e22386d31",
+    "bytes": 303
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/references/modes.md",
+    "sha256": "88b75203732cf1e04af8d98427c2ddef617b7bbc1a844841d75efdf4c1359a39",
+    "bytes": 5799
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/references/prompt-rules.md",
+    "sha256": "6a82348083283a29d86c934a280b0bb80c40f926a1e08582050f6dd9068041f3",
+    "bytes": 11603
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/scripts/generate2dsprite.py",
+    "sha256": "681d0885d1813e9d7e1a82dfd340c1c71c8158e57a4c0710516c3f6c2c944a95",
+    "bytes": 42687
+  },
+  {
+    "path": "hayvra/.grok/skills/generate2dsprite/scripts/make_layout_guide.py",
+    "sha256": "a1a91b069e998d304b8c37f14ec33c139f50252b5fb04574f4c997d268ec6b58",
+    "bytes": 3590
+  },
+  {
+    "path": "hayvra/.grok/skills/imagine-grok-build/SKILL.md",
+    "sha256": "cae327513b9cfbf1c6c1136533dbf80dddc7493a0e34b57572b84fdc6ff9ef44",
+    "bytes": 12394
+  },
+  {
+    "path": "hayvra/.grok/skills/multiplayer-p2p/SKILL.md",
+    "sha256": "234ee1648566f808315295b5e5b6bc6b6e2933a183ac1a584dcd243d792a4bf5",
+    "bytes": 5067
+  },
+  {
+    "path": "hayvra/.grok/skills/multiplayer-p2p/references/react-binding.md",
+    "sha256": "77391d4a47f519889386895af34f2c101a089616caddbc47ba0134f068a734c9",
+    "bytes": 4831
+  },
+  {
+    "path": "hayvra/.grok/skills/multiplayer-p2p/references/signaling-relay.md",
+    "sha256": "4277bb2f17e208a3d5afe72ef965788876a2935379175a9b0eb20dc2c898766f",
+    "bytes": 9150
+  },
+  {
+    "path": "hayvra/.grok/skills/neon/SKILL.md",
+    "sha256": "87e0fe9b647986787e281930788e1dc110ccb19df4e29854f20f4604c1ae6897",
+    "bytes": 7445
+  },
+  {
+    "path": "hayvra/.grok/skills/og/SKILL.md",
+    "sha256": "5c6ff71e42840f38db61fb5173836485de4a53418c99d1f34d77ecefaed46d28",
+    "bytes": 6555
+  },
+  {
+    "path": "hayvra/.grok/skills/og/references/brand-pass.md",
+    "sha256": "68019a3afe8ae75b94599de354245c9a0d068cae5ff054841ac75cc055058afe",
+    "bytes": 2568
+  },
+  {
+    "path": "hayvra/.grok/skills/og/references/custom-card.md",
+    "sha256": "97c0efccce4daf47486f8caa65723db2fd0435ccaa68be90004a6c1ad15cb954",
+    "bytes": 5988
+  },
+  {
+    "path": "hayvra/.grok/skills/og/references/favicon-and-icons.md",
+    "sha256": "bc95ed577825a411571f4680f992799a26811dd72af6714375dc49800e216db6",
+    "bytes": 1959
+  },
+  {
+    "path": "hayvra/.grok/skills/og/references/og-type-contract.md",
+    "sha256": "2743a8a9a6c1eafb8aec5ae8c83f2202533df6a55649582684d2bce18a52ea2f",
+    "bytes": 1749
+  },
+  {
+    "path": "hayvra/.grok/skills/og/references/placeholder-card.md",
+    "sha256": "c21551f098562c8ff49004885596f71848c09af13b19237f1babe820e4f7e957",
+    "bytes": 887
+  },
+  {
+    "path": "hayvra/.grok/skills/og/references/x-banner.md",
+    "sha256": "0f6f5b8c381c40e26514439575a004ef0560b379fd069b76fc940c9f803e0733",
+    "bytes": 2339
+  },
+  {
+    "path": "hayvra/.grok/skills/threejs/SKILL.md",
+    "sha256": "0fadfe66cf788bce9bcef87a3bc8d6c65e5b6275976b7bee1a914a0d05d6ecc6",
+    "bytes": 3021
+  },
+  {
+    "path": "hayvra/.grok/skills/threejs/references/llms-full.txt",
+    "sha256": "e93ae843c05b2f936efaaa5946d506ca70a7cc15fa2f7adf79f9d4c70659b2cc",
+    "bytes": 132250
+  },
+  {
+    "path": "hayvra/.grok/skills/video2dsprite/LICENSE",
+    "sha256": "d63ddc781bf0d15753fe0ba22c7cd5828dabb7776465ea4d4939558d4909b0fa",
+    "bytes": 1065
+  },
+  {
+    "path": "hayvra/.grok/skills/video2dsprite/SKILL.md",
+    "sha256": "09062be6facd6d35373777eb464c32be7e1272030e0b5f1f66b5100e7b3e6f14",
+    "bytes": 10058
+  },
+  {
+    "path": "hayvra/.grok/skills/video2dsprite/SOURCE.md",
+    "sha256": "a3667d46be6cda6ec841c482ca371b9bae081445bc9fb15e08e5ef5e22386d31",
+    "bytes": 303
+  },
+  {
+    "path": "hayvra/.grok/skills/video2dsprite/references/pipeline.md",
+    "sha256": "d8dcafb959b92c88c754bb784d8da047e4537bde1679875da2ce73463bbe43d0",
+    "bytes": 2544
+  },
+  {
+    "path": "hayvra/.grok/skills/video2dsprite/references/prompt-rules.md",
+    "sha256": "b1bee1a50932dc4bb26f499027d4534f556c8ef99c6744877cddc9321d8e2783",
+    "bytes": 2482
+  },
+  {
+    "path": "hayvra/.grok/skills/video2dsprite/scripts/video2dsprite.py",
+    "sha256": "5a580ace4b07ef66d3069ad7fca80f744655e9ba17bdea82dfe2717bd4dfedea",
+    "bytes": 16164
+  },
+  {
+    "path": "hayvra/.grok/skills/xai-api/SKILL.md",
+    "sha256": "a8f9bb7468305e3ec6377f74a9e5ecc4b0b4a1334596350087b8c32cc9cb45a5",
+    "bytes": 6618
+  },
+  {
+    "path": "hayvra/.netlifyignore",
+    "sha256": "b13fbc85dbc9e4ae0191c8bf2dbfca21e6dcabb14c73f3646726c5b2152a1a72",
+    "bytes": 55
+  },
+  {
+    "path": "hayvra/.prettierrc",
+    "sha256": "d5f90f76c5b68ce7be5ba077813f97e1983511b8c314764537345a538c1261f4",
+    "bytes": 90
+  },
+  {
+    "path": "hayvra/AGENTS.md",
+    "sha256": "5697d2fefb9bf4dbe5551ac39203e4826547659198a6e80e1041d42b8fc53c8a",
+    "bytes": 19005
+  },
+  {
+    "path": "hayvra/eslint.config.mjs",
+    "sha256": "9c79df07c33ff6aa13876bdd1e7e6652aa1ecb377c7b7f029f7915d215ee4488",
+    "bytes": 1277
+  },
+  {
+    "path": "hayvra/migrations/auth/0001_auth.sql",
+    "sha256": "f953cacc448c0c81ae4fe63e66b0e59569e840782ad279fdee201dff529363e9",
+    "bytes": 2739
+  },
+  {
+    "path": "hayvra/netlify.toml",
+    "sha256": "453baa72a24d0e4fab5bfdd1b5813cf830f973c64641c4cbb86df41d28088886",
+    "bytes": 149
+  },
+  {
+    "path": "hayvra/package-lock.json",
+    "sha256": "947943603109693d5b305c6065878822ac666a422439ff11f7ca7f3f0838df20",
+    "bytes": 262504
+  },
+  {
+    "path": "hayvra/package.json",
+    "sha256": "0c4aa5cadab13a7f2ad09fcec78a0319a879389a7ea1ffa230f5002ddd356abd",
+    "bytes": 3607
+  },
+  {
+    "path": "hayvra/public/__grok/icon-180.png",
+    "sha256": "3cf5d17d294b51c6cca6c86070309b88554b7ad702b0412e8e2709a01990bc8a",
+    "bytes": 2100
+  },
+  {
+    "path": "hayvra/public/__grok/install/assets/homescreen/glass-puzzle.svg",
+    "sha256": "a677c9356c23d1e699559ddbffac97cd135c2782cd893fb34f3738f6d11bee17",
+    "bytes": 1811
+  },
+  {
+    "path": "hayvra/public/__grok/install/assets/homescreen/glass-share.svg",
+    "sha256": "efad1b4b507a68c1f1af4aad2c93e8c24076224aa593da86677697f543d026d6",
+    "bytes": 2388
+  },
+  {
+    "path": "hayvra/public/__grok/install/assets/homescreen/logo-grok.svg",
+    "sha256": "0654e3e59cce69856f38525cbfe4ab3a9ef52d4b64c8532dd0bc1a3f34fcb5b1",
+    "bytes": 1059
+  },
+  {
+    "path": "hayvra/public/__grok/install/assets/homescreen/ob-ipad.png",
+    "sha256": "4c9b09a4660c662b394597d551a04124293b0e37a7a7c72271dd2948c4499a14",
+    "bytes": 101843
+  },
+  {
+    "path": "hayvra/public/__grok/install/assets/homescreen/ob-phone.png",
+    "sha256": "80e0a5ede614d9b920c67d7cb79c80a79134687b1fc9f560384e896a88e302db",
+    "bytes": 103612
+  },
+  {
+    "path": "hayvra/public/__grok/install/assets/homescreen/plus.svg",
+    "sha256": "c2c94be46aa2c3c2fda95d7c6f2fc6d0b656d1f5847828d5d95b5a81a6f4f20d",
+    "bytes": 2401
+  },
+  {
+    "path": "hayvra/public/__grok/install/styles.css",
+    "sha256": "7e8e881302f58e54a9c07e7be395692d3de20fdaa27ce358531cc8dcca472cb6",
+    "bytes": 6717
+  },
+  {
+    "path": "hayvra/public/favicon.png",
+    "sha256": "272be66a6966856a35bfd61d39c37b367bd796139fa911b774c47e439a97da5f",
+    "bytes": 5582
+  },
+  {
+    "path": "hayvra/public/favicon.svg",
+    "sha256": "83d780dde205d73c5f73bc0a36fa9a21e89b4441d1da2367104665f85cdf0520",
+    "bytes": 606
+  },
+  {
+    "path": "hayvra/public/media/ahmad.jpg",
+    "sha256": "b50c1c3229c589fe3254603df841589944ed366c3cfec03b1aae022c4af86e94",
+    "bytes": 126973
+  },
+  {
+    "path": "hayvra/public/media/corridor.jpg",
+    "sha256": "53ea154d4a3f53dffd992dd31e53f165b2006180405519d1526106d894637866",
+    "bytes": 60605
+  },
+  {
+    "path": "hayvra/public/media/guest-key.jpg",
+    "sha256": "e7a6e3349a6e2363435a05c3587f861a2ad5bd929a7760a076039ccdbd18c269",
+    "bytes": 324716
+  },
+  {
+    "path": "hayvra/public/media/mark.png",
+    "sha256": "3a5519ba37443d4ddfa8812412b5cad3e7d8dae4541b235a8f56439a8a511656",
+    "bytes": 720379
+  },
+  {
+    "path": "hayvra/public/media/muaz.jpg",
+    "sha256": "7e2bb2c6b4bca8cba0abff43630cb4a0a535632af8d332ee251e36ba70b5aac2",
+    "bytes": 211673
+  },
+  {
+    "path": "hayvra/public/og.jpg",
+    "sha256": "f39a913f32d306c67eaeb2e9525f7def286ad9266dc4ba0f4e3e7beeab93922e",
+    "bytes": 44080
+  },
+  {
+    "path": "hayvra/public/request-demo.html",
+    "sha256": "44e9e361be2caad30bb9af5912e127bad0dca601a430551d959a3d09d67feef7",
+    "bytes": 4578
+  },
+  {
+    "path": "hayvra/public/request-thanks.html",
+    "sha256": "76885ec0aeca1e8023208ba3ac8b9fa9e2d67ea46e3871526bb772424fc69707",
+    "bytes": 1066
+  },
+  {
+    "path": "hayvra/public/robots.txt",
+    "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
+    "bytes": 23
+  },
+  {
+    "path": "hayvra/scripts/app-env-plugin.mjs",
+    "sha256": "92962d2361a98413c0cef80b31266d49b063cf4ecf6421bb99f57f6eef4ed7b6",
+    "bytes": 1278
+  },
+  {
+    "path": "hayvra/scripts/brand-check.mjs",
+    "sha256": "318f33ce7b29b55c386cc8847084068777880f795a5082043229bb06686be035",
+    "bytes": 9609
+  },
+  {
+    "path": "hayvra/scripts/brand-check.test.mjs",
+    "sha256": "3dada9e907cf63d4127588268f38987e72108639e65a2694aebf4ee35aa9f309",
+    "bytes": 15084
+  },
+  {
+    "path": "hayvra/scripts/browser-guard.mjs",
+    "sha256": "c6fb865defe5a37bd94e3805b00311d4e8267daf92812e39f62b1213d947265e",
+    "bytes": 1724
+  },
+  {
+    "path": "hayvra/scripts/browser-smoke-verdict.mjs",
+    "sha256": "5699614f7fa62515e25ba9cca6397db2770cf6feb9b973f3c19f2915874c53de",
+    "bytes": 4663
+  },
+  {
+    "path": "hayvra/scripts/browser-smoke-verdict.test.mjs",
+    "sha256": "48b3924b41d606f94a9b8faae47ff350b84978fdd5ab3f6ca01640ed4c7087d7",
+    "bytes": 15643
+  },
+  {
+    "path": "hayvra/scripts/browser-smoke.mjs",
+    "sha256": "2e1cc3136f33bd74b73b4b3dba812e74ac299c24893b9a7c406e9bbeaf46571f",
+    "bytes": 6042
+  },
+  {
+    "path": "hayvra/scripts/check-auth-invariant.mjs",
+    "sha256": "d712203c4bc92c197c342e5c91660fc5a141a31171f22f35c505a0bff45f98ee",
+    "bytes": 4203
+  },
+  {
+    "path": "hayvra/scripts/check-auth-invariant.test.mjs",
+    "sha256": "75a58f44dffb2fc77eb47473638646f607dba26a68a6900156031c7b6227cf3c",
+    "bytes": 4218
+  },
+  {
+    "path": "hayvra/scripts/check-built-assets.mjs",
+    "sha256": "28590f0eb772fddfe998938c114ffa94ff38aa856d239c775a4345c5025bce78",
+    "bytes": 1257
+  },
+  {
+    "path": "hayvra/scripts/grok-pwa-plugin.mjs",
+    "sha256": "36331d0bc0664debb5068bd6869d3089dc41555b7770c9ccb577d8845958835c",
+    "bytes": 6615
+  },
+  {
+    "path": "hayvra/scripts/grok-pwa-plugin.test.mjs",
+    "sha256": "816c6b867c7230d739f69598202c0903e4332632293d548bde74c8d875ed8e5c",
+    "bytes": 21850
+  },
+  {
+    "path": "hayvra/scripts/grok-pwa-shared.d.mts",
+    "sha256": "f4db33fcf35ef3f25fca05d1b42494b6f607c44a4d728ed3e989e65a3a1ea9d0",
+    "bytes": 3206
+  },
+  {
+    "path": "hayvra/scripts/grok-pwa-shared.mjs",
+    "sha256": "99bf3caab5e4c2a30fe748a196cfa4074a9e039efec16f57c83efe325bcadd9e",
+    "bytes": 18225
+  },
+  {
+    "path": "hayvra/scripts/install-page.html",
+    "sha256": "5f8fe91f837db8d74d68db5e057948918bd9299e097700e0bd18f1cf5f94e586",
+    "bytes": 5658
+  },
+  {
+    "path": "hayvra/scripts/migrate.mjs",
+    "sha256": "e1a31c8046a099df37b4bcbcafa4f4f7d7d18b1f1f0dc6d79676d41c4be976be",
+    "bytes": 3181
+  },
+  {
+    "path": "hayvra/scripts/migration-plan.mjs",
+    "sha256": "9305d8cfe8cdad73671065d675c89d0f20075d18c756f9aba5043b72e7c19a0d",
+    "bytes": 1525
+  },
+  {
+    "path": "hayvra/scripts/migration-plan.test.mjs",
+    "sha256": "9787b5f5f1a7057db94f0a5a8c89abf6ec569fd22d26f99be1c248a2a9f0c082",
+    "bytes": 3558
+  },
+  {
+    "path": "hayvra/scripts/preview-thumbnail.mjs",
+    "sha256": "fd7263a1dd76f788c2b51e9381e1f1de1a58993fd94e01040285556cd38c0c40",
+    "bytes": 1762
+  },
+  {
+    "path": "hayvra/scripts/preview.mjs",
+    "sha256": "b366b1c28844cda81d21e36a88af5f548bdec6a5a4b3000aac12be3ec99cf605",
+    "bytes": 11074
+  },
+  {
+    "path": "hayvra/scripts/preview.test.mjs",
+    "sha256": "0105fe41d056ecc22c586a191a9cbd7d0e838b7c878d6993c8c9573c7ea708b1",
+    "bytes": 9207
+  },
+  {
+    "path": "hayvra/scripts/sign-out-plan.mjs",
+    "sha256": "32ae072de23b5138bf849c344caf72ab2dab6cb4617ab9915db4e4f5b9c7e2f0",
+    "bytes": 5971
+  },
+  {
+    "path": "hayvra/scripts/sign-out-plan.test.mjs",
+    "sha256": "1942e32f4b6a9d8b62733338b0f0e1a7d84ed278b4e6c4f24fa7616a3abc694e",
+    "bytes": 8659
+  },
+  {
+    "path": "hayvra/scripts/with-app-env.mjs",
+    "sha256": "a846b68bd3645299c23eef965d9ef226df3a500d345d7576c23f7a2b2ff643c7",
+    "bytes": 4601
+  },
+  {
+    "path": "hayvra/scripts/with-app-env.test.mjs",
+    "sha256": "384ea7d0d20f980f733ee38d8f48b0bedd8a4ad39c80ca4792b9aeebcb275851",
+    "bytes": 4466
+  },
+  {
+    "path": "hayvra/scripts/write-atomic.mjs",
+    "sha256": "650b62e8aa38697e1b931049025afe3aac829e6761a8aadf428712faef8b1544",
+    "bytes": 3607
+  },
+  {
+    "path": "hayvra/scripts/write-atomic.test.mjs",
+    "sha256": "e266ac99149651c368715317820934f0e8942db0fc763725ca4a096bf169ad3b",
+    "bytes": 7505
+  },
+  {
+    "path": "hayvra/server/middleware/grok-pwa.ts",
+    "sha256": "340f1fed44355a61fefdaf29a752c524ac029afb00bea3f40cc996cdb289d2f8",
+    "bytes": 3606
+  },
+  {
+    "path": "hayvra/server/virtual-grok-og-identity.d.ts",
+    "sha256": "74847f2b2bade154ac07dabb239c4718a745c095df530e78b8f1ef9f053edfa2",
+    "bytes": 262
+  },
+  {
+    "path": "hayvra/src/components/hayvra/chrome.tsx",
+    "sha256": "ae0e251056764919550f7c2cb6f23dd69f90f3a7e0b14f8b3fb8eec98913cde1",
+    "bytes": 4438
+  },
+  {
+    "path": "hayvra/src/components/hayvra/ecosystem.tsx",
+    "sha256": "e09f2c967280aea540cb57b794b7ed8978e1cd7a51196b76eb258c7c79dcf072",
+    "bytes": 22446
+  },
+  {
+    "path": "hayvra/src/components/hayvra/housekeeping.tsx",
+    "sha256": "2250070dc4dae63871556b8e62e19fa556607ba63f17e56668e440e72164f858",
+    "bytes": 25097
+  },
+  {
+    "path": "hayvra/src/components/hayvra/journey.tsx",
+    "sha256": "1fccc78923bc2d06d35f4f6b88dcc5be0fcfb4e6cc4c03bb06363a28d73a3507",
+    "bytes": 6333
+  },
+  {
+    "path": "hayvra/src/components/hayvra/key-card.tsx",
+    "sha256": "0833eee0b555bae503846f4216b4a0684e517b5ec41514883f35d7175b8ede66",
+    "bytes": 4056
+  },
+  {
+    "path": "hayvra/src/components/hayvra/logo-stage.tsx",
+    "sha256": "b7bbf2d9708beda199e744b746c5d31a30550517134e2a79b32b53359478b9ed",
+    "bytes": 4975
+  },
+  {
+    "path": "hayvra/src/components/hayvra/mark.tsx",
+    "sha256": "661824b1f784f3ccd655d55ebd4cb248d826c51190f13702025614aa4bbdcde5",
+    "bytes": 677
+  },
+  {
+    "path": "hayvra/src/components/hayvra/opening.tsx",
+    "sha256": "e78da4a158f663af91f92f1437e8745f50c04839ba954ef1a4b53efdbe18b894",
+    "bytes": 3809
+  },
+  {
+    "path": "hayvra/src/components/hayvra/platform.tsx",
+    "sha256": "3f49c48ac342b89b70524d43e55e30d3efeaca8cb325596c0eb8a3bc96ef5d48",
+    "bytes": 7705
+  },
+  {
+    "path": "hayvra/src/components/hayvra/team.tsx",
+    "sha256": "8ba75dc8de5c9080c48679c8fe468a2e1a67c7773fea089aa574bf92929de27b",
+    "bytes": 2252
+  },
+  {
+    "path": "hayvra/src/components/hayvra/value.tsx",
+    "sha256": "784f568d27f993617ba5d83cdb1fd2d267cb6d733edcde054ca66f19116bfa9b",
+    "bytes": 2737
+  },
+  {
+    "path": "hayvra/src/components/preview-host-bridge.tsx",
+    "sha256": "e4277e80ce127e7305057fb280d03d0703c5c7115b17d2e2aecf000e4867555e",
+    "bytes": 668
+  },
+  {
+    "path": "hayvra/src/lib/app-data/app-data.test.ts",
+    "sha256": "ec0c40fdaafb4e3d551086de9f9b4a745da7c252f7fbbc5c51a8b1b0a541391e",
+    "bytes": 15944
+  },
+  {
+    "path": "hayvra/src/lib/app-data/client.server.ts",
+    "sha256": "ab544af8b5b96e16248fdcf7ce634c132ccd3659c33cf0daa22f6e74ef5a5da0",
+    "bytes": 11867
+  },
+  {
+    "path": "hayvra/src/lib/app-data/errors.ts",
+    "sha256": "8e0dd8d761b2a5a1cafcb7523e2063151f0b6677837b19c3f6d494af148f3889",
+    "bytes": 1994
+  },
+  {
+    "path": "hayvra/src/lib/app-data/index.ts",
+    "sha256": "72cf57dc1a863f9693d34c11772ba4bae790cc17d9efb1e8619b8a2e6247a7fa",
+    "bytes": 598
+  },
+  {
+    "path": "hayvra/src/lib/app-data/login.ts",
+    "sha256": "fbc723841bb67148dd9de12ed614ba6c095d799a533309857cc4d202d6be5ad9",
+    "bytes": 856
+  },
+  {
+    "path": "hayvra/src/lib/app-data/readiness-schedule.test.ts",
+    "sha256": "97c87401c474b9f87f2e21152fb377744f353736848f0044466ba2e260b06745",
+    "bytes": 1146
+  },
+  {
+    "path": "hayvra/src/lib/app-data/readiness-schedule.ts",
+    "sha256": "3ea7f192220446b08747f3ef76c7d2fe150356470621f2220738b23e7976f683",
+    "bytes": 506
+  },
+  {
+    "path": "hayvra/src/lib/app-data/readiness.ts",
+    "sha256": "377786c1cf739eb9dc7c8b2bdcd09991686a700375a67a0c6e73b4334d394da1",
+    "bytes": 366
+  },
+  {
+    "path": "hayvra/src/lib/app-data/server-only.ts",
+    "sha256": "82821474088face6b9fcadad49793629e5f07a16386402b816262a1c070a3210",
+    "bytes": 476
+  },
+  {
+    "path": "hayvra/src/lib/app-data/types.ts",
+    "sha256": "65f3c7566db12661ee9d3633eaae66a85505e00f57a61c258fa72bd22881489f",
+    "bytes": 1361
+  },
+  {
+    "path": "hayvra/src/lib/app-data/use-connector-readiness.ts",
+    "sha256": "57e6d2b3709be83ac2eed9c42eaa822a067fb5aa44a6098c982892c43f3a4f2f",
+    "bytes": 3892
+  },
+  {
+    "path": "hayvra/src/lib/auth/client.ts",
+    "sha256": "4bca649afb627b11231a7b31acfcffe9323efddebc05944b2d769d2b8589294f",
+    "bytes": 9714
+  },
+  {
+    "path": "hayvra/src/lib/auth/email-password.ts",
+    "sha256": "9b1da7c786e48adfa9a6f7c485bcf5817cf2075a601d8726a965f11171910354",
+    "bytes": 442
+  },
+  {
+    "path": "hayvra/src/lib/auth/gate-identity.server.ts",
+    "sha256": "96546b8b6910a01163c36c34a0d417d803bec222b93304be764d810838764159",
+    "bytes": 5706
+  },
+  {
+    "path": "hayvra/src/lib/auth/gate-identity.test.ts",
+    "sha256": "21202fb2b56ffd10cb9b5bb7d9f305be88cce3902b858f73cea914df05ce2652",
+    "bytes": 14346
+  },
+  {
+    "path": "hayvra/src/lib/auth/gate-session-marker.ts",
+    "sha256": "3dbf8cb789b0288f9d5c53b1515a3e87d265fcb22e11fe28dc3289c4bd7c06eb",
+    "bytes": 879
+  },
+  {
+    "path": "hayvra/src/lib/auth/gate-session.server.ts",
+    "sha256": "68aa500523ca2f0ad5c7ba34372c10aa1851a9774f8567c6b7781af5dd6cf204",
+    "bytes": 11980
+  },
+  {
+    "path": "hayvra/src/lib/auth/gates.tsx",
+    "sha256": "39950c211bd4ad4f7129082bf5a43a42ff23975e681b99fd7cfbce372f83a5be",
+    "bytes": 4924
+  },
+  {
+    "path": "hayvra/src/lib/auth/isolation.server.ts",
+    "sha256": "a4adf6a5d548e70a0be52d7efdc7433126028908072b47bf9f92135d9ee558a0",
+    "bytes": 2386
+  },
+  {
+    "path": "hayvra/src/lib/auth/middleware.ts",
+    "sha256": "8dc37c4e9bd583f175402330d0952ef4d584c7410723cc2649c4046d5084bd80",
+    "bytes": 2462
+  },
+  {
+    "path": "hayvra/src/lib/auth/pglite-dialect.ts",
+    "sha256": "bd66925574245cd47cdd98b5c068dd7b4ee4a51c9439e8421dc54c62fe7c4f50",
+    "bytes": 4088
+  },
+  {
+    "path": "hayvra/src/lib/auth/popup.server.ts",
+    "sha256": "81f8833d9ab639f76b86f4bb23fed42a04cec4b0c6d90b7a67425a9232c9bb4a",
+    "bytes": 6133
+  },
+  {
+    "path": "hayvra/src/lib/auth/preview.ts",
+    "sha256": "358145b18e291752a057089e716a23d786e95693b84e183d350a11e5a2f4f454",
+    "bytes": 1657
+  },
+  {
+    "path": "hayvra/src/lib/auth/provider.tsx",
+    "sha256": "4cbbc7f8cc1765788ad65455a33f64dcdafc6fe4ed1d13f90ccfa0ba4c13d1f3",
+    "bytes": 593
+  },
+  {
+    "path": "hayvra/src/lib/auth/providers.ts",
+    "sha256": "4acefac17931529bdeab053588a917b06e44abdb67a275a2ca1c7841080c6a78",
+    "bytes": 1486
+  },
+  {
+    "path": "hayvra/src/lib/auth/server.ts",
+    "sha256": "e0544cadbfa1a09c3cb4cf2a0ec187dbbb2831aebf7de887a3c858abdd72ca43",
+    "bytes": 12548
+  },
+  {
+    "path": "hayvra/src/lib/auth/sign-in-gate.test.ts",
+    "sha256": "2c352588cb6a8f58faf3aecc1d1f418ae827ddbb6a5eca8e56668ec72cd328d2",
+    "bytes": 854
+  },
+  {
+    "path": "hayvra/src/lib/auth/sign-in-gate.ts",
+    "sha256": "d2c65c20ab50ae41657ceecd61ded005fac29315deace9fc4d966cf56300754c",
+    "bytes": 332
+  },
+  {
+    "path": "hayvra/src/lib/auth/use-current-user.ts",
+    "sha256": "6444e7a0e6b908ad47c73981d63552ec0d33225f24a6c63370b9cec8088442d6",
+    "bytes": 3626
+  },
+  {
+    "path": "hayvra/src/lib/auth/verify.server.ts",
+    "sha256": "42a7d5c1b17027ba004d6524a7f7bb4827b908d75ee3c3aefc940fa9c891c2ee",
+    "bytes": 3874
+  },
+  {
+    "path": "hayvra/src/lib/db.ts",
+    "sha256": "8decf7689ff4833ad2f6f263eff9041dd2a68ce923824fa1d55ad620dea72e49",
+    "bytes": 9525
+  },
+  {
+    "path": "hayvra/src/lib/env.server.ts",
+    "sha256": "9b834e0978ae76332a65a05f5bc75f80684db8c6aa638916869385c12e3343d5",
+    "bytes": 477
+  },
+  {
+    "path": "hayvra/src/lib/error-component.tsx",
+    "sha256": "dca30af8f1024f4f43ba8b580b3a062ae4280d7578a2b01495a0c8ea38381e4d",
+    "bytes": 830
+  },
+  {
+    "path": "hayvra/src/lib/hayvra/demo-store.ts",
+    "sha256": "7c7fbcca2af67d5992cbf8fc5035e62ec7229e8ca013a1df20b02f955120c352",
+    "bytes": 512
+  },
+  {
+    "path": "hayvra/src/lib/multiplayer/index.ts",
+    "sha256": "bcb96816a2135e315078e2e7d0eda5522579b0caf9e768dc6c34294e4fa49137",
+    "bytes": 169
+  },
+  {
+    "path": "hayvra/src/lib/multiplayer/p2p.ts",
+    "sha256": "4d0d2492ac249a2cf267c8d2db7688b5a2c488ab640da7727c0f1b73c2e92f60",
+    "bytes": 20579
+  },
+  {
+    "path": "hayvra/src/lib/og/site.json",
+    "sha256": "40758bb35348e359bf71d113b0d46f403088707da08602879c505a79a17a3511",
+    "bytes": 44
+  },
+  {
+    "path": "hayvra/src/lib/preview-embedder-origin.ts",
+    "sha256": "c2d5e1acc5653ff2abc08a5eeb5feb3331f4e3d7c751ec83d60dee83cf33a6ee",
+    "bytes": 1855
+  },
+  {
+    "path": "hayvra/src/lib/preview-host-bridge.ts",
+    "sha256": "63a91311378037680b6be414937295069ec2950520d1dc959741cf430ba6b38b",
+    "bytes": 9595
+  },
+  {
+    "path": "hayvra/src/lib/preview-path-prefix.test.ts",
+    "sha256": "08da80da191446ed449da9a1180ccaaeebb8eaf295bf3ef9f0a5fcca51860ce1",
+    "bytes": 1794
+  },
+  {
+    "path": "hayvra/src/lib/preview-path-prefix.ts",
+    "sha256": "d46d4c21d47c2765198352b649037def35371c3995525cc42f5aff6a0f1519b7",
+    "bytes": 1458
+  },
+  {
+    "path": "hayvra/src/routeTree.gen.ts",
+    "sha256": "10c04e911e8c56aec5ef1d7401f7b04b12583033908e0e17291435c370384f2d",
+    "bytes": 2262
+  },
+  {
+    "path": "hayvra/src/router.tsx",
+    "sha256": "0b72f2ad19d5a6e60d1e699d2fe0e4c0a2fa00d88881314e51a0e79fb1541611",
+    "bytes": 382
+  },
+  {
+    "path": "hayvra/src/routes/__root.tsx",
+    "sha256": "ae70f8af8db4d39e04e625cf4416aa5d44f4e3ad459928e91b791ec0c0d60c5d",
+    "bytes": 2351
+  },
+  {
+    "path": "hayvra/src/routes/demo.tsx",
+    "sha256": "11e1454e59b53950223598184c443c34e2666c82e34498eab1fccd95996c1cb8",
+    "bytes": 8939
+  },
+  {
+    "path": "hayvra/src/routes/index.tsx",
+    "sha256": "7d231c421dccd676d8fbdc8088daa8dc0378c4581eec5c96f5595bf895b64df5",
+    "bytes": 1591
+  },
+  {
+    "path": "hayvra/src/styles.css",
+    "sha256": "18391dfc7d8eb8d83e18d7ded113d23cc29e09ae773f7ff827ef053d83bbf9fc",
+    "bytes": 21493
+  },
+  {
+    "path": "hayvra/startup.sh",
+    "sha256": "c44bcf37646aa13ee404e97a0f3abe0e136029340c79a4cbdc159860d7786b75",
+    "bytes": 272
+  },
+  {
+    "path": "hayvra/tsconfig.json",
+    "sha256": "8abad87a6c62322f1f4fdff02d5f3f764ea10a98c49cfafccdc288a0dced492f",
+    "bytes": 722
+  },
+  {
+    "path": "hayvra/vercel.json",
+    "sha256": "b621d84931055b57a73e6d4547ab4b161b6bfbf091806354d3f6f67d0f57700f",
+    "bytes": 70
+  },
+  {
+    "path": "hayvra/vite.config.ts",
+    "sha256": "447f4261111a3934bfb7e99b4b71a5b427f7d78a66ed11181445f50f8d31faba",
+    "bytes": 6751
+  },
+  {
+    "path": "recovered-sites.json",
+    "sha256": "062bb952c0947dd7103800d857505f3c9fadd419807f5f077c2d404e8fadae15",
+    "bytes": 2157
+  },
+  {
+    "path": "recovery-changes.json",
+    "sha256": "18c55b44c39d0dfe51fafcfe616be6d188471e15941380971c7b4294ebf609fc",
+    "bytes": 4113
+  },
+  {
+    "path": "sportix-academy-os/DEPLOY_AR.md",
+    "sha256": "bcbedc617e147afbf58c511440adc06b2c6ebc13a13ce1ada9897477cd0571e2",
+    "bytes": 2558
+  },
+  {
+    "path": "sportix-academy-os/README.md",
+    "sha256": "7006fdded39e7d5f0839df1ef42f18dd941a46c1bb7b8021d95a3cb7b160e441",
+    "bytes": 2701
+  },
+  {
+    "path": "sportix-academy-os/VERIFICATION_AR.md",
+    "sha256": "9f303303e3de44d49edba36ecbda9692832fb42195c49b0969d8aad9cee8807d",
+    "bytes": 6871
+  },
+  {
+    "path": "sportix-academy-os/index.html",
+    "sha256": "173f7ae5b5d13b2dfab5f848c16345afd88b0e64546b7fa67a18d29045df62cb",
+    "bytes": 571
+  },
+  {
+    "path": "sportix-academy-os/netlify/database/migrations/20261104130000_academy_records.sql",
+    "sha256": "286c31e3a2889faab8c05f301f401b32aace8d9423accac6ff976cb7a3d5dde6",
+    "bytes": 441
+  },
+  {
+    "path": "sportix-academy-os/netlify/functions/academy.mts",
+    "sha256": "044fb29f63464b13e755946da2e19602335ccd03ddb3e1de341ef6d7991a3049",
+    "bytes": 25404
+  },
+  {
+    "path": "sportix-academy-os/netlify.toml",
+    "sha256": "970292d7bb26bb3e71713b0437a3f1d79f919196e780310c2fe161898c164a6a",
+    "bytes": 406
+  },
+  {
+    "path": "sportix-academy-os/package-lock.json",
+    "sha256": "02e886779c381f89a35ac36554bd9ca4b39bb7709f61c2201b1a9796ed8027cc",
+    "bytes": 143551
+  },
+  {
+    "path": "sportix-academy-os/package.json",
+    "sha256": "71a5898de339b875d2f31cc46ce5bb9294876d2f7ba7274ddfa4247c8141e364",
+    "bytes": 1065
+  },
+  {
+    "path": "sportix-academy-os/src/AiWorkspaces.tsx",
+    "sha256": "dadf86dcfbb71937f4c124e01d8d76e3bc5649fb8d9f51e546682cebc2eb6f6a",
+    "bytes": 15268
+  },
+  {
+    "path": "sportix-academy-os/src/App.tsx",
+    "sha256": "f48684f0ddc3d98661285d1efec27e6aa5adc3bee00fc7cb698094d946718f4f",
+    "bytes": 83289
+  },
+  {
+    "path": "sportix-academy-os/src/IdentityDialog.tsx",
+    "sha256": "8980f23799b183d5c9275c68504c6e55a18cb34beca62e8cf17b3566edf6cf7a",
+    "bytes": 5273
+  },
+  {
+    "path": "sportix-academy-os/src/academy-ai.css",
+    "sha256": "644c63e96498c265c6fa63517ae1eb6e9f601f15335c10f409152117a16af434",
+    "bytes": 5763
+  },
+  {
+    "path": "sportix-academy-os/src/identity.css",
+    "sha256": "d55a780efe04e0ad70cb400d09164226a7e3003072732bef62a05e1a48a88518",
+    "bytes": 1504
+  },
+  {
+    "path": "sportix-academy-os/src/index.css",
+    "sha256": "2caa1a9b6054f7321b6f7722a1d0e3485f6c5ae17caf5628ece50a9bb7e8d870",
+    "bytes": 36059
+  },
+  {
+    "path": "sportix-academy-os/src/main.tsx",
+    "sha256": "fbc485694c72319e7f7870b91a30d315e18b407b4dfd16fd37ce4824f189626b",
+    "bytes": 325
+  },
+  {
+    "path": "sportix-academy-os/src/netlifyClient.ts",
+    "sha256": "6e8019ad18a65bfce8f4a664b1363eb7441f0cb4efd2aa654293845e7a212209",
+    "bytes": 3212
+  },
+  {
+    "path": "sportix-academy-os/tests/academy.test.ts",
+    "sha256": "d426a6fbe3e88274817fd9e8b39f4bfe761fbf39589c9eb48665e42fb0bd442c",
+    "bytes": 7973
+  },
+  {
+    "path": "sportix-academy-os/tests/workspace.test.tsx",
+    "sha256": "43a5c029ae1b61d6d215ca70320c4cfbb7b4579f275d0cae8fbf458aba375adf",
+    "bytes": 3894
+  },
+  {
+    "path": "sportix-academy-os/tsconfig.json",
+    "sha256": "fee06807951a2ecf4e444fee92cc5132d6103b0294f697e79315790db84bfe51",
+    "bytes": 405
+  },
+  {
+    "path": "sportix-academy-os/tsconfig.server.json",
+    "sha256": "3c05bf630594a70b261c53674d0e9ad1ff5963e625e675f08f4089af53b69b93",
+    "bytes": 194
+  },
+  {
+    "path": "sportix-academy-os/vite.config.ts",
+    "sha256": "ed38ea3b82cb00b0ff48f5d5bc334c727abf9f12973c64b2d2db373411536fc2",
+    "bytes": 164
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/app.js",
+    "sha256": "0bc86a07834802f0f8041fa771786a8a35bf7ffff51a01caa87448255957ea36",
+    "bytes": 23614
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/assets/athlete-hero.png",
+    "sha256": "017c0443af5f3e06685962c91e1c55343a0ad1f13fb2d97e44a55f49315d01a9",
+    "bytes": 1907953
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/assets/barlow-800.ttf",
+    "sha256": "73bc9e17231e9073780d3c81574c7253cecd5645c93544df1a935054b39a364f",
+    "bytes": 87556
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/assets/sportix-ecosystem-transparent.png",
+    "sha256": "a4c315b528a3e649f2f9e3edb9e9f2cffde1b62dea94d3e541a6234fde29c523",
+    "bytes": 726838
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/assets/tajawal-400.ttf",
+    "sha256": "ce4e98e477f2a36cc7a28bee546f736d67090afaa32073ceef1b7b4cdd076f21",
+    "bytes": 55072
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/assets/tajawal-700.ttf",
+    "sha256": "7edc53d44b612e72d3d6d01940a14a96f970047c0a37c537be4d4b3806d3ba53",
+    "bytes": 55520
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/assets/tajawal-900.ttf",
+    "sha256": "1fb78caa278c6e1396089d3b785dd453305106359086da585ba8745eba17a18f",
+    "bytes": 54672
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/community.js",
+    "sha256": "9ff3890e00fb3f81e723eaca29b5028bf96e9cbff316a9d0f7066e233ad18fd9",
+    "bytes": 17814
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/index.html",
+    "sha256": "2197b6ae75e7453b818335bd52fca5eace98918a47599b2cadafd612be34a970",
+    "bytes": 27229
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/netlify.toml",
+    "sha256": "96fffd899af349d3bd850c79c89581aad9e30e2872c563f1574e2ac5ac1b7a33",
+    "bytes": 24
+  },
+  {
+    "path": "sportix-ecosystem-portfolio/styles.css",
+    "sha256": "7c3e90bf803c05f15e1e89636834b3a555a65b6296ce00b39a1d0ac3e23d8b9a",
+    "bytes": 41523
+  },
+  {
+    "path": "sportix-portfolio/.gitignore",
+    "sha256": "6983b3a508788aa4e6933b39ca2a0642c79b735e1dd344865c34f3e4cbd2c26a",
+    "bytes": 95
+  },
+  {
+    "path": "sportix-portfolio/.grok/app-env.json",
+    "sha256": "62dea7bb1344fbbdca7057eea06791c27b1488f25203d25bcfd8035c44280151",
+    "bytes": 76
+  },
+  {
+    "path": "sportix-portfolio/.grok/references/browser-qa.md",
+    "sha256": "5299e34aa070cd6877d2217df6fe4fa3f7a7db94df03c41ac1402b540b289150",
+    "bytes": 9097
+  },
+  {
+    "path": "sportix-portfolio/.grok/references/data-and-auth.md",
+    "sha256": "1e8373c5e00108ff8b84014040f5c66d80aa2668f8660139356869c55706ba7a",
+    "bytes": 5614
+  },
+  {
+    "path": "sportix-portfolio/.grok/references/deploy-target.md",
+    "sha256": "3c338f59d21186d6ededeb06ee55fa5ce5c521afa043c75446f45c648449d318",
+    "bytes": 2035
+  },
+  {
+    "path": "sportix-portfolio/.grok/references/generated-art.md",
+    "sha256": "7485ecf0311612b97c0e3c24fbfac6bd118b1c82429a3ed2f272214fe6a6d994",
+    "bytes": 3854
+  },
+  {
+    "path": "sportix-portfolio/.grok/references/hibernate-revive.md",
+    "sha256": "12125da78e1932bfbfc29edec96d2c0790f535e6a093d1207fc1da559dd04cc3",
+    "bytes": 1796
+  },
+  {
+    "path": "sportix-portfolio/.grok/references/scaffold.md",
+    "sha256": "693195c814efb89dbafd1b6db716b6d2ae002f6ccef89605e85ec0e75e88d481",
+    "bytes": 2282
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/SKILL.md",
+    "sha256": "887ef562db59f644f4353e69aa8cb22a1c212488840a8c274f73c36e97cbbfad",
+    "bytes": 6345
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/references/grok-identity.md",
+    "sha256": "f6e944c2b028690382d7fb1d66d34ede55bd5f92257d17f33d48f70e56d92188",
+    "bytes": 3746
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/references/per-user-data.md",
+    "sha256": "8538db1b761d2dce033e751eb7513e5d1012998b9d7599f8d1725e3b90830298",
+    "bytes": 2402
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/references/prewired-and-env.md",
+    "sha256": "de580b328cc403f6b6d5638764c8f42fa6f17d461969f95eaed913c0a6ddabe5",
+    "bytes": 3392
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/references/session-ui.md",
+    "sha256": "02e99184adf8faf70e358312d991a9e57b049816d8005cc34f2239a4e32d9495",
+    "bytes": 6226
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/references/sign-in-methods.md",
+    "sha256": "f768048704e997511b46d9f8162bad5bf3faf749977f5fb014c9325e738c0277",
+    "bytes": 2892
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/auth/references/wiring.md",
+    "sha256": "75d840d1eedb9ce17fbb3ffd10a09ac9ac90a469f9f185338b14b8079fbb407c",
+    "bytes": 2627
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/SKILL.md",
+    "sha256": "429fd21e70581ec0316bc0e09ae6f6b5b15d325070e36d388b9396b4831c7845",
+    "bytes": 12224
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/3d-libs.md",
+    "sha256": "db472820a65a16e4928a68a50fd31885b945ec2f9fa45a17a8152a0d48cf12bf",
+    "bytes": 3092
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/ai-pathfinding.md",
+    "sha256": "e815831ca67d68e4bc7a649f63ae129abdd3d996040b2c446c2c574e72c8424b",
+    "bytes": 9974
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/audio.md",
+    "sha256": "1de8c85a9fd6cb9594e11b6b1da7e54cdca8de512c0778eb35959f8f0fbe210c",
+    "bytes": 9423
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/babylon.md",
+    "sha256": "065934f53c6c8a1d5fd27a98f1311df2b4f2f194eb694355a98cc3c802a3ebd6",
+    "bytes": 16504
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/collision-physics.md",
+    "sha256": "af213fa9079d38742fc4d95a9c6a34907b85fb039e6c8cdb058dcbf5c7bd8672",
+    "bytes": 10990
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/ecs-architecture.md",
+    "sha256": "6b0de85d73be9725c3989136c968b85ceec70c333cc0ef9993e58aff0f1b0d5f",
+    "bytes": 9185
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/game-feel-juice.md",
+    "sha256": "24742ba2d5455f10c85c06ae279c636921f983a696b844a7f2505b988a5bef83",
+    "bytes": 10693
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/board-card-chess.md",
+    "sha256": "c2103f928e917c02729f00696165426ba106d9f235948347147d73ac53a50d65",
+    "bytes": 8859
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/endless-runner.md",
+    "sha256": "2c0026ab6e57f6b025fbe3673aab24f7dff0fb70fb89f1b047486f1346049a54",
+    "bytes": 6912
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/fps.md",
+    "sha256": "a3df7b29b964c3850e01d10fd4df131d3488f9064acac49ddc34386ec13d1ca2",
+    "bytes": 10039
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/platformer-2d.md",
+    "sha256": "2262c7c914409746971a9b1eef445b026011260ddb5a39af2f3904fc44ef8104",
+    "bytes": 8785
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/puzzle-match3-tetris.md",
+    "sha256": "1011844cbe7d65184ecbc541ad0f3060b04ee22197d6b6bc22fa671b2329ed47",
+    "bytes": 10324
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/racing-kart.md",
+    "sha256": "2afc99aadd556321973c8ae3ef2f8270dd5bb7bb8ad896abcac27c9a7221e0ff",
+    "bytes": 9169
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/topdown-twin-stick.md",
+    "sha256": "f1dfeca4990b1fc37a49ca82f1246f5564a4fae24dfc3ac8b1d01f95aab43da6",
+    "bytes": 7517
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/tower-defense.md",
+    "sha256": "a52c28421da0d3710c21fa19421a172b0bc75add64b5dee35abd3b8299add76a",
+    "bytes": 7411
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/genres/voxel-minecraft.md",
+    "sha256": "cdd5746e5496945694fd8e8d0fed9cf0314d4fae6dc107cfdf44a0824fdebdc6",
+    "bytes": 8658
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/input.md",
+    "sha256": "00e030e3a28118bfc9d2f6a633b9d56cc31f60d015181b668dcd09914d15f8ce",
+    "bytes": 10311
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/phaser.md",
+    "sha256": "08abc9cb20cfe356e3376f216aef6a62df72e654f542c7770ab69f2cdfc17b2a",
+    "bytes": 19739
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/procedural-generation.md",
+    "sha256": "f03bd0390726bc7f823ad15f9309aef5317aa7f27fb7611e6648ec3fa0ca7ace",
+    "bytes": 10441
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/save-persistence.md",
+    "sha256": "6751d65f6b0dc76e19be0827286a1753efc8161a3f66a080c8e23999ef5063a4",
+    "bytes": 9041
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/building-games/references/threejs-foundational.md",
+    "sha256": "90f75bc167ae9b4e4e980689ad5fdd81ccfc5efef457cdec01234dccd0b8dd8e",
+    "bytes": 14380
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/controls/SKILL.md",
+    "sha256": "85b80f2812d0d141e97dbb294c3678c3192fd051651e9460ed6ca6317d717141",
+    "bytes": 11509
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/design-ui/SKILL.md",
+    "sha256": "5ac56024db2287e485d03e208423fad29909d3b323647c5568243bfa96f42acf",
+    "bytes": 5995
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/design-ui/references/animations.md",
+    "sha256": "33e01727f60c34872f3f0a52c92513f9af1681449ebaa35b51123127c31bf51f",
+    "bytes": 11106
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/design-ui/references/performance.md",
+    "sha256": "f4537590cca884143b8e628123810286b4bfef29b9283f900265190bd3d8bd5e",
+    "bytes": 2884
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/design-ui/references/refined-ui.md",
+    "sha256": "9abf1b1e34632f0788fec8f49a8ade216a72aab06f6cf18528b6c502c7f5a56d",
+    "bytes": 20469
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/design-ui/references/surfaces.md",
+    "sha256": "c2eac605c207ba67b2e3bf6a3918f293a6fe02ce8c72c630a51faceb321b445d",
+    "bytes": 6586
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/design-ui/references/typography.md",
+    "sha256": "b91125ab0edf02a7f582bae434ae957af2f6729e7be038304bb2d0c983697eb8",
+    "bytes": 3180
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/game-animation-frames/SKILL.md",
+    "sha256": "3840f8166d8784d672531fee4c25b618867820e97ff4faf17135f26399e0e097",
+    "bytes": 4386
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/game-asset-core/SKILL.md",
+    "sha256": "690bb8a77495bc12c2e95b60d907a1529de87b5f65856281bb67bc67839c4cfc",
+    "bytes": 3858
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/game-character-consistency/SKILL.md",
+    "sha256": "5fc49d9364193607cf3bca8f1884a43ccd4d3cbe63df69ef67b9b53346881afd",
+    "bytes": 2795
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/game-tilesets/SKILL.md",
+    "sha256": "38eb784765e1b5adaee3cca138978be12f968521a80e14f3c83e096b6308e10b",
+    "bytes": 3028
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/game-ui-icons/SKILL.md",
+    "sha256": "18fd7d9a86bbba018c2eb05ffbad99bda9a8d876d7f61a80de6e6f7771771028",
+    "bytes": 2274
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/LICENSE",
+    "sha256": "d63ddc781bf0d15753fe0ba22c7cd5828dabb7776465ea4d4939558d4909b0fa",
+    "bytes": 1065
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/SKILL.md",
+    "sha256": "992eeaa76ce3c06220e58867c9ff7554117c4af703539d7796f048e22b868f17",
+    "bytes": 7738
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/SOURCE.md",
+    "sha256": "a3667d46be6cda6ec841c482ca371b9bae081445bc9fb15e08e5ef5e22386d31",
+    "bytes": 303
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/deliverables.md",
+    "sha256": "0513bc2e2b406142f1cab3139e861c1a69de6865b686bde7e7499ba53afc7630",
+    "bytes": 7345
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/layered-map-contract.md",
+    "sha256": "0af8127a5188d9d09fcf9913cf2804c5e40eb6b2be422c48d356d22c649b10a2",
+    "bytes": 8102
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/map-strategies.md",
+    "sha256": "91659c967efd0edde10ca3bd1cc136b17b7820c0da7279078d5020827935095d",
+    "bytes": 26755
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/object-production-gate.md",
+    "sha256": "f26eddd69b5561b6cae7945222e9212f5bf6e534fda427f48a58746238ac8bb8",
+    "bytes": 3192
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/pipeline.md",
+    "sha256": "e227cdc348607228f3474fe4ea1d533d65e377dd17e36a8ca61e4708fabc37c0",
+    "bytes": 16554
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/prop-pack-contract.md",
+    "sha256": "93be2245aa4f3ff9e591127a7318f34843b6458a85d7c614ca024500d30107f9",
+    "bytes": 9458
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/references/side-scroll-stages.md",
+    "sha256": "0926d20385024052bab2044645f49657552d0bb2f259aa1958a809e3332275b0",
+    "bytes": 5627
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/scripts/compose_layered_preview.py",
+    "sha256": "29d256385961475de142d2701231a9e67c369e5270c193a66df3c51b6c888855",
+    "bytes": 5256
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dmap/scripts/extract_prop_pack.py",
+    "sha256": "c02a2726497e6771e0a5a1e5105591ce98b9f161b8f6a36e04863bf7592f8e36",
+    "bytes": 13050
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/LICENSE",
+    "sha256": "d63ddc781bf0d15753fe0ba22c7cd5828dabb7776465ea4d4939558d4909b0fa",
+    "bytes": 1065
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/SKILL.md",
+    "sha256": "d620ac32acdb5946a41e41269aefab0b295e8038df57c2e89ce3749415e896e6",
+    "bytes": 21260
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/SOURCE.md",
+    "sha256": "a3667d46be6cda6ec841c482ca371b9bae081445bc9fb15e08e5ef5e22386d31",
+    "bytes": 303
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/references/modes.md",
+    "sha256": "88b75203732cf1e04af8d98427c2ddef617b7bbc1a844841d75efdf4c1359a39",
+    "bytes": 5799
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/references/prompt-rules.md",
+    "sha256": "6a82348083283a29d86c934a280b0bb80c40f926a1e08582050f6dd9068041f3",
+    "bytes": 11603
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/scripts/generate2dsprite.py",
+    "sha256": "681d0885d1813e9d7e1a82dfd340c1c71c8158e57a4c0710516c3f6c2c944a95",
+    "bytes": 42687
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/generate2dsprite/scripts/make_layout_guide.py",
+    "sha256": "a1a91b069e998d304b8c37f14ec33c139f50252b5fb04574f4c997d268ec6b58",
+    "bytes": 3590
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/imagine/SKILL.md",
+    "sha256": "c4ce1e170e2d0e000378fd4d6da0fa8ad277621b36f0c9ae62313a35f6d45345",
+    "bytes": 12383
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/multiplayer-p2p/SKILL.md",
+    "sha256": "234ee1648566f808315295b5e5b6bc6b6e2933a183ac1a584dcd243d792a4bf5",
+    "bytes": 5067
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/multiplayer-p2p/references/react-binding.md",
+    "sha256": "77391d4a47f519889386895af34f2c101a089616caddbc47ba0134f068a734c9",
+    "bytes": 4831
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/multiplayer-p2p/references/signaling-relay.md",
+    "sha256": "4277bb2f17e208a3d5afe72ef965788876a2935379175a9b0eb20dc2c898766f",
+    "bytes": 9150
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/neon/SKILL.md",
+    "sha256": "87e0fe9b647986787e281930788e1dc110ccb19df4e29854f20f4604c1ae6897",
+    "bytes": 7445
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/SKILL.md",
+    "sha256": "5c6ff71e42840f38db61fb5173836485de4a53418c99d1f34d77ecefaed46d28",
+    "bytes": 6555
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/references/brand-pass.md",
+    "sha256": "68019a3afe8ae75b94599de354245c9a0d068cae5ff054841ac75cc055058afe",
+    "bytes": 2568
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/references/custom-card.md",
+    "sha256": "97c0efccce4daf47486f8caa65723db2fd0435ccaa68be90004a6c1ad15cb954",
+    "bytes": 5988
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/references/favicon-and-icons.md",
+    "sha256": "bc95ed577825a411571f4680f992799a26811dd72af6714375dc49800e216db6",
+    "bytes": 1959
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/references/og-type-contract.md",
+    "sha256": "2743a8a9a6c1eafb8aec5ae8c83f2202533df6a55649582684d2bce18a52ea2f",
+    "bytes": 1749
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/references/placeholder-card.md",
+    "sha256": "c21551f098562c8ff49004885596f71848c09af13b19237f1babe820e4f7e957",
+    "bytes": 887
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/og/references/x-banner.md",
+    "sha256": "0f6f5b8c381c40e26514439575a004ef0560b379fd069b76fc940c9f803e0733",
+    "bytes": 2339
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/threejs/SKILL.md",
+    "sha256": "0fadfe66cf788bce9bcef87a3bc8d6c65e5b6275976b7bee1a914a0d05d6ecc6",
+    "bytes": 3021
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/threejs/references/llms-full.txt",
+    "sha256": "e93ae843c05b2f936efaaa5946d506ca70a7cc15fa2f7adf79f9d4c70659b2cc",
+    "bytes": 132250
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/video2dsprite/LICENSE",
+    "sha256": "d63ddc781bf0d15753fe0ba22c7cd5828dabb7776465ea4d4939558d4909b0fa",
+    "bytes": 1065
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/video2dsprite/SKILL.md",
+    "sha256": "09062be6facd6d35373777eb464c32be7e1272030e0b5f1f66b5100e7b3e6f14",
+    "bytes": 10058
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/video2dsprite/SOURCE.md",
+    "sha256": "a3667d46be6cda6ec841c482ca371b9bae081445bc9fb15e08e5ef5e22386d31",
+    "bytes": 303
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/video2dsprite/references/pipeline.md",
+    "sha256": "d8dcafb959b92c88c754bb784d8da047e4537bde1679875da2ce73463bbe43d0",
+    "bytes": 2544
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/video2dsprite/references/prompt-rules.md",
+    "sha256": "b1bee1a50932dc4bb26f499027d4534f556c8ef99c6744877cddc9321d8e2783",
+    "bytes": 2482
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/video2dsprite/scripts/video2dsprite.py",
+    "sha256": "5a580ace4b07ef66d3069ad7fca80f744655e9ba17bdea82dfe2717bd4dfedea",
+    "bytes": 16164
+  },
+  {
+    "path": "sportix-portfolio/.grok/skills/xai-api/SKILL.md",
+    "sha256": "56acdf3895ae20ac19ebbc068b01f9bca558af261f019941b0227f224bdcb2eb",
+    "bytes": 6607
+  },
+  {
+    "path": "sportix-portfolio/.prettierrc",
+    "sha256": "d5f90f76c5b68ce7be5ba077813f97e1983511b8c314764537345a538c1261f4",
+    "bytes": 90
+  },
+  {
+    "path": "sportix-portfolio/AGENTS.md",
+    "sha256": "09f7b09f35660596cc4c22612a7893b0dea41e28c187168076b9c59302d0f610",
+    "bytes": 18904
+  },
+  {
+    "path": "sportix-portfolio/eslint.config.mjs",
+    "sha256": "9c79df07c33ff6aa13876bdd1e7e6652aa1ecb377c7b7f029f7915d215ee4488",
+    "bytes": 1277
+  },
+  {
+    "path": "sportix-portfolio/migrations/auth/0001_auth.sql",
+    "sha256": "f953cacc448c0c81ae4fe63e66b0e59569e840782ad279fdee201dff529363e9",
+    "bytes": 2739
+  },
+  {
+    "path": "sportix-portfolio/netlify.toml",
+    "sha256": "bccc74a4b805c1e6e17775835bbf483ed621cc1c0ba9208baa87d47a8edc64ad",
+    "bytes": 411
+  },
+  {
+    "path": "sportix-portfolio/package-lock.json",
+    "sha256": "3946649d9d185f681467ac1cb92b128a6265b156f95c52c77cecfb6df131f430",
+    "bytes": 273071
+  },
+  {
+    "path": "sportix-portfolio/package.json",
+    "sha256": "6efe519343de84c92e1ef6887aa8e37b1880b878dc1f505c7eff13c77c099fc7",
+    "bytes": 3558
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/icon-180.png",
+    "sha256": "3cf5d17d294b51c6cca6c86070309b88554b7ad702b0412e8e2709a01990bc8a",
+    "bytes": 2100
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/assets/homescreen/glass-puzzle.svg",
+    "sha256": "a677c9356c23d1e699559ddbffac97cd135c2782cd893fb34f3738f6d11bee17",
+    "bytes": 1811
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/assets/homescreen/glass-share.svg",
+    "sha256": "efad1b4b507a68c1f1af4aad2c93e8c24076224aa593da86677697f543d026d6",
+    "bytes": 2388
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/assets/homescreen/logo-grok.svg",
+    "sha256": "0654e3e59cce69856f38525cbfe4ab3a9ef52d4b64c8532dd0bc1a3f34fcb5b1",
+    "bytes": 1059
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/assets/homescreen/ob-ipad.png",
+    "sha256": "4c9b09a4660c662b394597d551a04124293b0e37a7a7c72271dd2948c4499a14",
+    "bytes": 101843
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/assets/homescreen/ob-phone.png",
+    "sha256": "80e0a5ede614d9b920c67d7cb79c80a79134687b1fc9f560384e896a88e302db",
+    "bytes": 103612
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/assets/homescreen/plus.svg",
+    "sha256": "c2c94be46aa2c3c2fda95d7c6f2fc6d0b656d1f5847828d5d95b5a81a6f4f20d",
+    "bytes": 2401
+  },
+  {
+    "path": "sportix-portfolio/public/__grok/install/styles.css",
+    "sha256": "7e8e881302f58e54a9c07e7be395692d3de20fdaa27ce358531cc8dcca472cb6",
+    "bytes": 6717
+  },
+  {
+    "path": "sportix-portfolio/public/brand/ahmad-rowaihy-signature.png",
+    "sha256": "da49fb162cb58bc6b8946f3ee6cb3fb3b6cadac7ec103478c9b516e60dfce77c",
+    "bytes": 661871
+  },
+  {
+    "path": "sportix-portfolio/public/brand/sportix-ecosystem.png",
+    "sha256": "01bf7d2b5a8649815ee64ddf5c8aa097c44e00985c80636aaf15daa5dcff7a37",
+    "bytes": 911133
+  },
+  {
+    "path": "sportix-portfolio/public/brand/sportix-intelligence.png",
+    "sha256": "e0b3e7152da150cf4f8337712f63b791cdedf81575cfe687b7c6516afd14f71c",
+    "bytes": 788222
+  },
+  {
+    "path": "sportix-portfolio/public/brand/sportix-security.png",
+    "sha256": "9cc5cea49901b9a4a57a67135249387d362faabbf60fa98a44d28f88f56d7fe0",
+    "bytes": 576494
+  },
+  {
+    "path": "sportix-portfolio/public/brand/yalla-hayyihom.png",
+    "sha256": "a33ad45dbfde4fb946622fd793fc0e815c97f6f5e7d705ae332db0a1514b76a3",
+    "bytes": 1422207
+  },
+  {
+    "path": "sportix-portfolio/public/favicon.svg",
+    "sha256": "981526041772850d67c7d3cc6154425f8a2a248224610c42f9d0e688ebc42106",
+    "bytes": 456
+  },
+  {
+    "path": "sportix-portfolio/public/og.jpg",
+    "sha256": "afc828732126aa7e16b183f7a23d4896b3bfa04df307329b6adc62c9e8f48995",
+    "bytes": 29327
+  },
+  {
+    "path": "sportix-portfolio/public/plates/academy.jpg",
+    "sha256": "5a001cde2fee82985ab7f05ac0bd4fb8454f42852b7046e4b41d460561593cb8",
+    "bytes": 296989
+  },
+  {
+    "path": "sportix-portfolio/public/plates/civic.jpg",
+    "sha256": "f8723d07b7464129938cfb12b5d4b1ac86d4d592fe3bdf993ccaf777bda5ff1b",
+    "bytes": 644078
+  },
+  {
+    "path": "sportix-portfolio/public/plates/courtyard.jpg",
+    "sha256": "ccd944fa8bf2c7b41d85e1dcaec961c4e187ce4105ab4400db1e88c823d0f627",
+    "bytes": 532671
+  },
+  {
+    "path": "sportix-portfolio/public/plates/datahall.jpg",
+    "sha256": "e3ef93bf89d63fea09861b8d4fd7cd220e505a2d927a56d86a076bf059bcd7e5",
+    "bytes": 197360
+  },
+  {
+    "path": "sportix-portfolio/public/plates/metal.jpg",
+    "sha256": "c01406ece07df4854410df0edacefde5aef92c2277f69eaf9fa84fd3b4e712dd",
+    "bytes": 261234
+  },
+  {
+    "path": "sportix-portfolio/public/plates/padel.jpg",
+    "sha256": "ec8cdf4db0e4b31e4973ed25d936416e5393da44851bb6c722197789bfc6efa7",
+    "bytes": 341105
+  },
+  {
+    "path": "sportix-portfolio/public/plates/stadium.jpg",
+    "sha256": "a7423fa4be318d48c9eb8a3056b53f77ffd4b89c22e3b6dd1fe0651db47ba6b2",
+    "bytes": 270041
+  },
+  {
+    "path": "sportix-portfolio/scripts/app-env-plugin.mjs",
+    "sha256": "92962d2361a98413c0cef80b31266d49b063cf4ecf6421bb99f57f6eef4ed7b6",
+    "bytes": 1278
+  },
+  {
+    "path": "sportix-portfolio/scripts/brand-check.mjs",
+    "sha256": "318f33ce7b29b55c386cc8847084068777880f795a5082043229bb06686be035",
+    "bytes": 9609
+  },
+  {
+    "path": "sportix-portfolio/scripts/brand-check.test.mjs",
+    "sha256": "3dada9e907cf63d4127588268f38987e72108639e65a2694aebf4ee35aa9f309",
+    "bytes": 15084
+  },
+  {
+    "path": "sportix-portfolio/scripts/browser-guard.mjs",
+    "sha256": "c6fb865defe5a37bd94e3805b00311d4e8267daf92812e39f62b1213d947265e",
+    "bytes": 1724
+  },
+  {
+    "path": "sportix-portfolio/scripts/browser-smoke-verdict.mjs",
+    "sha256": "5699614f7fa62515e25ba9cca6397db2770cf6feb9b973f3c19f2915874c53de",
+    "bytes": 4663
+  },
+  {
+    "path": "sportix-portfolio/scripts/browser-smoke-verdict.test.mjs",
+    "sha256": "48b3924b41d606f94a9b8faae47ff350b84978fdd5ab3f6ca01640ed4c7087d7",
+    "bytes": 15643
+  },
+  {
+    "path": "sportix-portfolio/scripts/browser-smoke.mjs",
+    "sha256": "2e1cc3136f33bd74b73b4b3dba812e74ac299c24893b9a7c406e9bbeaf46571f",
+    "bytes": 6042
+  },
+  {
+    "path": "sportix-portfolio/scripts/check-auth-invariant.mjs",
+    "sha256": "d712203c4bc92c197c342e5c91660fc5a141a31171f22f35c505a0bff45f98ee",
+    "bytes": 4203
+  },
+  {
+    "path": "sportix-portfolio/scripts/check-auth-invariant.test.mjs",
+    "sha256": "75a58f44dffb2fc77eb47473638646f607dba26a68a6900156031c7b6227cf3c",
+    "bytes": 4218
+  },
+  {
+    "path": "sportix-portfolio/scripts/export-pdf.mjs",
+    "sha256": "9a7432ee58d15491b1fcabf002f1e901713fd1e68a7ce8c78f8cff43bb6d118c",
+    "bytes": 1272
+  },
+  {
+    "path": "sportix-portfolio/scripts/export-pptx.mjs",
+    "sha256": "6463618668a02a6f5af96f80d771612f313cd8229a220d4141804560e4272509",
+    "bytes": 17751
+  },
+  {
+    "path": "sportix-portfolio/scripts/grok-pwa-plugin.mjs",
+    "sha256": "36331d0bc0664debb5068bd6869d3089dc41555b7770c9ccb577d8845958835c",
+    "bytes": 6615
+  },
+  {
+    "path": "sportix-portfolio/scripts/grok-pwa-plugin.test.mjs",
+    "sha256": "f9e4ff314b6c10cad3303d391d606ec14c9d511a77fb23a1fad04a09044fb7b5",
+    "bytes": 20320
+  },
+  {
+    "path": "sportix-portfolio/scripts/grok-pwa-shared.d.mts",
+    "sha256": "99c8342319978d71ef3dea4989c05ecbf096946c39a255fa08f48b081a3e506b",
+    "bytes": 3144
+  },
+  {
+    "path": "sportix-portfolio/scripts/grok-pwa-shared.mjs",
+    "sha256": "860da7df5e0e5698ccc0ed9def2eb981c2f396831c5523368d031ec740b88b9c",
+    "bytes": 17675
+  },
+  {
+    "path": "sportix-portfolio/scripts/install-page.html",
+    "sha256": "5f8fe91f837db8d74d68db5e057948918bd9299e097700e0bd18f1cf5f94e586",
+    "bytes": 5658
+  },
+  {
+    "path": "sportix-portfolio/scripts/migrate.mjs",
+    "sha256": "e1a31c8046a099df37b4bcbcafa4f4f7d7d18b1f1f0dc6d79676d41c4be976be",
+    "bytes": 3181
+  },
+  {
+    "path": "sportix-portfolio/scripts/migration-plan.mjs",
+    "sha256": "9305d8cfe8cdad73671065d675c89d0f20075d18c756f9aba5043b72e7c19a0d",
+    "bytes": 1525
+  },
+  {
+    "path": "sportix-portfolio/scripts/migration-plan.test.mjs",
+    "sha256": "9787b5f5f1a7057db94f0a5a8c89abf6ec569fd22d26f99be1c248a2a9f0c082",
+    "bytes": 3558
+  },
+  {
+    "path": "sportix-portfolio/scripts/preview-thumbnail.mjs",
+    "sha256": "fd7263a1dd76f788c2b51e9381e1f1de1a58993fd94e01040285556cd38c0c40",
+    "bytes": 1762
+  },
+  {
+    "path": "sportix-portfolio/scripts/preview.mjs",
+    "sha256": "b366b1c28844cda81d21e36a88af5f548bdec6a5a4b3000aac12be3ec99cf605",
+    "bytes": 11074
+  },
+  {
+    "path": "sportix-portfolio/scripts/preview.test.mjs",
+    "sha256": "0105fe41d056ecc22c586a191a9cbd7d0e838b7c878d6993c8c9573c7ea708b1",
+    "bytes": 9207
+  },
+  {
+    "path": "sportix-portfolio/scripts/sign-out-plan.mjs",
+    "sha256": "32ae072de23b5138bf849c344caf72ab2dab6cb4617ab9915db4e4f5b9c7e2f0",
+    "bytes": 5971
+  },
+  {
+    "path": "sportix-portfolio/scripts/sign-out-plan.test.mjs",
+    "sha256": "1942e32f4b6a9d8b62733338b0f0e1a7d84ed278b4e6c4f24fa7616a3abc694e",
+    "bytes": 8659
+  },
+  {
+    "path": "sportix-portfolio/scripts/with-app-env.mjs",
+    "sha256": "a846b68bd3645299c23eef965d9ef226df3a500d345d7576c23f7a2b2ff643c7",
+    "bytes": 4601
+  },
+  {
+    "path": "sportix-portfolio/scripts/with-app-env.test.mjs",
+    "sha256": "384ea7d0d20f980f733ee38d8f48b0bedd8a4ad39c80ca4792b9aeebcb275851",
+    "bytes": 4466
+  },
+  {
+    "path": "sportix-portfolio/scripts/write-atomic.mjs",
+    "sha256": "650b62e8aa38697e1b931049025afe3aac829e6761a8aadf428712faef8b1544",
+    "bytes": 3607
+  },
+  {
+    "path": "sportix-portfolio/scripts/write-atomic.test.mjs",
+    "sha256": "e266ac99149651c368715317820934f0e8942db0fc763725ca4a096bf169ad3b",
+    "bytes": 7505
+  },
+  {
+    "path": "sportix-portfolio/server/middleware/grok-pwa.ts",
+    "sha256": "340f1fed44355a61fefdaf29a752c524ac029afb00bea3f40cc996cdb289d2f8",
+    "bytes": 3606
+  },
+  {
+    "path": "sportix-portfolio/server/virtual-grok-og-identity.d.ts",
+    "sha256": "74847f2b2bade154ac07dabb239c4718a745c095df530e78b8f1ef9f053edfa2",
+    "bytes": 262
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/DeckShell.tsx",
+    "sha256": "d182839be501a6df564c598facf7dddd71fe76fbc6cf2b42cde1f23b418ed2bf",
+    "bytes": 7903
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/DocsChrome.tsx",
+    "sha256": "69f4e98d3f346808ce166048d75f603df4d3c6d034b69af809343edc5266eebe",
+    "bytes": 1518
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/SignatureStars.tsx",
+    "sha256": "707c9eefac01614fc4a2e22000b204fa256a75262716257c82ad6b0d7bf1e510",
+    "bytes": 8645
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/SlideFrame.tsx",
+    "sha256": "97d8d488f09ecba37dcbb06228416d105246843d3acb1e02f3afe99d5fa01bd2",
+    "bytes": 2851
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/Starfield.tsx",
+    "sha256": "5552f351f2fde85a02f2a22b640b246dbc2667e36e345cb8a8853cbd98d62d75",
+    "bytes": 2634
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/ViewProtect.tsx",
+    "sha256": "7f617113262d1cb2c47ba901cc6520bf8a6082bf67d146e700a838cf74e2450d",
+    "bytes": 1490
+  },
+  {
+    "path": "sportix-portfolio/src/components/deck/primitives.tsx",
+    "sha256": "d3081dce5b3df2d52d9902f4c5d95bd726158993acb7ab010c7956a4e1fe7c8d",
+    "bytes": 4315
+  },
+  {
+    "path": "sportix-portfolio/src/components/preview-host-bridge.tsx",
+    "sha256": "e4277e80ce127e7305057fb280d03d0703c5c7115b17d2e2aecf000e4867555e",
+    "bytes": 668
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/registry.tsx",
+    "sha256": "1de9cdf4e3eab016d0aa16ddf2696feacc71f92f16eb95eef89923030d04f306",
+    "bytes": 1980
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s01-cover.tsx",
+    "sha256": "d601557d3a3cddd5dd758650b03566486b68554c2e7569d8ee4cbd1fd4835f50",
+    "bytes": 2761
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s02-big-idea.tsx",
+    "sha256": "27a3366376d701377d8bd1278ac173669519fed6f62276ada65b1b6b6ebb2f65",
+    "bytes": 3029
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s03-why.tsx",
+    "sha256": "485122d933d16a2af8b4343b69839acce96e31564f437f29b4e5ebb95d2b69ad",
+    "bytes": 2439
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s04-map.tsx",
+    "sha256": "86f7aa96c687e4a327663943c7fc514efde408cf4446e5c7e303d3621d4574c9",
+    "bytes": 4093
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s05-systems.tsx",
+    "sha256": "c333c2adb92a086d94ff14ebd921869f007d6f4af57f278f1fe7f1cf07b580f2",
+    "bytes": 2684
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s06-evidence.tsx",
+    "sha256": "2232cd8df37776ed1c108359208f9572d9703d688ea2ec5e20c1d0bd6f5be5e9",
+    "bytes": 2611
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s07-ecosystem.tsx",
+    "sha256": "d35f00f080ce9655dfa4a3755e76efc7b637dd7da81156be9ccb2032271fc9fc",
+    "bytes": 3100
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s08-athlete-journey.tsx",
+    "sha256": "0bc41b9005ae581a219d1dca970d3d1964a3794798da66042202bb39d2fb5170",
+    "bytes": 3143
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s09-pathway.tsx",
+    "sha256": "504c8211e21e29d685d8f627ac7e500b8b321d81fdbcb36cbf3e55821a353bd5",
+    "bytes": 2897
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s10-football.tsx",
+    "sha256": "5d5889f8d613068ab241844bbda1bf190a5d328d1737d4d5b52be60cc9f438de",
+    "bytes": 3347
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s11-vision.tsx",
+    "sha256": "83943c567f7f08b749c0531eb3639f7a61aa4c243e6722b8fc7a02a9d45bca44",
+    "bytes": 3182
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s12-sensors.tsx",
+    "sha256": "4a3cbd1903546de62ff03a64cf1345a730dd50e8386a35d5316f09d140a1686e",
+    "bytes": 2963
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s13-yhh.tsx",
+    "sha256": "e67e11a1e1457cf74a687c8fbe39c5f8715fa53b6ac6d133972ec536f8eaa2d7",
+    "bytes": 2316
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s14-visitor.tsx",
+    "sha256": "4e8c6be304788c0d2901d274a617ea6d3de82b50c3394bfbfe9097e683aced91",
+    "bytes": 3515
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s15-passport.tsx",
+    "sha256": "a8755275a9b0847a2283307cf4aff337ad67b4ae6a529845d6bc751f6337eac7",
+    "bytes": 2537
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s16-security.tsx",
+    "sha256": "119786f0f97f7fcca0e993d6ce8cecfc33d53b5eb9d24f7404a6489d25da90ce",
+    "bytes": 2665
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s17-commercial.tsx",
+    "sha256": "01b3f49d945056cab0b161554e5e7b847a25689f1283a8b52f958088d7ffeb4d",
+    "bytes": 2808
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s18-who-pays.tsx",
+    "sha256": "83f61f78f1f468dc172314c6722c50a87fd6a8e91b0c058c2a8ed21fa8bdc62c",
+    "bytes": 2584
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s19-flywheel.tsx",
+    "sha256": "3228902b10fc67aeed8473477c1eaaca1b6dfccc01deadbe55467aa7b4b29367",
+    "bytes": 2036
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s20-ip.tsx",
+    "sha256": "1518af5eb25a3c410518adb0babd4cda02e7511bc9b9be630931f830e5c7b03f",
+    "bytes": 2510
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s21-stage.tsx",
+    "sha256": "8f72a55b83736570696fed70dd2592272c67741f60d1a1b6aaeee4640a5e248e",
+    "bytes": 2738
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s22-roadmap.tsx",
+    "sha256": "7a6a543be743a5b51ad72ad26754c303b180b359cfe326453baf3bfcce37a26c",
+    "bytes": 2748
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s23-expansion.tsx",
+    "sha256": "6dfc18c1a75581fdf046f37f2fa28f51fe8d4df212e88506fb4df8e468fc14a7",
+    "bytes": 2227
+  },
+  {
+    "path": "sportix-portfolio/src/components/slides/s24-close.tsx",
+    "sha256": "b940cb16311209eda2a30ac1fc2582fe0a6823a12d80f857ec73aeae2378c68a",
+    "bytes": 3255
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/app-data.test.ts",
+    "sha256": "ec0c40fdaafb4e3d551086de9f9b4a745da7c252f7fbbc5c51a8b1b0a541391e",
+    "bytes": 15944
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/client.server.ts",
+    "sha256": "ab544af8b5b96e16248fdcf7ce634c132ccd3659c33cf0daa22f6e74ef5a5da0",
+    "bytes": 11867
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/errors.ts",
+    "sha256": "8e0dd8d761b2a5a1cafcb7523e2063151f0b6677837b19c3f6d494af148f3889",
+    "bytes": 1994
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/index.ts",
+    "sha256": "72cf57dc1a863f9693d34c11772ba4bae790cc17d9efb1e8619b8a2e6247a7fa",
+    "bytes": 598
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/login.ts",
+    "sha256": "fbc723841bb67148dd9de12ed614ba6c095d799a533309857cc4d202d6be5ad9",
+    "bytes": 856
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/readiness-schedule.test.ts",
+    "sha256": "97c87401c474b9f87f2e21152fb377744f353736848f0044466ba2e260b06745",
+    "bytes": 1146
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/readiness-schedule.ts",
+    "sha256": "3ea7f192220446b08747f3ef76c7d2fe150356470621f2220738b23e7976f683",
+    "bytes": 506
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/readiness.ts",
+    "sha256": "377786c1cf739eb9dc7c8b2bdcd09991686a700375a67a0c6e73b4334d394da1",
+    "bytes": 366
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/server-only.ts",
+    "sha256": "82821474088face6b9fcadad49793629e5f07a16386402b816262a1c070a3210",
+    "bytes": 476
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/types.ts",
+    "sha256": "65f3c7566db12661ee9d3633eaae66a85505e00f57a61c258fa72bd22881489f",
+    "bytes": 1361
+  },
+  {
+    "path": "sportix-portfolio/src/lib/app-data/use-connector-readiness.ts",
+    "sha256": "57e6d2b3709be83ac2eed9c42eaa822a067fb5aa44a6098c982892c43f3a4f2f",
+    "bytes": 3892
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/client.ts",
+    "sha256": "4bca649afb627b11231a7b31acfcffe9323efddebc05944b2d769d2b8589294f",
+    "bytes": 9714
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/email-password.ts",
+    "sha256": "9b1da7c786e48adfa9a6f7c485bcf5817cf2075a601d8726a965f11171910354",
+    "bytes": 442
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/gate-identity.server.ts",
+    "sha256": "96546b8b6910a01163c36c34a0d417d803bec222b93304be764d810838764159",
+    "bytes": 5706
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/gate-identity.test.ts",
+    "sha256": "21202fb2b56ffd10cb9b5bb7d9f305be88cce3902b858f73cea914df05ce2652",
+    "bytes": 14346
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/gate-session-marker.ts",
+    "sha256": "3dbf8cb789b0288f9d5c53b1515a3e87d265fcb22e11fe28dc3289c4bd7c06eb",
+    "bytes": 879
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/gate-session.server.ts",
+    "sha256": "68aa500523ca2f0ad5c7ba34372c10aa1851a9774f8567c6b7781af5dd6cf204",
+    "bytes": 11980
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/gates.tsx",
+    "sha256": "39950c211bd4ad4f7129082bf5a43a42ff23975e681b99fd7cfbce372f83a5be",
+    "bytes": 4924
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/isolation.server.ts",
+    "sha256": "a4adf6a5d548e70a0be52d7efdc7433126028908072b47bf9f92135d9ee558a0",
+    "bytes": 2386
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/middleware.ts",
+    "sha256": "8dc37c4e9bd583f175402330d0952ef4d584c7410723cc2649c4046d5084bd80",
+    "bytes": 2462
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/pglite-dialect.ts",
+    "sha256": "bd66925574245cd47cdd98b5c068dd7b4ee4a51c9439e8421dc54c62fe7c4f50",
+    "bytes": 4088
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/popup.server.ts",
+    "sha256": "81f8833d9ab639f76b86f4bb23fed42a04cec4b0c6d90b7a67425a9232c9bb4a",
+    "bytes": 6133
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/preview.ts",
+    "sha256": "358145b18e291752a057089e716a23d786e95693b84e183d350a11e5a2f4f454",
+    "bytes": 1657
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/provider.tsx",
+    "sha256": "4cbbc7f8cc1765788ad65455a33f64dcdafc6fe4ed1d13f90ccfa0ba4c13d1f3",
+    "bytes": 593
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/providers.ts",
+    "sha256": "4acefac17931529bdeab053588a917b06e44abdb67a275a2ca1c7841080c6a78",
+    "bytes": 1486
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/server.ts",
+    "sha256": "e0544cadbfa1a09c3cb4cf2a0ec187dbbb2831aebf7de887a3c858abdd72ca43",
+    "bytes": 12548
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/sign-in-gate.test.ts",
+    "sha256": "2c352588cb6a8f58faf3aecc1d1f418ae827ddbb6a5eca8e56668ec72cd328d2",
+    "bytes": 854
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/sign-in-gate.ts",
+    "sha256": "d2c65c20ab50ae41657ceecd61ded005fac29315deace9fc4d966cf56300754c",
+    "bytes": 332
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/use-current-user.ts",
+    "sha256": "a0cc4bd74b6da5b346b6bafc1aec58b9bf5cc0278264379b737b79a5cff1e482",
+    "bytes": 3315
+  },
+  {
+    "path": "sportix-portfolio/src/lib/auth/verify.server.ts",
+    "sha256": "42a7d5c1b17027ba004d6524a7f7bb4827b908d75ee3c3aefc940fa9c891c2ee",
+    "bytes": 3874
+  },
+  {
+    "path": "sportix-portfolio/src/lib/db.ts",
+    "sha256": "8decf7689ff4833ad2f6f263eff9041dd2a68ce923824fa1d55ad620dea72e49",
+    "bytes": 9525
+  },
+  {
+    "path": "sportix-portfolio/src/lib/env.server.ts",
+    "sha256": "9b834e0978ae76332a65a05f5bc75f80684db8c6aa638916869385c12e3343d5",
+    "bytes": 477
+  },
+  {
+    "path": "sportix-portfolio/src/lib/error-component.tsx",
+    "sha256": "d219e4297409810a21bd382e60169faf69243d49dafd17cb0ea3a1888082b2f4",
+    "bytes": 1029
+  },
+  {
+    "path": "sportix-portfolio/src/lib/multiplayer/index.ts",
+    "sha256": "bcb96816a2135e315078e2e7d0eda5522579b0caf9e768dc6c34294e4fa49137",
+    "bytes": 169
+  },
+  {
+    "path": "sportix-portfolio/src/lib/multiplayer/p2p.ts",
+    "sha256": "4d0d2492ac249a2cf267c8d2db7688b5a2c488ab640da7727c0f1b73c2e92f60",
+    "bytes": 20579
+  },
+  {
+    "path": "sportix-portfolio/src/lib/og/site.json",
+    "sha256": "4ba41f070fc9271e15b1aee498b5ed328f62f93ad88b0907efbd3b957772f5b4",
+    "bytes": 89
+  },
+  {
+    "path": "sportix-portfolio/src/lib/portfolio/diligence.ts",
+    "sha256": "749ba6f2e72c0368f6999790810f19bb261050203db449442924d02516ac7f58",
+    "bytes": 5390
+  },
+  {
+    "path": "sportix-portfolio/src/lib/portfolio/meta.ts",
+    "sha256": "d256b28d8317855255f8ce06044e79e516d4d1f184532cd6cc574d201e27be18",
+    "bytes": 11383
+  },
+  {
+    "path": "sportix-portfolio/src/lib/preview-embedder-origin.ts",
+    "sha256": "c2d5e1acc5653ff2abc08a5eeb5feb3331f4e3d7c751ec83d60dee83cf33a6ee",
+    "bytes": 1855
+  },
+  {
+    "path": "sportix-portfolio/src/lib/preview-host-bridge.ts",
+    "sha256": "63a91311378037680b6be414937295069ec2950520d1dc959741cf430ba6b38b",
+    "bytes": 9595
+  },
+  {
+    "path": "sportix-portfolio/src/lib/utils.ts",
+    "sha256": "d1f1e0d62cb8d8d1e04c26e14de842d8a151f75812d81b046c65b5d1fe8e4b27",
+    "bytes": 169
+  },
+  {
+    "path": "sportix-portfolio/src/routeTree.gen.ts",
+    "sha256": "8c400e56a544a252ed6a12fbd0c1b118090d005f8b41e514128f754e6d8aae24",
+    "bytes": 3520
+  },
+  {
+    "path": "sportix-portfolio/src/router.tsx",
+    "sha256": "b3418d117d99e4e47f8c26f90eaa972b3732214b133a7052591e6b2907090752",
+    "bytes": 272
+  },
+  {
+    "path": "sportix-portfolio/src/routes/__root.tsx",
+    "sha256": "f784d469d23546b5d03dd01c013c827555e1a189ab2a51177127b683beeef3ac",
+    "bytes": 1868
+  },
+  {
+    "path": "sportix-portfolio/src/routes/diligence.tsx",
+    "sha256": "860386173969bb23845df1d99b5b5bd32d72068577fbef7216e49e0eede363af",
+    "bytes": 2427
+  },
+  {
+    "path": "sportix-portfolio/src/routes/index.tsx",
+    "sha256": "c78b426da1cc3dcbf0a748c4a0f1969d385135dc6b0df3930d5c01291e292658",
+    "bytes": 735
+  },
+  {
+    "path": "sportix-portfolio/src/routes/outline.tsx",
+    "sha256": "a0d3fe04e42d5daf48d7305475335fa2069d7f3de30a65c2b1267aec43654ea0",
+    "bytes": 2138
+  },
+  {
+    "path": "sportix-portfolio/src/routes/print.tsx",
+    "sha256": "f9f78690cf573a95ed391b4feb53e36e03982c53ab648b7508eba86b957c1426",
+    "bytes": 225
+  },
+  {
+    "path": "sportix-portfolio/src/styles.css",
+    "sha256": "dec6436cc9f2b20cad448ba996d2e7ca00b65eec757d7f44686346bdff0c999d",
+    "bytes": 9027
+  },
+  {
+    "path": "sportix-portfolio/startup.sh",
+    "sha256": "95553c42569e80b51cf141f142cce5ab9a349d7afbdee8f4cfee5a91eb2df5f0",
+    "bytes": 234
+  },
+  {
+    "path": "sportix-portfolio/tsconfig.json",
+    "sha256": "8abad87a6c62322f1f4fdff02d5f3f764ea10a98c49cfafccdc288a0dced492f",
+    "bytes": 722
+  },
+  {
+    "path": "sportix-portfolio/vite.config.ts",
+    "sha256": "9be2d2561548c32102ef549b7eff4ca0b956ec1c9bb3be0e99776ad744057f78",
+    "bytes": 6784
+  },
+  {
+    "path": "stadium-os/publish/SPORTIX-STADIUM-VISION.jpg",
+    "sha256": "b51afbf7890c692605d440276ac65a1a740aa0fc8f4335f212603ea0eddb8e4a",
+    "bytes": 346944
+  },
+  {
+    "path": "stadium-os/publish/SPORTIX-STADIUM-VISION.png",
+    "sha256": "ded5d04b2408289f77a403b8b7b5016fd51b8d69fce8a073517723eaeda3a9a0",
+    "bytes": 1052370
+  },
+  {
+    "path": "stadium-os/publish/__grok/icon-180.png",
+    "sha256": "3cf5d17d294b51c6cca6c86070309b88554b7ad702b0412e8e2709a01990bc8a",
+    "bytes": 2100
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/assets/homescreen/glass-puzzle.svg",
+    "sha256": "a677c9356c23d1e699559ddbffac97cd135c2782cd893fb34f3738f6d11bee17",
+    "bytes": 1811
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/assets/homescreen/glass-share.svg",
+    "sha256": "efad1b4b507a68c1f1af4aad2c93e8c24076224aa593da86677697f543d026d6",
+    "bytes": 2388
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/assets/homescreen/logo-grok.svg",
+    "sha256": "0654e3e59cce69856f38525cbfe4ab3a9ef52d4b64c8532dd0bc1a3f34fcb5b1",
+    "bytes": 1059
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/assets/homescreen/ob-ipad.png",
+    "sha256": "4c9b09a4660c662b394597d551a04124293b0e37a7a7c72271dd2948c4499a14",
+    "bytes": 101843
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/assets/homescreen/ob-phone.png",
+    "sha256": "80e0a5ede614d9b920c67d7cb79c80a79134687b1fc9f560384e896a88e302db",
+    "bytes": 103612
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/assets/homescreen/plus.svg",
+    "sha256": "c2c94be46aa2c3c2fda95d7c6f2fc6d0b656d1f5847828d5d95b5a81a6f4f20d",
+    "bytes": 2401
+  },
+  {
+    "path": "stadium-os/publish/__grok/install/styles.css",
+    "sha256": "7e8e881302f58e54a9c07e7be395692d3de20fdaa27ce358531cc8dcca472cb6",
+    "bytes": 6717
+  },
+  {
+    "path": "stadium-os/publish/__grok/manifest.webmanifest",
+    "sha256": "f01950dd29729e38318a4b5caa3fd8aa4ad1f8c385ddebb4274ba002ba9d20ed",
+    "bytes": 437
+  },
+  {
+    "path": "stadium-os/publish/_headers",
+    "sha256": "1417e7947e9f94f1c8300820cb2536d65a0a9fe1391e080f1a2db55cc4b8df6e",
+    "bytes": 63
+  },
+  {
+    "path": "stadium-os/publish/_redirects",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "stadium-os/publish/assets/index-7y3LneiE.js",
+    "sha256": "238ddf1d41a30ad3a3603d6b1adf19fe9e447ac92357666245bb0ddc4da8e0ba",
+    "bytes": 432062
+  },
+  {
+    "path": "stadium-os/publish/assets/routes-nsmuSjys.js",
+    "sha256": "e63ac3a1858509ded1ba4b695fecff3b707c80317da7aef25a710145901976f0",
+    "bytes": 33130
+  },
+  {
+    "path": "stadium-os/publish/assets/styles-UPEz8mjM.css",
+    "sha256": "b2e59bb9e7ea9e9c7c0a199a7186b165271393bd68e8f611e239d054008a411a",
+    "bytes": 36347
+  },
+  {
+    "path": "stadium-os/publish/favicon.svg",
+    "sha256": "acb5ad6f2d0c90d4fe5e23b57d97c0272ab33a245ac71b41a861e233b6878bf4",
+    "bytes": 2206
+  },
+  {
+    "path": "stadium-os/publish/imagine_images/5e5acea7-90b1-4c36-ba14-c4c7098d4d4e.jpg",
+    "sha256": "fe7f1a99d9b371eb31cf1e90e0329bb7b9831a747ad4934d2510e25ca115ab10",
+    "bytes": 439207
+  },
+  {
+    "path": "stadium-os/publish/imagine_images/7b571872-6fa1-41a1-87ed-499a6fa8f825.jpg",
+    "sha256": "34401d2cec824ef5f533793dc8529f8a54a69a62c579e007bd5594cb6e784d9b",
+    "bytes": 585404
+  },
+  {
+    "path": "stadium-os/publish/imagine_images/fad0a235-ede2-4b0d-89c3-ca60ec9ca06f.jpg",
+    "sha256": "696a8af7ee224376835ec933b2b4071da23a3ea678abb5399feee5b26b3fe706",
+    "bytes": 374894
+  },
+  {
+    "path": "stadium-os/publish/index.html",
+    "sha256": "bdc8a1c700a43ceb2774288461ea8b0bdb774496542e32886d5ef6246e8ef0d1",
+    "bytes": 22467
+  },
+  {
+    "path": "stadium-os/publish/media/hero.jpg",
+    "sha256": "161b60a61b4b2187e39c22ec12670508310b55e92d7eb8de40d06763d52934e1",
+    "bytes": 180443
+  },
+  {
+    "path": "stadium-os/publish/media/logo-clear.png",
+    "sha256": "fcdd0d2e1da5d590b36c68a8a1112082b9de9572d9ae7f213004fc66aad859ad",
+    "bytes": 1178405
+  },
+  {
+    "path": "stadium-os/publish/media/logo-mark.png",
+    "sha256": "2a6f527be1e6d0d72813fbe22d070be0eac3f0867612b29ad361c47c91e45f86",
+    "bytes": 1178234
+  },
+  {
+    "path": "stadium-os/publish/media/logo-pro.png",
+    "sha256": "ffd5716029267caee0085c86c3ea77b67431015728768ed48e9443478f13e880",
+    "bytes": 1415601
+  },
+  {
+    "path": "stadium-os/publish/media/logo-splash.png",
+    "sha256": "f0b1e9e24c51e9086f30b4dce229438732cc176cb185d191bcf92d57bf21f886",
+    "bytes": 545756
+  },
+  {
+    "path": "stadium-os/publish/media/logo-vision.png",
+    "sha256": "ffd5716029267caee0085c86c3ea77b67431015728768ed48e9443478f13e880",
+    "bytes": 1415601
+  },
+  {
+    "path": "stadium-os/publish/media/logo.png",
+    "sha256": "abc7cd9ed8b4a08f9e46c1174cbb5a92e358a86b980b47cd1f40963d53463466",
+    "bytes": 516290
+  },
+  {
+    "path": "stadium-os/publish/og.jpg",
+    "sha256": "06134faefade7e5432ce78376eb1c2d9b7a1b51e654500fc4502642328850fc9",
+    "bytes": 78830
+  },
+  {
+    "path": "stadium-os/publish/routes-nsmuSjys.js",
+    "sha256": "e63ac3a1858509ded1ba4b695fecff3b707c80317da7aef25a710145901976f0",
+    "bytes": 33130
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision/images/hero.png",
+    "sha256": "229d00d5aab50fa625de6b0aee07e2a521008632b0ca70d41702d096e09c95bb",
+    "bytes": 2073768
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision/images/logo.png",
+    "sha256": "dde52fbdd94b96990eb7616e71b172a64de637af4a5ccb5c230b6b61988f1cea",
+    "bytes": 1469876
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision/images/product-ref.png",
+    "sha256": "279c756cdcccdbda2e60cdb42a32637426d62d47e07bc76c03a84574bb4de91f",
+    "bytes": 1603550
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision/index.html",
+    "sha256": "c31e2a6f4b298647e936d74d7fc2073cc1c0a4026ec89a12b1b3a7225f95358f",
+    "bytes": 19829
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision/script.js",
+    "sha256": "37ae18ef4579de4bedb23e3a376ff37f042dd7b4f2c86cdf025562977975661d",
+    "bytes": 5301
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision/styles.css",
+    "sha256": "65c710fafdca31efa5b7b35abf6b390a6c7ad7f0684a844a4d2ccbbda6bf0127",
+    "bytes": 12853
+  },
+  {
+    "path": "stadium-os/publish/sportix-stadium-vision.tar.gz",
+    "sha256": "275bad1d853f307f5131d74d2170de556130cc37330576ebdd2324d14d69ef2e",
+    "bytes": 4830965
+  },
+  {
+    "path": "studio/README.md",
+    "sha256": "1980e254cc73c1416fd1c1548839b3e2d1cb8d50fc6093f0d2ddd6996a5c4a0d",
+    "bytes": 1426
+  },
+  {
+    "path": "studio/admin-entry.tsx",
+    "sha256": "c436db7aa4e090d97179e4180951196aed7ded57c66c558ba0e70710581defbd",
+    "bytes": 220
+  },
+  {
+    "path": "studio/app/admin/dashboard.tsx",
+    "sha256": "f261a1d8b135d846dc92dd34e39c468db0b23a5fb2abbcfb57aa01dd54282f7d",
+    "bytes": 55201
+  },
+  {
+    "path": "studio/app/admin/globals.css",
+    "sha256": "125a773800cbfdea4bb0360f64c30d45cc2b3ed2794b9375c72bb35ef5fdfd12",
+    "bytes": 34569
+  },
+  {
+    "path": "studio/app/admin/grok-advisor.tsx",
+    "sha256": "f28c7775a5517df6dcac7b2e654847f16821d94dac184a35e70a7fa694655b1d",
+    "bytes": 7390
+  },
+  {
+    "path": "studio/app/admin/operations-panel.css",
+    "sha256": "3dc3e6c0a8923751e3383fbf284f2abd7654ab813d9c97243d2838b3824f8b90",
+    "bytes": 4761
+  },
+  {
+    "path": "studio/app/admin/operations-panel.tsx",
+    "sha256": "04018250347581e5ae11a3ac01fdcf8f9517269e01f0de527d26225e73805e3a",
+    "bytes": 28735
+  },
+  {
+    "path": "studio/app/admin/page.tsx",
+    "sha256": "2860446f3ebced55125a0efe9bef9dfdf6251c80b37c5996e38fcc75beffb570",
+    "bytes": 1215
+  },
+  {
+    "path": "studio/app/admin/studio-live.css",
+    "sha256": "78f8a7209209ae20a26369ca0aa2b32b7c22d946768f6b6a139451af21182372",
+    "bytes": 3193
+  },
+  {
+    "path": "studio/app/admin/studio-live.tsx",
+    "sha256": "cbecdc09ccc45feb70f0a7e22c132c60cf7cf6f2bf0489f52f3532bcdf0ceb32",
+    "bytes": 11436
+  },
+  {
+    "path": "studio/lib/core/access.mjs",
+    "sha256": "7c675a2ec3d41cd8ad1600768b707625166ede16a5c0b66c20f4eadc322cc4a2",
+    "bytes": 180
+  },
+  {
+    "path": "studio/lib/core/domain.mjs",
+    "sha256": "14048d544a243fdb932bb2e196a03cf2883acfd2e31a33fe355a5d143dced100",
+    "bytes": 6162
+  },
+  {
+    "path": "studio/lib/core/grok.mjs",
+    "sha256": "2f275b6b74a482735aa7c5e15b0ee0f4c2f856654fe66d6d85ea13804263dea1",
+    "bytes": 4447
+  },
+  {
+    "path": "studio/lib/core/operations.mjs",
+    "sha256": "be2f49d670560103df716a20dee30b0011511fd9bde3da8792bc68e2590cc6bd",
+    "bytes": 8314
+  },
+  {
+    "path": "studio/lib/core/research.ts",
+    "sha256": "896cae84be90fcc05048cf9b9ae57e371970e6b0537f64fb13747aa929976d7b",
+    "bytes": 3207
+  },
+  {
+    "path": "studio/lib/core/seed.ts",
+    "sha256": "6fb41e8e0d55c9cffc80fd87835a4f82d64d2595a9f2133f4c1777200cc32215",
+    "bytes": 10889
+  },
+  {
+    "path": "studio/lib/core/types.ts",
+    "sha256": "96a2adccde8ada00e42102f0f8134b505ed25f8cfa10702f33648ab084dc7f49",
+    "bytes": 1656
+  },
+  {
+    "path": "studio/netlify/functions/api.mjs",
+    "sha256": "d31f2e0090e9a35263533a412379e0d7022dbaacee2eae4da9e3497f13085618",
+    "bytes": 2917
+  },
+  {
+    "path": "studio/netlify.toml",
+    "sha256": "1de5b0cd164f610fe14f05c3fea6e9113a00457b11e87ed8285f162c36811280",
+    "bytes": 524
+  },
+  {
+    "path": "studio/package-lock.json",
+    "sha256": "36ee53076bd78b4868ea0c6363568de35938779470c3d8bf7245895bd4bd1469",
+    "bytes": 16178
+  },
+  {
+    "path": "studio/package.json",
+    "sha256": "c6883a08f4b0e4d9dee4716474b60069e26fa82523b53a9644ca8e64d9ba2941",
+    "bytes": 399
+  },
+  {
+    "path": "studio/public/about.html",
+    "sha256": "cc8c0fe37e3266cc4211a48208a49092c7d0d4980711b7de568e66e2228d3e79",
+    "bytes": 33121
+  },
+  {
+    "path": "studio/public/artifact.js",
+    "sha256": "7b763d7c12f7a80d627f22c562514e076a985696e9e727f555378d635e88eb3e",
+    "bytes": 2433
+  },
+  {
+    "path": "studio/public/assets/FONT-LICENSE.txt",
+    "sha256": "1e7bc87195058e4838c151033766deaa5696923e7ba4dc531289c978525cd316",
+    "bytes": 4381
+  },
+  {
+    "path": "studio/public/assets/ROWAIHY_PROJECT_AI_Transparent.png",
+    "sha256": "6cb49afe133a8030b5fdaa26267e5bb29767fb4ecd2c3dafe7d151531cff208c",
+    "bytes": 147521
+  },
+  {
+    "path": "studio/public/assets/ar-bold.woff",
+    "sha256": "f7b27e0e342cceb852e9e1e1a6fa84092e8553d9752a50a6a2d2b9dee1d4e2af",
+    "bytes": 47024
+  },
+  {
+    "path": "studio/public/assets/ar-regular.woff",
+    "sha256": "641b450d10a2195d53dba108ec859fd3d4443430b73c7ca113d90c64a7f9938c",
+    "bytes": 45756
+  },
+  {
+    "path": "studio/public/assets/brand-transparent.webp",
+    "sha256": "e9f10a29b1c2f7f776cf0447a66dff6ee1e3104177d40ebdd80e774058b1c808",
+    "bytes": 36282
+  },
+  {
+    "path": "studio/public/assets/core-click-guide.svg",
+    "sha256": "f645fc6326df3733495a2b2462d75291542eaa5ec08476e5f1356d9f9ec4b857",
+    "bytes": 28552
+  },
+  {
+    "path": "studio/public/assets/mark-transparent.png",
+    "sha256": "e6beee406e8dbc87bb3a785aec126cceed6f3ede4668a5363aa606fc9d68e5c5",
+    "bytes": 7509
+  },
+  {
+    "path": "studio/public/assets/project-r.svg",
+    "sha256": "8e09acf6b496dd7222912a4f4eda772cd7178d3af9367d3493e3b0b0112b51d3",
+    "bytes": 709
+  },
+  {
+    "path": "studio/public/assets/rowaihy-mark.png",
+    "sha256": "fc92567b7331464a8a474ebdc43c850bbb656e9365a87b9ee4ecbd654686da25",
+    "bytes": 304848
+  },
+  {
+    "path": "studio/public/assets/studio.webp",
+    "sha256": "b80df5801986878b35ccd0831279819d7178888a30b0580a1df705906ba81380",
+    "bytes": 85630
+  },
+  {
+    "path": "studio/public/brand/project-r-studio-dark.svg",
+    "sha256": "74173b87cbed398fae3d63bcaf6da7272b4e645a860c5e5989406bbf067b57b8",
+    "bytes": 8861
+  },
+  {
+    "path": "studio/public/brand/project-r-studio-light.svg",
+    "sha256": "84fe1e463cc76d9c10b0ce3e096035cd8bb47bdcc6dffd0aac884218f922f6c0",
+    "bytes": 8861
+  },
+  {
+    "path": "studio/public/core-entry.js",
+    "sha256": "ccd45c8e2a262b0bbe0b69faa4976d37b7ab8040e322a95ef72ab266f607de96",
+    "bytes": 719
+  },
+  {
+    "path": "studio/public/core-gateway.css",
+    "sha256": "67f3192b5318744f114391ea04611db1becfe0ddba682612c944534b0b3beda6",
+    "bytes": 10069
+  },
+  {
+    "path": "studio/public/core-guide.css",
+    "sha256": "e9f27c42f96221a97ddfb15cd5f09615cd16ca8f183019c533fb98993176731c",
+    "bytes": 1878
+  },
+  {
+    "path": "studio/public/core-guide.js",
+    "sha256": "fc72246ebbeb5e2a5d1df985dd0ca3910357846aa6e10198dfb3b7b54464ec9b",
+    "bytes": 2398
+  },
+  {
+    "path": "studio/public/core-login.js",
+    "sha256": "bea21691ce45a01b42988acc9755850171a960b89cdf808e3009f77530eb1367",
+    "bytes": 7646
+  },
+  {
+    "path": "studio/public/energy-core.css",
+    "sha256": "a84f4cd4ec3063ce6cc70c82c56e6a6f337d03f69db9e0ecd758a91a5cfb3a27",
+    "bytes": 6781
+  },
+  {
+    "path": "studio/public/energy-core.js",
+    "sha256": "73dd2b5cf226f5a59ba40790139bb24e6d57635a47bcb3c0f2a423e39d71df65",
+    "bytes": 5636
+  },
+  {
+    "path": "studio/public/english-ui.js",
+    "sha256": "0b1d839abeaace901f73b9a8e6cc5aaffbe1caa9f23928f40c51dd1d552c8f45",
+    "bytes": 3127
+  },
+  {
+    "path": "studio/public/home.js",
+    "sha256": "c4a05546195d50f144cee41deb41b067501e9650b95225ec5e9bbe9c6b318cde",
+    "bytes": 4550
+  },
+  {
+    "path": "studio/public/index.html",
+    "sha256": "e32dc3254bdcdf23b985f184e6481099408797953929c0ebd39d3b937b5bf4a9",
+    "bytes": 33133
+  },
+  {
+    "path": "studio/public/intro.css",
+    "sha256": "5a17036564eb915a9a99922d773635f0df5a36eb22d300429875311a8be11cb5",
+    "bytes": 2112
+  },
+  {
+    "path": "studio/public/intro.js",
+    "sha256": "105f5c59b0e3f467d719c91fbf4ecab3b799426f6ebd042ec2e4a4a9624e3bd9",
+    "bytes": 3361
+  },
+  {
+    "path": "studio/public/journey-bridge.css",
+    "sha256": "a07182d3a17ce73928bea15a53a8826938812705a1ebdadf965c619d6d3acb0e",
+    "bytes": 2579
+  },
+  {
+    "path": "studio/public/journey-icons.svg",
+    "sha256": "1f3d1cec0f34f52fa6636b2a3f5790efed69252f0243354cab1075d454abfc11",
+    "bytes": 5710
+  },
+  {
+    "path": "studio/public/journey-model.js",
+    "sha256": "6a468503ecc38c542b35bfd8c0120fe524cffbef1c6517375fb8f6ea754191be",
+    "bytes": 3540
+  },
+  {
+    "path": "studio/public/journey.css",
+    "sha256": "6ca8d6d7cb7510b5151d93580a2bee893acf40f2e3acb09a69360f764a7529db",
+    "bytes": 18496
+  },
+  {
+    "path": "studio/public/journey.js",
+    "sha256": "99110cb15d463915bca1c134e236871ab385f394489b06f69ab43df2f1194252",
+    "bytes": 21347
+  },
+  {
+    "path": "studio/public/login.html",
+    "sha256": "b0c6a69a268b8187ed42ef5498af6069846a294f375e8f88f976a1db910a1921",
+    "bytes": 31091
+  },
+  {
+    "path": "studio/public/media/rowaihy-intro-mobile.mp4",
+    "sha256": "cae86183c27e56cabf812ef3b385ab77ebe486dfdb79218a876c2928f958b943",
+    "bytes": 3015670
+  },
+  {
+    "path": "studio/public/media/rowaihy-intro-mobile.webm",
+    "sha256": "0bcd6eba7ff1b0a1f53258b8e61307dff9496fb5e43c6ef908a7bc70311349ca",
+    "bytes": 1361539
+  },
+  {
+    "path": "studio/public/media/rowaihy-intro.mp4",
+    "sha256": "2c0a24b1137c410170752719d4d561225abfb245ad6c0ef36385c28a219b585b",
+    "bytes": 4959439
+  },
+  {
+    "path": "studio/public/media/rowaihy-intro.webm",
+    "sha256": "f95234855de870c05657ddffae742c51a0920a3942d9755a0c07b110e63505e1",
+    "bytes": 1959651
+  },
+  {
+    "path": "studio/public/member-nav.js",
+    "sha256": "480795a7dd40c85f2a28a99d3fb5e02c3cafa9c1d824586f96e9e3201814b42c",
+    "bytes": 1031
+  },
+  {
+    "path": "studio/public/membership-login.js",
+    "sha256": "5d92f011107f90a8c400376807e89bd237c878fe55bb28854e2f1912f7485fff",
+    "bytes": 482
+  },
+  {
+    "path": "studio/public/membership.css",
+    "sha256": "c11080b261ab252f8630137ded1abca81fe12b3def5b2b79259864bf4afdc8fd",
+    "bytes": 1706
+  },
+  {
+    "path": "studio/public/mind.css",
+    "sha256": "cfeb2118749dd53cf33b99405ae873ee857528ec211a8ed473a0d5674133258e",
+    "bytes": 2398
+  },
+  {
+    "path": "studio/public/mind.html",
+    "sha256": "03873e19e9610e0838ec47a332371273f8e37126c9ca096c9c21d65829bc98c8",
+    "bytes": 3428
+  },
+  {
+    "path": "studio/public/mind.js",
+    "sha256": "7ec58f06b4b2026c308b97aca49ca3f3bc3a0e17afb93e69b0a03aa4b7c82ef5",
+    "bytes": 3253
+  },
+  {
+    "path": "studio/public/order-review.html",
+    "sha256": "9b2d7da90c767fc566028bd83ea9a471897918ed2fefe5869003a82339ff07a8",
+    "bytes": 1745
+  },
+  {
+    "path": "studio/public/order-review.js",
+    "sha256": "52e5b950beaa865a9658389baabd7a7f116cdd89e4d53cb25674a85ebc0d8e27",
+    "bytes": 4291
+  },
+  {
+    "path": "studio/public/orders.css",
+    "sha256": "bf12e077786d470ded4274bfdaa38c787697e435abed2e036231d7cec9d79cb5",
+    "bytes": 4815
+  },
+  {
+    "path": "studio/public/orders.html",
+    "sha256": "f512579bfd0b1676b26f58a6ad4564d17f5a63f5f4b1c586b7924e3e21c5c290",
+    "bytes": 2369
+  },
+  {
+    "path": "studio/public/orders.js",
+    "sha256": "f9852c610721dce28b5b6b6aa206432dd70fde1a9404ce6dc596819c0720280d",
+    "bytes": 17854
+  },
+  {
+    "path": "studio/public/plans.html",
+    "sha256": "389ca9ffd3d2adc59a4874794024c849c4ca074731315c529f432d157bd713f2",
+    "bytes": 403
+  },
+  {
+    "path": "studio/public/points-rates.js",
+    "sha256": "fc56e0b0c23ea16b1215457d118a1c0b1ec5ec6ca8c6fd2cfc1015ee0c53b035",
+    "bytes": 235
+  },
+  {
+    "path": "studio/public/portfolio.html",
+    "sha256": "e162eec6541d6aa528c217729ddfaf9700692934d0b0ff90ad478f123f6cb366",
+    "bytes": 3183
+  },
+  {
+    "path": "studio/public/portfolio.js",
+    "sha256": "6db1ef3ec07fa47feb79283e3901da2e5988a2bd4556e4d159842a6e1cc7e865",
+    "bytes": 1696
+  },
+  {
+    "path": "studio/public/products.css",
+    "sha256": "28439b35f9a877ec58c3778dfdc765d82101ee5afddac5db4c14b8a8666dd7d9",
+    "bytes": 7405
+  },
+  {
+    "path": "studio/public/products.html",
+    "sha256": "158400d4998c81747325f45a525e91a7cf3fd0405db913c5f0deb65b65043f57",
+    "bytes": 32453
+  },
+  {
+    "path": "studio/public/products.js",
+    "sha256": "82795ea868242ef1fd0ed9ccc7a8179cee372622b261e6a65529fbe535bc7caa",
+    "bytes": 6136
+  },
+  {
+    "path": "studio/public/project-r-home.js",
+    "sha256": "d66e35a87eabbec72502865579c405bf99638e110771235ca8e487f1adc9790c",
+    "bytes": 357
+  },
+  {
+    "path": "studio/public/project-r.css",
+    "sha256": "2834aaa9e03646edda3b5c60a61092b5d053019301c4cf4772cc6bf3aa36ff75",
+    "bytes": 7851
+  },
+  {
+    "path": "studio/public/service-catalog-en.js",
+    "sha256": "868a8a84669827d33ec59c1e27884962fc36ad6e1a296745dc039584dba97d1a",
+    "bytes": 5341
+  },
+  {
+    "path": "studio/public/service-catalog.js",
+    "sha256": "43c77d3e82ba96c8b60f7387b90930fb3a9cccd70941a332034d0348675c14e3",
+    "bytes": 7687
+  },
+  {
+    "path": "studio/public/services.html",
+    "sha256": "389ca9ffd3d2adc59a4874794024c849c4ca074731315c529f432d157bd713f2",
+    "bytes": 403
+  },
+  {
+    "path": "studio/public/showcase.html",
+    "sha256": "9163b3a1b559108ca9acc5a1532ea7f5e4fbbe4dc25a3186c0c6ee793c7a795c",
+    "bytes": 725
+  },
+  {
+    "path": "studio/public/showcase.js",
+    "sha256": "815c037761312ffc3ef93fbb141743b22e9d9a7dc0e333474bca47c716db4a03",
+    "bytes": 725
+  },
+  {
+    "path": "studio/public/studio.html",
+    "sha256": "20acf555ba7cd120fa4035268602aa93bcd9d28b6491f829406f13174c10894e",
+    "bytes": 30336
+  },
+  {
+    "path": "studio/public/style.css",
+    "sha256": "bc98a57e2d3badc753f653b5027ed74dd4f39b712faa243a3dcb1be1e22c89c5",
+    "bytes": 14140
+  },
+  {
+    "path": "studio/public/subscription-plans.js",
+    "sha256": "9462e696f559d0fda23e3b2c9c15d4c201c627c3e6c024c548b012868ed4c654",
+    "bytes": 197
+  },
+  {
+    "path": "studio/public/workspace.css",
+    "sha256": "f272676c4667f29cdd5b39b717286cd5681481df9dda34fa0bf4a209546326b4",
+    "bytes": 4364
+  },
+  {
+    "path": "studio/public/workspace.html",
+    "sha256": "e2ceb52ca070cc8c18bda3518e22182cce908f8e4a5e7a904a4c18c6eccdd0a6",
+    "bytes": 2079
+  },
+  {
+    "path": "studio/public/workspace.js",
+    "sha256": "635e69bea7bef440f7722e1583af3c71c1c27c9b3459e52dde0c6f1585ad4ea9",
+    "bytes": 31904
+  },
+  {
+    "path": "studio/scripts/build.mjs",
+    "sha256": "aa07a7d6afdf318f6206450d06db19675b63b21537af92a14902d9da631f98e4",
+    "bytes": 1280
+  },
+  {
+    "path": "studio/tests/netlify-api.test.mjs",
+    "sha256": "2b3df45ac770f4185c6b71a6402721c355f8750a318d2efef4c7183fa34ba792",
+    "bytes": 2532
+  },
+  {
+    "path": "studio/tsconfig.json",
+    "sha256": "8f7a199f6a7f775982f6c01b20898bb8445c9a62edb52c68f124a3c3e455e202",
+    "bytes": 112
+  }
+]

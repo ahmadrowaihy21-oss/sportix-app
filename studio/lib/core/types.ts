@@ -1,0 +1,11 @@
+export type FeatureStatus = 'planned'|'in_progress'|'blocked'|'in_review'|'completed';
+export type Evidence = { url:string;kind:string;summary:string;result:string;reviewer:string;reviewedAt:string };
+export type Feature = {id:string;title:string;titleAr?:string;status:FeatureStatus;evidence?:Evidence};
+export type Project = {id:string;name:string;initials:string;category:string;color:string;description:string;descriptionAr?:string;status:string;source:string;sourceLabel:string;basis:string;features:Feature[];weakness:string;blocker:string;decision:string;priority:string;priorityLevel:string;owner:string;due:string};
+export type Task = {id:string;projectId:string;title:string;due:string;priority:string;done:boolean;proposed?:boolean};
+export type Decision = {id:string;projectId:string;title:string;context:string;status:string;answer?:string;decidedBy?:string;decidedAt?:string};
+export type WeeklyUpdate = {id:string;projectId:string;week:string;wins:string;planned:string;weakness:string;blocker:string;decision:string;priority:string;evidence:string;createdAt:string;author:string};
+export type Study = {id:string;projectId:string;title:string;age:string;gender:string;culture:string;language:string;tone:string;questions:string;createdAt:string;status:string};
+export type Source = {name:string;status:string;description:string;url?:string};
+export type Activity = {id:string;at:string;actor:string;action:string;detail:string;projectId?:string};
+export type Workspace = {projects:Project[];tasks:Task[];decisions:Decision[];updates:WeeklyUpdate[];studies:Study[];activity:Activity[];sources:Source[];receipts:string[];baselineDate:string};

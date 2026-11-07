@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --color-bg: #050608;
+  --color-bg-2: #090b10;
+  --color-surface: #0e1218;
+  --color-surface-2: #151a22;
+  --color-line: color-mix(in oklab, #e8edf4 12%, transparent);
+  --color-line-strong: color-mix(in oklab, #e8edf4 22%, transparent);
+  --color-fg: #f3f5f7;
+  --color-muted: #9aa3ad;
+  --color-subtle: #6d7680;
+  --color-lime: #c6ff00;
+  --color-lime-dim: color-mix(in oklab, #c6ff00 18%, transparent);
+  --color-lime-ink: #071000;
+  --color-silver: #c9cdd3;
+  --color-gold: #c4a35a;
+  --color-gold-dim: color-mix(in oklab, #c4a35a 18%, transparent);
+  --color-emerald: #1f6b4a;
+  --color-emerald-deep: #0c2e22;
+  --color-danger: #c45b5b;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --shadow-soft: 0 24px 80px color-mix(in oklab, #000 55%, transparent);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    margin: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* 16:9 canvas — the entire portfolio is authored at this size and scaled. */
+.slide-stage {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+}
+
+.slide-stage * {
+  box-sizing: border-box;
+}
+
+.noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.vignette {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 40%, transparent 30%, color-mix(in oklab, var(--color-bg) 78%, transparent) 100%);
+}
+
+.grid-faint {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-fg) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-fg) 5%, transparent) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(70% 70% at 50% 40%, black, transparent 80%);
+}
+
+.lime-rule {
+  height: 2px;
+  width: 72px;
+  background: var(--color-lime);
+}
+
+.gold-rule {
+  height: 2px;
+  width: 72px;
+  background: var(--color-gold);
+}
+
+.hairline {
+  height: 1px;
+  background: var(--color-line);
+}
+
+.kicker {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-lime);
+}
+
+.kicker-gold {
+  color: var(--color-gold);
+}
+
+.kicker-muted {
+  color: var(--color-muted);
+}
+
+.slide-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--color-fg);
+}
+
+.slide-lead {
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--color-muted);
+  max-width: 52ch;
+}
+
+.panel {
+  background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+  border: 1px solid var(--color-line);
+}
+
+.panel-strong {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  background: color-mix(in oklab, var(--color-bg) 40%, transparent);
+}
+
+.chip-lime {
+  border-color: color-mix(in oklab, var(--color-lime) 45%, transparent);
+  color: var(--color-lime);
+  background: var(--color-lime-dim);
+}
+
+.chip-gold {
+  border-color: color-mix(in oklab, var(--color-gold) 45%, transparent);
+  color: var(--color-gold);
+  background: var(--color-gold-dim);
+}
+
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+.print-deck {
+  background: var(--color-bg);
+  padding: 24px 0 80px;
+}
+
+.print-deck .slide-stage {
+  margin: 0 auto 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+@media print {
+  html, body, #app {
+    display: none !important;
+  }
+}
+
+.brand-shine {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.brand-shine::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(198, 255, 0, 0.32) 50%,
+    rgba(255, 255, 255, 0.2) 58%,
+    transparent 70%
+  );
+  animation: brand-sweep 3.8s ease-in-out infinite;
+}
+.brand-shine-eco {
+  filter: drop-shadow(0 0 18px rgba(198, 255, 0, 0.35));
+}
+.brand-shine-eco::after {
+  animation-duration: 4.6s;
+}
+.brand-shine-sec {
+  filter: drop-shadow(0 0 16px rgba(0, 255, 154, 0.28));
+}
+.brand-shine-sec::after {
+  animation-name: brand-sweep-rev;
+  animation-duration: 3.2s;
+  background: linear-gradient(
+    70deg,
+    transparent 25%,
+    rgba(0, 255, 170, 0.24) 48%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 72%
+  );
+}
+.brand-shine-yal {
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.32));
+}
+.brand-shine-yal::after {
+  animation-duration: 5.4s;
+  background: linear-gradient(
+    200deg,
+    transparent 35%,
+    rgba(212, 175, 55, 0.28) 50%,
+    rgba(198, 255, 0, 0.15) 60%,
+    transparent 75%
+  );
+}
+.brand-shine-ai {
+  filter: drop-shadow(0 0 22px rgba(198, 255, 0, 0.4));
+}
+@keyframes brand-sweep {
+  0% { transform: translateX(-90%) rotate(8deg); }
+  100% { transform: translateX(90%) rotate(8deg); }
+}
+@keyframes brand-sweep-rev {
+  0% { transform: translateX(90%) rotate(-12deg); }
+  100% { transform: translateX(-90%) rotate(-12deg); }
+}
+
+.sig-lockup {
+  display: flex;
+  width: 540px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sig-kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--color-lime);
+  animation: sig-fade 0.9s ease both;
+}
+
+.sig-name {
+  margin: 8px 0 12px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-fg);
+  animation: sig-fade 0.9s ease 0.35s both;
+}
+
+.sig-mark {
+  position: relative;
+  height: 170px;
+  width: 510px;
+  animation: sig-write 3.8s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
+  filter: drop-shadow(0 0 22px rgba(198, 255, 0, 0.22));
+}
+
+.sig-ink {
+  display: block;
+  height: 170px;
+  width: auto;
+  max-width: 510px;
+}
+
+.sig-gleam {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 28%,
+    rgba(198, 255, 0, 0.15) 42%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(198, 255, 0, 0.45) 58%,
+    transparent 72%
+  );
+  background-size: 220% 100%;
+  mix-blend-mode: screen;
+  -webkit-mask-image: url("/brand/ahmad-rowaihy-signature.png");
+  mask-image: url("/brand/ahmad-rowaihy-signature.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: right center;
+  mask-position: right center;
+  opacity: 0;
+  animation: sig-gleam 5.6s ease-in-out 4.6s infinite;
+}
+
+@keyframes sig-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sig-write {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    filter: drop-shadow(0 0 8px rgba(198, 255, 0, 0.1));
+  }
+  70% {
+    clip-path: inset(0 8% 0 0);
+    filter: drop-shadow(0 0 18px rgba(198, 255, 0, 0.28));
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    filter: drop-shadow(0 0 26px rgba(198, 255, 0, 0.38));
+  }
+}
+
+@keyframes sig-gleam {
+  0% {
+    opacity: 0;
+    background-position: 120% 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.85;
+    background-position: -40% 0;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    background-position: -80% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

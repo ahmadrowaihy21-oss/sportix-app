@@ -1,0 +1,10 @@
+import {build} from 'esbuild';
+import {cp,mkdir,rm,writeFile,readFile} from 'node:fs/promises';
+await rm('dist',{recursive:true,force:true});
+await cp('public','dist',{recursive:true});
+await mkdir('dist/admin',{recursive:true});
+await build({entryPoints:['admin-entry.tsx'],bundle:true,minify:true,outdir:'dist/admin',entryNames:'app',format:'esm',platform:'browser',target:'es2022',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},tsconfig:'tsconfig.json'});
+await writeFile('dist/admin/index.html','<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>PROJECT R STUDIO | ROWAIHY MIND Core</title><link rel="stylesheet" href="/admin/app.css"></head><body><div id="root"></div><script type="module" src="/admin/app.js"></script></body></html>');
+await writeFile('dist/index.html','<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/studio.html"><title>PROJECT R STUDIO</title></head><body><a href="/studio.html">Open PROJECT R STUDIO</a></body></html>');
+await writeFile('dist/robots.txt','User-agent: *\nDisallow: /\n');
+console.log('Built client portal and unified admin dashboard.');

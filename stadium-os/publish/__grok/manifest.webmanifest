@@ -1,0 +1,21 @@
+{
+  "id": "/",
+  "name": "SPORTIX STADIUM VISION",
+  "short_name": "SPORTIX STADIUM",
+  "description": "ذكاء رياضي مؤسسي",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#121C22",
+  "theme_color": "#121C22",
+  "icons": [
+    {
+      "src": "/__grok/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

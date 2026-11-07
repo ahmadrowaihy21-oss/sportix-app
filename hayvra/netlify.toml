@@ -1,0 +1,6 @@
+[build]
+  command = "NITRO_PRESET=netlify npm run build && npm run check:build-assets"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

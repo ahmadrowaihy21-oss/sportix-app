@@ -1,0 +1,16 @@
+.core-guide-open{overflow:hidden}
+.core-guide{padding:0;color:#e8f5ed;background:#08201e;border:1px solid #557b63;border-radius:20px;width:min(480px,calc(100vw - 28px));max-width:none;max-height:calc(100svh - 28px);overflow:auto;box-shadow:0 28px 90px #000b;overscroll-behavior:contain}
+.core-guide::backdrop{background:#01090ed4;backdrop-filter:blur(9px)}
+.core-guide-body{position:relative;text-align:center;padding:32px 28px 28px;background:radial-gradient(ellipse at 50% 50%,#255f3c38,transparent 70%)}
+.core-guide-close{position:absolute;top:14px;left:14px;display:grid;place-items:center;width:40px;height:40px;background:#112b24;border:1px solid #45614e;border-radius:50%;color:#c8ddce;font:24px/1 Arial,sans-serif}
+.core-guide-close:hover{background:#274536}
+.core-guide-brand{margin:7px 0 20px;font:600 10px/1.4 Arial,sans-serif;letter-spacing:2.8px;color:#9fbaa6}
+.core-guide h2{margin:0 0 10px;font-size:1.65rem;line-height:1.5;color:#e9f5e7}
+.core-guide #core-guide-description{margin:0;line-height:1.95;font-size:.9rem;color:#b9cfbd}
+.core-guide-image{display:block;width:100%;height:auto;margin:8px auto 14px}
+.core-guide-confirm{display:block;width:100%;padding:12px 20px;min-height:48px;border:1px solid #cce5cb;background:#cce5cb;color:#163928;border-radius:7px;font-weight:700;font-size:.91rem}
+.core-guide-confirm:hover{background:#e2f3dd}
+.core-portal.core-guided{border-color:#e2ca8c;box-shadow:0 0 44px #c5eabb4d,inset 0 0 40px #c9e3b433;animation:core-guide-pulse 1.5s ease-in-out 4}
+@keyframes core-guide-pulse{50%{box-shadow:0 0 65px #ceefbb85,inset 0 0 46px #cae6b850}}
+@media(max-width:520px){.core-guide-body{padding:28px 20px 20px}.core-guide h2{font-size:1.4rem}.core-guide-brand{font-size:9px;letter-spacing:2px;margin-top:24px}.core-guide-close{top:10px;left:10px}}
+@media(prefers-reduced-motion:reduce){.core-portal.core-guided{animation:none}}
