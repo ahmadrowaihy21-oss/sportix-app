@@ -19,7 +19,7 @@ This repository is a backup, not an instruction to relink any project or change 
 
 ## Backend and authentication boundaries
 
-- **Studio:** this archive contains its frontend and Netlify function bridge. The actual backend and D1 database remain in a private Sites project and were not recovered here. `PROJECT_R_BRIDGE_CONFIG` and backend environment settings must be supplied through the existing hosting configuration. The recovered code is a private founder portal; it is not a completed customer authentication system.
+- **Studio:** this archive contains its frontend and Netlify function bridge. The actual backend and D1 database remain in a private Sites project. Its backend source was separately recovered and verified against private Sites version 47; it is retained in that existing project rather than duplicated in this backup. `PROJECT_R_BRIDGE_CONFIG` and backend environment settings must be supplied through the existing hosting configuration. The recovered code is a private founder portal; it is not a completed customer authentication system.
 - **Academy OS:** real accounts depend on configured Netlify Identity. Its server routes depend on Netlify Database and Blobs, while real AI generation also requires the AI Gateway. The public demonstration uses fictional local data. AppDeploy accounts and data were not migrated. Staff permissions and guardian verification remain separate launch requirements documented in the site's README.
 - **Hayvra and Portfolio:** source includes generated platform authentication and database support. A source backup does not provision the external authentication broker, database, provider credentials, or other account services. Review each site's existing environment before running migration scripts or enabling authentication.
 - **Stadium:** the snapshot preserves the current interface and deployable assets. Changes beyond static repairs require recovery or reconstruction of the original application source.
@@ -45,10 +45,13 @@ The archives are the recovery baselines, and this repository also retains the ve
 - **Portfolio:** includes the latest navigation correction in `src/components/deck/DeckShell.tsx`.
 - **Hayvra and Portfolio:** the development-preview credential redaction described above is a backup-only environment substitution; it is distinct from the product fixes.
 
-Studio and Ecosystem are retained from their recovered archives without product edits at this snapshot. Netlify runtime environment values and the Studio private backend are not stored here. Publishing this repository does not enable continuous deployment or alter any live site configuration.
+Studio and Ecosystem are retained from their recovered archives without product code edits at this snapshot. Studio README additionally records the separate private backend recovery. Netlify runtime environment values and the Studio private backend are not stored here. Publishing this repository does not enable continuous deployment or alter any live site configuration.
 
 ## Private backup location and deploy linkage
 
 Creating a new private `sportix-netlify-recovered` repository was denied by the GitHub integration's repository-creation permission. This multi-site recovery snapshot is therefore stored on the dedicated `maintenance/netlify-recovered-2026-11-07` branch in the existing private `ahmadrowaihy21-oss/sportix-app` repository. It does not replace that repository's `main` branch or enable continuous deployment for these six sites.
 
 Portfolio's Netlify project still points at the stale `ahmadrowaihy21-oss/passport` Git continuous-deployment source, which differs from this recovered source snapshot. Its corrected manual deployment will be kept locked while that source link is unresolved, so a later push to the stale repository cannot silently replace the repaired site. Verify the published deploy's lock and the intended repository before changing that project's publishing settings. This backup does not change those settings or assert that the link has been corrected.
+
+
+The [2026-11-07 completion record](COMPLETION-2026-11-07.md) records the verified production deploys, Portfolio lock, Studio access control, and the remaining bridge-configuration approval. It also distinguishes the merged root-site source fix from the unchanged live Manus deployment.

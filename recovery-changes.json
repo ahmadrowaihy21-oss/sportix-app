@@ -2,7 +2,15 @@
   {
     "site": "studio",
     "baseline": "original current-deploy ZIP recovered on 2026-11-07",
-    "changes_from_recovered_archive": []
+    "changes_from_recovered_archive": [
+      {
+        "path": "README.md",
+        "change": "modified",
+        "original_sha256": "1980e254cc73c1416fd1c1548839b3e2d1cb8d50fc6093f0d2ddd6996a5c4a0d",
+        "current_sha256": "4e341d22fa89cbfb90ed57339f39f6c6075f7ecab146c398cb7743bb04ecb9c4",
+        "reason": "Document separately recovered private Sites backend and authentication requirements; no runtime secrets"
+      }
+    ]
   },
   {
     "site": "stadium-os",

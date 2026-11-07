@@ -17,3 +17,18 @@ Node 24, `npm ci`, `npm test`, `npm run build`.
 Upload the source ZIP while signed into Netlify (automatic build), or connect a private Git repository. The `dist` directory contains only public application assets; functions must be deployed from source.
 
 The backend change is versioned in the existing Sites repository. This archive contains the Netlify frontend and function source only, with no live customer data or secrets.
+
+## Existing backend provenance
+
+The private Sites backend is project `appgprj_6aebc257f8408191b6292a08143c1c78`,
+`https://rowaihy-project-ai.ahmadrowaihy.chatgpt.site`. Version 47 is built from
+source commit `6388eebb1228707b7f4e3e27ec7aa94fb11a0c56`; it fixes Core authentication
+for the HMAC-verified Netlify bridge while retaining Google verification for
+ordinary Sites requests. The existing D1 owner mapping and provider settings are
+preserved. These identifiers are provenance, not credentials.
+
+Production requests require Netlify team-login protection for `context.user` to
+be populated; a public production site cannot use this founder-only bridge.
+Bridge credentials must be configured as a secret in the Netlify Functions
+production environment and applied by a new deployment. Never embed the Sites
+bearer token or shared HMAC key in this source or the public build.
