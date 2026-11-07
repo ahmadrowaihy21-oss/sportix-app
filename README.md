@@ -46,3 +46,9 @@ The archives are the recovery baselines, and this repository also retains the ve
 - **Hayvra and Portfolio:** the development-preview credential redaction described above is a backup-only environment substitution; it is distinct from the product fixes.
 
 Studio and Ecosystem are retained from their recovered archives without product edits at this snapshot. Netlify runtime environment values and the Studio private backend are not stored here. Publishing this repository does not enable continuous deployment or alter any live site configuration.
+
+## Private backup location and deploy linkage
+
+Creating a new private `sportix-netlify-recovered` repository was denied by the GitHub integration's repository-creation permission. This multi-site recovery snapshot is therefore stored on the dedicated `maintenance/netlify-recovered-2026-11-07` branch in the existing private `ahmadrowaihy21-oss/sportix-app` repository. It does not replace that repository's `main` branch or enable continuous deployment for these six sites.
+
+Portfolio's Netlify project still points at the stale `ahmadrowaihy21-oss/passport` Git continuous-deployment source, which differs from this recovered source snapshot. Its corrected manual deployment will be kept locked while that source link is unresolved, so a later push to the stale repository cannot silently replace the repaired site. Verify the published deploy's lock and the intended repository before changing that project's publishing settings. This backup does not change those settings or assert that the link has been corrected.
