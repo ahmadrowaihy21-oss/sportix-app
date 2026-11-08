@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { useSportId } from "@/lib/sport-id/store";
 import { AthleteIdentityCard } from "./AthleteIdentityCard";
@@ -31,13 +32,29 @@ function Home() {
   return (
     <>
       <SportIDHeader />
+      <Link
+        to="/academy"
+        className="mx-4 mt-4 flex items-center justify-between gap-3 rounded-xl border border-lime/30 bg-lime/10 p-4 text-sm text-lime"
+        dir="rtl"
+      >
+        <span>
+          <strong className="block">مساحة الأكاديمية</strong>
+          <span className="mt-1 block text-xs text-muted">
+            إضافة لاعب · مراجعة تقرير · متابعة التطور — بيانات تجريبية
+          </span>
+        </span>
+        <span aria-hidden="true">↖</span>
+      </Link>
       {view === "professional" ? (
         <p className="px-4 pt-3 text-2xs text-muted">
-          Authorised professional view · Football evidence only · no DMs, health or raw sensors
+          Authorised professional view · Football evidence only · no DMs, health
+          or raw sensors
         </p>
       ) : null}
       {view === "public" ? (
-        <p className="px-4 pt-3 text-2xs text-muted">Public SPORT ID · approved fields only</p>
+        <p className="px-4 pt-3 text-2xs text-muted">
+          Public SPORT ID · approved fields only
+        </p>
       ) : null}
       <AthleteIdentityCard />
       <SportSelector />
@@ -103,7 +120,9 @@ export function SportIDShell() {
       <Toaster
         theme="dark"
         position="bottom-center"
-        toastOptions={{ className: "!bg-elevated !text-fg !border-border !text-sm" }}
+        toastOptions={{
+          className: "!bg-elevated !text-fg !border-border !text-sm",
+        }}
       />
     </div>
   );
