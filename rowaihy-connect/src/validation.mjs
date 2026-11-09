@@ -24,7 +24,7 @@ export function normalizeProject(input) {
     const maxMs = Number(item.maxMs ?? 5000);
     if (!Number.isInteger(expectedStatus) || expectedStatus < 100 || expectedStatus > 599) throw new InputError('رمز HTTP المتوقع غير صالح');
     if (!Number.isInteger(maxMs) || maxMs < 100 || maxMs > 30000) throw new InputError('حدد مهلة بين 100 و30000 مللي ثانية');
-    const contains = text(item.contains ?? '', 'النص المتوقع طويل جدًا', 1000, false);
+    const contains = item.contains ?? ''; text(contains, 'النص المتوقع طويل جدًا', 1000, false);
     const jsonPath = text(item.jsonPath ?? '', 'مسار JSON غير صالح', 200, false);
     const jsonExpected = text(item.jsonExpected ?? '', 'قيمة JSON طويلة جدًا', 1000, false);
     if (jsonPath && !/^(?:\$|[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*)$/.test(jsonPath)) throw new InputError('استخدم مسار JSON مثل status أو data.ready أو $ للجذر');

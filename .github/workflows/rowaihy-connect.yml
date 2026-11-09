@@ -25,3 +25,39 @@ jobs:
         with:
           node-version: '24'
       - run: npm test
+      - name: Check Windows launch script syntax
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD "Start-Rowaihy.ps1"), [ref]$null, [ref]$parseErrors) | Out-Null
+          if ($parseErrors) { $parseErrors | Format-List; exit 1 }
+      - name: Windows download
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROWAIHY-CONNECT-Windows
+          path: rowaihy-connect/
+          retention-days: 14
+          if-no-files-found: error
+  browser:
+    needs: local-test-hub
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rowaihy-connect
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser test tooling only
+        run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/browser-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ROWAIHY-CONNECT-browser-screenshots
+          path: rowaihy-connect/qa/
+          retention-days: 14

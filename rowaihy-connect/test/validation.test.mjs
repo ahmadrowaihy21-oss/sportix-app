@@ -15,3 +15,5 @@ test('rejects unsafe methods, invalid expected values and invalid HEAD body chec
     assert.throws(()=>normalizeProject(base({checks:[{name:'x',path:'/',...check}]})));
   assert.throws(()=>normalizeProject(base({checks:[]})));
 });
+
+test('preserves whitespace in literal response text checks',()=>{const p=normalizeProject(base({checks:[{name:'text',path:'/',contains:' ok '}]}));assert.equal(p.checks[0].contains,' ok ');});

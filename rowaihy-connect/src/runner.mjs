@@ -37,7 +37,7 @@ export async function runCheck(baseUrl, check, { fetcher = fetch, signal } = {})
         if (check.jsonPath !== '$') for (const key of check.jsonPath.split('.')) actual = actual != null && Object.hasOwn(Object(actual), key) ? actual[key] : undefined;
         const expected = JSON.parse(check.jsonExpected);
         const passed = deepEqual(actual, expected);
-        assertions.push({ label: 'JSON: ' + check.jsonPath, expected, actual: actual === undefined ? '(غير موجود)' : actual, passed });
+        assertions.push({ label: 'JSON: ' + check.jsonPath, expected, actual: actual === undefined ? '(غير موجود)' : preview(actual), passed });
       } catch { assertions.push({ label: 'JSON: ' + check.jsonPath, expected: JSON.parse(check.jsonExpected), actual: 'الاستجابة ليست JSON صالحًا', passed: false }); }
     }
     const durationMs = Math.round(performance.now() - started);
@@ -99,3 +99,5 @@ export class RunQueue {
     while (this.active.size) await new Promise(resolve => setTimeout(resolve, 10));
   }
 }
+
+function preview(value) { const s=JSON.stringify(value); return s.length>2000?s.slice(0,2000)+'… (مختصر)':value; }
