@@ -1,0 +1,78 @@
+{
+  "id": "sportixLabSmoke01",
+  "name": "SPORTIX synthetic API smoke test",
+  "active": false,
+  "nodes": [
+    {
+      "id": "manual",
+      "name": "Manual test",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "health",
+      "name": "Check lab health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "url": "http://127.0.0.1:4318/healthz",
+        "options": {
+          "timeout": 5000
+        }
+      }
+    },
+    {
+      "id": "catalog",
+      "name": "Read synthetic catalog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "url": "http://127.0.0.1:4318/catalog",
+        "options": {
+          "timeout": 5000
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual test": {
+      "main": [
+        [
+          {
+            "node": "Check lab health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check lab health": {
+      "main": [
+        [
+          {
+            "node": "Read synthetic catalog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

@@ -1,0 +1,121 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SPORTIX synthetic integration lab",
+    "version": "0.1.0",
+    "description": "Local read-only fixtures. Not a SPORTIX or SAP production API."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:4318"
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "operationId": "checkLabHealth",
+        "responses": {
+          "200": {
+            "description": "Synthetic service health",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "service",
+                    "mode"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "ok"
+                      ]
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "synthetic"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog": {
+      "get": {
+        "operationId": "listSyntheticProducts",
+        "responses": {
+          "200": {
+            "description": "Synthetic product catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "mode",
+                    "products"
+                  ],
+                  "properties": {
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "synthetic"
+                      ]
+                    },
+                    "products": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "name",
+                          "priceMinor",
+                          "currency"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "priceMinor": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "currency": {
+                            "type": "string",
+                            "enum": [
+                              "SAR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "rejectWrites",
+        "responses": {
+          "405": {
+            "description": "This lab is read-only"
+          }
+        }
+      }
+    }
+  }
+}
