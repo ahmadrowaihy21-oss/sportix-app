@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1418"><title>ROWAIHY CONNECT — مركز اختبار المشاريع</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<a class="skip" href="#main">انتقل إلى المحتوى</a>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="ROWAIHY CONNECT الرئيسية"><span class="mark" aria-hidden="true">R<span>·</span></span><span dir="ltr">ROWAIHY<br><b>CONNECT</b></span></a>
+  <p class="side-caption">مساحة أنظمتك. رؤية أوضح.</p>
+  <nav aria-label="التنقل الرئيسي"><button class="nav active" data-view="dashboard">◈ <span>مركز التحكم</span></button><button class="nav" data-view="projects">▦ <span>المشاريع والفحوصات</span></button><button class="nav" data-view="runs">↗ <span>سجل التشغيل</span></button></nav>
+  <div class="side-note"><span class="dot"></span><strong>على جهازك</strong><p>المشاريع والنتائج محفوظة محليًا.<br>لا تحتاج حسابًا أو اشتراك API.</p><small dir="ltr">LOCAL TEST WORKSPACE · V0.1</small></div>
+</aside>
+<div class="workspace">
+  <header class="topbar"><span><span class="breadcrumb">ROWAIHY /</span> مركز اختبار المشاريع</span><span id="connection" class="connection" role="status">جارٍ الاتصال…</span></header>
+  <main id="main" tabindex="-1"><div class="empty"><h1>مساحة جاهزة لاختبار أنظمتك.</h1><p>جارٍ تحميل بياناتك المحلية…</p></div></main>
+  <footer>ROWAIHY CONNECT <span>فحوصات HTTP وAPI · النتائج حسب الشروط التي تحددها</span></footer>
+</div>
+<dialog id="editor" aria-labelledby="editor-title">
+  <form id="project-form"><div class="modal-head"><div><span class="eyebrow" dir="ltr">PROJECT / TEST SUITE</span><h2 id="editor-title">مشروع جديد</h2></div><button type="button" id="close-editor" class="icon-button" aria-label="إغلاق">×</button></div>
+  <input type="hidden" name="id">
+  <div class="fields"><label>اسم المشروع<input name="name" required maxlength="100" placeholder="مثل: منصة الأكاديمية"></label><label>رابط بيئة الاختبار<input name="baseUrl" type="url" dir="ltr" required maxlength="2048" placeholder="http://localhost:3000/"></label></div>
+  <label>ملاحظات الاختبار<textarea name="notes" rows="2" maxlength="1500" placeholder="وصف مختصر للبيئة أو الهدف"></textarea></label>
+  <div class="section-head"><div><h3>الفحوصات</h3><p>المسارات داخل المشروع نفسه. حد التشغيل 30 فحصًا.</p></div><button id="add-check" type="button" class="button secondary">+ إضافة فحص</button></div>
+  <div id="check-fields"></div>
+  <p class="helper">GET وHEAD فقط. التحويلات لا تُتبع تلقائيًا؛ يمكنك فحص رمز التحويل نفسه. لا تضف كلمات مرور أو رموز وصول إلى الرابط.</p>
+  <p id="form-error" class="error-text" role="alert"></p>
+  <div class="modal-actions"><button type="submit" class="button" id="save-project">حفظ المشروع</button><button type="button" id="cancel-editor" class="button secondary">إلغاء</button></div></form>
+</dialog>
+<dialog id="run-dialog" aria-labelledby="run-title"><div class="modal-head"><h2 id="run-title">تفاصيل التشغيل</h2><button id="close-run" class="icon-button" aria-label="إغلاق تفاصيل التشغيل">×</button></div><div id="run-detail"></div></dialog>
+<input id="import-file" type="file" accept="application/json,.json" hidden>
+<div id="toast" role="status" aria-live="polite"></div>
+</body></html>

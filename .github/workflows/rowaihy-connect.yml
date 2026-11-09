@@ -1,0 +1,27 @@
+name: ROWAIHY CONNECT checks
+on:
+  push:
+    branches:
+      - feature/rowaihy-connect-test-hub
+    paths:
+      - 'rowaihy-connect/**'
+      - '.github/workflows/rowaihy-connect.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local-test-hub:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: rowaihy-connect
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm test
