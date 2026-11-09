@@ -1,0 +1,150 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SPORTIX private synthetic sandbox — IMPLEMENTED",
+    "version": "0.2.0",
+    "description": "Owner-private Sites identity. Persistent D1 sandbox. Synthetic roles, clock, payments and acknowledgments. No external delivery. Command schemas are checked by domain rules."
+  },
+  "paths": {
+    "/api/sandbox": {
+      "get": {
+        "summary": "Read isolated sandbox state",
+        "responses": {
+          "200": {
+            "description": "state + storage + synthetic + externalDelivery"
+          },
+          "401": {
+            "description": "Missing verified Site identity"
+          },
+          "503": {
+            "description": "Database unavailable"
+          }
+        }
+      },
+      "post": {
+        "summary": "Apply one idempotent command atomically with audit/outbox",
+        "description": "Same-origin JSON only, max 8192 chars. Role is simulation. version required for entity transitions. key is scoped to authenticated owner, same key/different payload => 409. Domain errors do not commit. Up to 12 CAS retries; BUSY_RETRY_SAME_KEY retains the same key.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "key",
+                  "op",
+                  "role"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{8,100}$"
+                  },
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "listing.submit",
+                      "listing.approve",
+                      "listing.publish",
+                      "listing.pause",
+                      "listing.edit",
+                      "order.reserve",
+                      "order.authorize",
+                      "order.confirm",
+                      "order.ship",
+                      "order.deliver",
+                      "order.return",
+                      "order.refund",
+                      "order.cancel",
+                      "entitlement.issue",
+                      "entitlement.redeem",
+                      "impact.register",
+                      "clock.advance",
+                      "rooms.request",
+                      "rooms.hold",
+                      "rooms.notify",
+                      "rooms.authorize",
+                      "rooms.confirm",
+                      "rooms.cancel",
+                      "rooms.refresh"
+                    ]
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "ADMIN",
+                      "PARTNER",
+                      "MANAGER",
+                      "REVIEWER",
+                      "FOREIGN"
+                    ],
+                    "description": "Synthetic role within the authenticated owner sandbox; not a production identity claim"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20
+                  },
+                  "member": {
+                    "type": "string",
+                    "pattern": "^demo-member-[1-9][0-9]?$"
+                  },
+                  "ms": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2678400000
+                  },
+                  "priceMinor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "stock": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "capacity": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "state + result + replayed"
+          },
+          "400": {
+            "description": "Invalid JSON"
+          },
+          "401": {
+            "description": "Missing identity"
+          },
+          "403": {
+            "description": "Invalid origin, synthetic role or module scope"
+          },
+          "409": {
+            "description": "Version/idempotency/stock/slot conflict or retryable CAS contention"
+          },
+          "413": {
+            "description": "Payload too large"
+          },
+          "422": {
+            "description": "Domain validation or sandbox limit"
+          },
+          "503": {
+            "description": "Database unavailable"
+          }
+        }
+      }
+    }
+  }
+}

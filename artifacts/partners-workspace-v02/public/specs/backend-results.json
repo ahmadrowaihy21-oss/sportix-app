@@ -1,0 +1,56 @@
+{
+  "executedAt": "2026-11-09T05:48:30.458Z",
+  "scope": "Real local D1/SQLite via Miniflare and HTTP requests. Not Railway/PostgreSQL or live payment/provider tests.",
+  "results": [
+    {
+      "id": "D01",
+      "title": "المصادقة مطلوبة على الخادم",
+      "passed": true
+    },
+    {
+      "id": "D02",
+      "title": "منع طلب تعديل من Origin آخر",
+      "passed": true
+    },
+    {
+      "id": "D03",
+      "title": "عزل بيانات هويتين مختلفتين",
+      "passed": true
+    },
+    {
+      "id": "D04",
+      "title": "20 طلب مخزون متزامن: نجاح طلبين فقط",
+      "passed": true
+    },
+    {
+      "id": "D05",
+      "title": "100 محاولة استخدام كوبون: استهلاك واحد فقط",
+      "passed": true
+    },
+    {
+      "id": "D06",
+      "title": "100 حجز غرفة متزامن على المورد نفسه: قفل واحد",
+      "passed": true
+    },
+    {
+      "id": "D07",
+      "title": "20 إعادة متزامنة بالمفتاح نفسه: أثر واحد",
+      "passed": true
+    },
+    {
+      "id": "D08",
+      "title": "تعارض حمولة Idempotency لا يغير المخزون",
+      "passed": true
+    },
+    {
+      "id": "D09",
+      "title": "فشل الصلاحية لا يضيف حدثًا",
+      "passed": true
+    },
+    {
+      "id": "D10",
+      "title": "إعادة قراءة الحالة تثبت الحفظ في D1",
+      "passed": true
+    }
+  ]
+}
