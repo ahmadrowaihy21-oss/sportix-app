@@ -11,7 +11,23 @@ export class Store {
       CREATE TABLE IF NOT EXISTS projects (id TEXT PRIMARY KEY, document TEXT NOT NULL, created_at TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS runs (id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id), document TEXT NOT NULL, created_at TEXT NOT NULL);
       CREATE INDEX IF NOT EXISTS runs_project_time ON runs(project_id,created_at);
+      CREATE TABLE IF NOT EXISTS runtime_owner (id INTEGER PRIMARY KEY CHECK(id=1), pid INTEGER NOT NULL, token TEXT NOT NULL);
     `);
+    this.ownerToken = randomUUID();
+    try {
+      this.db.exec('BEGIN IMMEDIATE');
+      const owner = this.db.prepare('SELECT pid FROM runtime_owner WHERE id=1').get();
+      if (owner) {
+        let alive = true;
+        try { process.kill(owner.pid, 0); } catch (error) { if (error.code === 'ESRCH') alive = false; }
+        if (alive) throw new Error('هذه البيانات مفتوحة في نسخة أخرى من ROWAIHY CONNECT؛ أغلقها أولًا');
+      }
+      this.db.prepare('INSERT OR REPLACE INTO runtime_owner(id,pid,token) VALUES(1,?,?)').run(process.pid, this.ownerToken);
+      this.db.exec('COMMIT');
+    } catch (error) {
+      try { this.db.exec('ROLLBACK'); } catch {}
+      this.db.close(); throw error;
+    }
     for (const row of this.db.prepare("SELECT id,document FROM runs").all()) {
       const run = JSON.parse(row.document);
       if (['running','queued'].includes(run.status)) { run.status = 'interrupted'; run.finishedAt = new Date().toISOString(); this.writeRun(run); }
@@ -50,5 +66,5 @@ export class Store {
   addResult(id, result) { const run = this.getRun(id); if (run?.status !== 'running') return; run.results.push(result); this.writeRun(run); }
   finishRun(id, status, error = null) { const run = this.getRun(id); if (!run || !['running','queued'].includes(run.status)) return; run.status = status; run.error = error; run.finishedAt = new Date().toISOString(); this.writeRun(run); }
   hasOpenRun(projectId) { return Boolean(this.db.prepare("SELECT 1 FROM runs WHERE project_id=? AND json_extract(document,'$.status') IN ('queued','running') LIMIT 1").get(projectId)); }
-  close() { this.db.close(); }
+  close() { try { this.db.prepare('DELETE FROM runtime_owner WHERE id=1 AND token=?').run(this.ownerToken); } finally { this.db.close(); } }
 }

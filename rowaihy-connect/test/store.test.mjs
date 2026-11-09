@@ -21,3 +21,13 @@ test('keeps newest 200 runs visible and prevents deleting projects with active w
   const active=store.createRun(p);assert.throws(()=>store.deleteProject(p.id));store.finishRun(active.id,'cancelled');
   assert.equal(store.deleteProject(p.id),true);assert.equal(store.getRun(latest.id),null);store.close();
 });
+
+test('refuses a second live database owner before altering active run state',()=>{
+  const dir=mkdtempSync(join(tmpdir(),'rowaihy-owner-'));
+  try {
+    const file=join(dir,'test.sqlite'),first=new Store(file),p=first.saveProject(project()),run=first.createRun(p);
+    assert.throws(()=>new Store(file),/نسخة أخرى/);
+    assert.equal(first.getRun(run.id).status,'queued');
+    first.close();const recovered=new Store(file);assert.equal(recovered.getRun(run.id).status,'interrupted');recovered.close();
+  } finally {rmSync(dir,{recursive:true,force:true});}
+});

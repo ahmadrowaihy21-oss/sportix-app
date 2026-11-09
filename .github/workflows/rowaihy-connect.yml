@@ -42,7 +42,7 @@ jobs:
           if-no-files-found: error
   browser:
     needs: local-test-hub
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: rowaihy-connect

@@ -73,7 +73,8 @@ export async function createHub({port=4310, dbPath=join(root,'data','rowaihy.sql
     }catch(error){if(!res.headersSent)json(res,{error:error instanceof InputError?error.message:'تعذر إكمال العملية محليًا'},error instanceof InputError?400:500);else res.end();}
   });
   server.requestTimeout=15000;server.headersTimeout=10000;
-  await new Promise((done,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',done);});
+  try { await new Promise((done,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',done);}); }
+  catch(error) { store.close(); throw error; }
   return {server,store,queue,url:'http://127.0.0.1:'+server.address().port,close:async()=>{
     const closed=new Promise(done=>server.close(done));server.closeIdleConnections();await queue.close();await closed;store.close();
   }};
