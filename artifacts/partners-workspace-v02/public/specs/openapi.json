@@ -1,0 +1,4332 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SPORTIX PARTNERS & ROOMS CONNECT — Proposed API",
+    "version": "0.1.0-review",
+    "description": "DRAFT PRODUCTION CONTRACTS. Separate implemented sandbox API: /api/sandbox, documented in sandbox-openapi.json. All examples are synthetic. Tenant and roles come from verified session. Optimistic versions and idempotency do not replace transactional exclusion constraints. Business approval and production tests are required."
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/market/listings": {
+      "post": {
+        "operationId": "sportixOperation1",
+        "summary": "إنشاء عرض للسوق في مسودة",
+        "description": "201 listing_id + DRAFT + version Roles: PARTNER + MODULE GRANT",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER + MODULE GRANT",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 listing_id + DRAFT + version",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "module",
+                  "kind",
+                  "name",
+                  "price_minor",
+                  "currency"
+                ],
+                "properties": {
+                  "module": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "price_minor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "currency": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "module": "COUPONS",
+                "kind": "SUBSCRIPTION",
+                "name": "اشتراك تجريبي",
+                "price_minor": 24000,
+                "currency": "SAR"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/listings/{id}/review": {
+      "post": {
+        "operationId": "sportixOperation2",
+        "summary": "مراجعة مستقلة لعرض السوق",
+        "description": "200 APPROVED؛ منع الاعتماد الذاتي Roles: REVIEWER",
+        "x-proposed-only": true,
+        "x-roles": "REVIEWER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 APPROVED؛ منع الاعتماد الذاتي",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "decision",
+                  "evidence_ref"
+                ],
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVED",
+                      "CHANGES_REQUIRED"
+                    ]
+                  },
+                  "evidence_ref": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "decision": "APPROVED",
+                "evidence_ref": "demo-review"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/listings/{id}/publish": {
+      "post": {
+        "operationId": "sportixOperation3",
+        "summary": "نشر عرض مؤهل داخل SPORTIX MARKET",
+        "description": "200 PUBLISHED + version؛ اعتماد مستقل أولًا Roles: PARTNER + MODULE GRANT",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER + MODULE GRANT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 PUBLISHED + version؛ اعتماد مستقل أولًا",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "policy_version"
+                ],
+                "properties": {
+                  "policy_version": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "policy_version": "draft-2"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/orders": {
+      "post": {
+        "operationId": "sportixOperation4",
+        "summary": "حجز مخزون ذري مع سعر ثابت ومهلة",
+        "description": "201 RESERVED + expires_at؛ لا مخزون سالب Roles: ATHLETE",
+        "x-proposed-only": true,
+        "x-roles": "ATHLETE",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 RESERVED + expires_at؛ لا مخزون سالب",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "listing_id",
+                  "quantity",
+                  "quote_version"
+                ],
+                "properties": {
+                  "listing_id": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "quote_version": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "example": {
+                "listing_id": "demo-product",
+                "quantity": 1,
+                "quote_version": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/orders/{id}/confirm": {
+      "post": {
+        "operationId": "sportixOperation5",
+        "summary": "تأكيد بعد تفويض موثوق ومطابق",
+        "description": "200 CONFIRMED؛ التحصيل والتسوية منفصلان Roles: PAYMENT SERVICE",
+        "x-proposed-only": true,
+        "x-roles": "PAYMENT SERVICE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 CONFIRMED؛ التحصيل والتسوية منفصلان",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "authorization_id"
+                ],
+                "properties": {
+                  "authorization_id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "authorization_id": "demo-auth"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/orders/{id}/cancel": {
+      "post": {
+        "operationId": "sportixOperation6",
+        "summary": "إلغاء وتحرير الحجز مرة واحدة",
+        "description": "200 CANCELLED + VOID_PENDING أو REFUND_PENDING Roles: ATHLETE / PARTNER",
+        "x-proposed-only": true,
+        "x-roles": "ATHLETE / PARTNER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 CANCELLED + VOID_PENDING أو REFUND_PENDING",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "reason",
+                  "policy_version"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "policy_version": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "reason": "demo-cancel",
+                "policy_version": "draft-2"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/orders/{id}/returns": {
+      "post": {
+        "operationId": "sportixOperation7",
+        "summary": "طلب إرجاع بعد التسليم",
+        "description": "202 RETURN_REQUESTED؛ لا إعادة مخزون قبل الفحص Roles: ATHLETE",
+        "x-proposed-only": true,
+        "x-roles": "ATHLETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "202 RETURN_REQUESTED؛ لا إعادة مخزون قبل الفحص",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "reason"
+                ],
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "reason": "demo-return"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/entitlements/{id}/redeem": {
+      "post": {
+        "operationId": "sportixOperation8",
+        "summary": "استخدام كوبون أو حصة اشتراك ذريًا",
+        "description": "200 remaining_uses؛ منع التكرار والصلاحية المنتهية Roles: PARTNER + COUPONS GRANT",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER + COUPONS GRANT",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 remaining_uses؛ منع التكرار والصلاحية المنتهية",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "use_count",
+                  "resource_id"
+                ],
+                "properties": {
+                  "use_count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "resource_id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "use_count": 1,
+                "resource_id": "demo-court-a"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/market/impact/{id}/registrations": {
+      "post": {
+        "operationId": "sportixOperation9",
+        "summary": "التسجيل في عرض IMPACT وفق صفته وسعته",
+        "description": "201 registration_id؛ عضو واحد لكل عرض؛ التبرع منفصل Roles: ATHLETE",
+        "x-proposed-only": true,
+        "x-roles": "ATHLETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 registration_id؛ عضو واحد لكل عرض؛ التبرع منفصل",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "participant_id",
+                  "terms_version"
+                ],
+                "properties": {
+                  "participant_id": {
+                    "type": "string"
+                  },
+                  "terms_version": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "participant_id": "demo-member-1",
+                "terms_version": "draft-2"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/partners": {
+      "post": {
+        "operationId": "sportixOperation10",
+        "summary": "إنشاء ملف مؤسسة اصطناعي في DRAFT",
+        "description": "201 Partner؛ tenant مشتق من الهوية Roles: PARTNER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 Partner؛ tenant مشتق من الهوية",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "display_name",
+                  "partner_types"
+                ],
+                "properties": {
+                  "display_name": {
+                    "type": "string"
+                  },
+                  "partner_types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "example": {
+                "display_name": "شريك تجريبي 01",
+                "partner_types": [
+                  "VENUE"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/partners/{id}/submit": {
+      "post": {
+        "operationId": "sportixOperation11",
+        "summary": "إرسال الملف للمراجعة بعد اكتمال البيانات",
+        "description": "202 SUBMITTED؛ لا تنشر المنشأة تلقائيًا Roles: PARTNER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "202 SUBMITTED؛ لا تنشر المنشأة تلقائيًا",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "document_refs",
+                  "policy_version"
+                ],
+                "properties": {
+                  "document_refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "policy_version": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "document_refs": [
+                  "demo-doc-01"
+                ],
+                "policy_version": "draft-1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/partners/{id}/review": {
+      "post": {
+        "operationId": "sportixOperation12",
+        "summary": "قرار أهلية مستقل عن مقدم الطلب",
+        "description": "200 APPROVED أو CHANGES_REQUIRED؛ SELF_APPROVAL مرفوض Roles: REVIEWER / ADMIN",
+        "x-proposed-only": true,
+        "x-roles": "REVIEWER / ADMIN",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 APPROVED أو CHANGES_REQUIRED؛ SELF_APPROVAL مرفوض",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "decision",
+                  "evidence_ref"
+                ],
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVED",
+                      "CHANGES_REQUIRED"
+                    ]
+                  },
+                  "evidence_ref": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "decision": "APPROVED",
+                "evidence_ref": "demo-review-01"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/venues": {
+      "post": {
+        "operationId": "sportixOperation13",
+        "summary": "إضافة منشأة إلى المؤسسة المصرّح بها",
+        "description": "201 Venue؛ لا قبول لـ tenant غير مطابق Roles: PARTNER / ADMIN",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / ADMIN",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 Venue؛ لا قبول لـ tenant غير مطابق",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Venue"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "partner_id",
+                  "type",
+                  "city",
+                  "timezone"
+                ],
+                "properties": {
+                  "partner_id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "partner_id": "demo-partner-01",
+                "type": "VENUE",
+                "city": "جدة",
+                "timezone": "Asia/Riyadh"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/venues/{id}/resources": {
+      "post": {
+        "operationId": "sportixOperation14",
+        "summary": "إنشاء ملعب أو قاعة قابلة للحجز",
+        "description": "201 Resource Roles: PARTNER / MANAGER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / MANAGER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 Resource",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resource"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sport",
+                  "capacity",
+                  "exclusive"
+                ],
+                "properties": {
+                  "sport": {
+                    "type": "string"
+                  },
+                  "capacity": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "exclusive": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "sport": "PADEL",
+                "capacity": 4,
+                "exclusive": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/resources/{id}": {
+      "patch": {
+        "operationId": "sportixOperation15",
+        "summary": "تعديل الخدمة والسعة والأسعار بإصدار",
+        "description": "200 + ETag؛ الأسعار القديمة تبقى في الحجوزات القائمة Roles: PARTNER / MANAGER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / MANAGER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 + ETag؛ الأسعار القديمة تبقى في الحجوزات القائمة",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resource"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "capacity": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "price_minor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "currency": {
+                    "type": "string"
+                  },
+                  "schedule": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "open",
+                      "close"
+                    ],
+                    "properties": {
+                      "open": {
+                        "type": "string"
+                      },
+                      "close": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "minProperties": 1
+              },
+              "example": {
+                "capacity": 4,
+                "price_minor": 18000,
+                "currency": "SAR",
+                "schedule": {
+                  "open": "08:00",
+                  "close": "24:00"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/resources/{id}/blocks": {
+      "post": {
+        "operationId": "sportixOperation16",
+        "summary": "فتح صيانة أو حظر سلامة بفترة ودليل",
+        "description": "201 block؛ تصعيد الحجوزات المؤكدة المتأثرة Roles: PARTNER / MANAGER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / MANAGER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 block؛ تصعيد الحجوزات المؤكدة المتأثرة",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Block"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "start",
+                  "end",
+                  "evidence_ref"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "evidence_ref": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "type": "MAINTENANCE",
+                "start": "2026-11-10T17:00:00Z",
+                "end": "2026-11-10T18:00:00Z",
+                "evidence_ref": "demo-maint-01"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rooms/{id}/venue-matches": {
+      "get": {
+        "operationId": "sportixOperation17",
+        "summary": "مطابقة الرياضة والمكان والوقت والسعة والسياسات",
+        "description": "200 matches[] + exclusions[] + checked_at + availability_version؛ لا ضمان حجز Roles: HOST / MEMBER",
+        "x-proposed-only": true,
+        "x-roles": "HOST / MEMBER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 matches[] + exclusions[] + checked_at + availability_version؛ لا ضمان حجز",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Matches"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings": {
+      "post": {
+        "operationId": "sportixOperation18",
+        "summary": "طلب ربط غرفة بمورد ومن ثم بدء مسار القفل",
+        "description": "201 REQUESTED + booking_id + version + quote Roles: HOST",
+        "x-proposed-only": true,
+        "x-roles": "HOST",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 REQUESTED + booking_id + version + quote",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "room_id",
+                  "resource_id",
+                  "start",
+                  "end"
+                ],
+                "properties": {
+                  "room_id": {
+                    "type": "string"
+                  },
+                  "resource_id": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              },
+              "example": {
+                "room_id": "demo-room-01",
+                "resource_id": "demo-court-a",
+                "start": "2026-11-10T17:00:00Z",
+                "end": "2026-11-10T18:00:00Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings/{id}/hold": {
+      "post": {
+        "operationId": "sportixOperation19",
+        "summary": "قفل ذري للفترة والمورد؛ مدة مقترحة 5 دقائق",
+        "description": "200 TEMPORARY_SLOT_HOLD + expires_at؛ lease داخلي لا يُكشف لعميل عام Roles: HOST",
+        "x-proposed-only": true,
+        "x-roles": "HOST",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 TEMPORARY_SLOT_HOLD + expires_at؛ lease داخلي لا يُكشف لعميل عام",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "availability_version"
+                ],
+                "properties": {
+                  "availability_version": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "example": {
+                "availability_version": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/bookings/{id}/notification-ack": {
+      "post": {
+        "operationId": "sportixOperation20",
+        "summary": "تثبيت إقرار استلام إشعار المنشأة",
+        "description": "200 VENUE_NOTIFIED؛ TTL ثابت ولا تأكيد عند تعذر التسليم Roles: SERVICE",
+        "x-proposed-only": true,
+        "x-roles": "SERVICE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 VENUE_NOTIFIED؛ TTL ثابت ولا تأكيد عند تعذر التسليم",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "event_id",
+                  "provider_receipt"
+                ],
+                "properties": {
+                  "event_id": {
+                    "type": "string"
+                  },
+                  "provider_receipt": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "event_id": "demo-event-01",
+                "provider_receipt": "demo-receipt-01"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings/{id}/claim": {
+      "post": {
+        "operationId": "sportixOperation21",
+        "summary": "استلام الطلب اختياريًا دون تأكيد أو تمديد المهلة",
+        "description": "200 CLAIMED Roles: PARTNER / MANAGER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / MANAGER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 CLAIMED",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+                "properties": {}
+              },
+              "example": {}
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings/{id}/payment-authorization": {
+      "post": {
+        "operationId": "sportixOperation22",
+        "summary": "بدء تفويض في بيئة مزود معتمدة؛ لا بيانات بطاقة في SPORTIX",
+        "description": "202 AUTHORIZATION_PENDING؛ النتيجة النهائية من webhook موثّق Roles: HOST",
+        "x-proposed-only": true,
+        "x-roles": "HOST",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "202 AUTHORIZATION_PENDING؛ النتيجة النهائية من webhook موثّق",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationPending"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "payment_method_token"
+                ],
+                "properties": {
+                  "payment_method_token": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "payment_method_token": "demo-token"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings/{id}/confirm": {
+      "post": {
+        "operationId": "sportixOperation23",
+        "summary": "إعادة التحقق من القفل والتوافر والصيانة والسياسات والتفويض",
+        "description": "200 CONFIRMED؛ معاملة واحدة وتحويل allocation دون فجوة Roles: PARTNER / MANAGER / AUTO SERVICE",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / MANAGER / AUTO SERVICE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 CONFIRMED؛ معاملة واحدة وتحويل allocation دون فجوة",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "expected_price_version"
+                ],
+                "properties": {
+                  "expected_price_version": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "example": {
+                "expected_price_version": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings/{id}/reject": {
+      "post": {
+        "operationId": "sportixOperation24",
+        "summary": "رفض قبل التأكيد مع reason_code ودليل",
+        "description": "200 VALID_REJECT + payment_resolution=VOID_PENDING عند وجود تفويض Roles: PARTNER / MANAGER",
+        "x-proposed-only": true,
+        "x-roles": "PARTNER / MANAGER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 VALID_REJECT + payment_resolution=VOID_PENDING عند وجود تفويض",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "reason_code",
+                  "evidence_ref"
+                ],
+                "properties": {
+                  "reason_code": {
+                    "type": "string",
+                    "enum": [
+                      "MAINTENANCE_OPEN",
+                      "SAFETY_BLOCK",
+                      "CAPACITY_EXCEEDED",
+                      "UNAVAILABLE",
+                      "VENUE_INELIGIBLE",
+                      "POLICY_BLOCK"
+                    ]
+                  },
+                  "evidence_ref": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "reason_code": "MAINTENANCE_OPEN",
+                "evidence_ref": "demo-maint-01"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bookings/{id}/cancel": {
+      "post": {
+        "operationId": "sportixOperation25",
+        "summary": "إلغاء حسب نسخة السياسة المسجلة في الحجز",
+        "description": "200 CANCELLED + VOID_PENDING أو REFUND_PENDING؛ لا ادعاء اكتمال الاسترداد Roles: HOST / PARTNER / MANAGER",
+        "x-proposed-only": true,
+        "x-roles": "HOST / PARTNER / MANAGER",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "$ref": "#/components/parameters/IfMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 CANCELLED + VOID_PENDING أو REFUND_PENDING؛ لا ادعاء اكتمال الاسترداد",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Booking"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "reason_code",
+                  "policy_version"
+                ],
+                "properties": {
+                  "reason_code": {
+                    "type": "string"
+                  },
+                  "policy_version": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "reason_code": "HOST_CANCELLED",
+                "policy_version": "draft-1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/payments": {
+      "post": {
+        "operationId": "sportixOperation26",
+        "summary": "توقيع + timestamp + dedup event_id + مطابقة مرجع الحجز",
+        "description": "200 accepted؛ الأحداث المتأخرة لا تعيد حجزًا منتهيًا؛ فك التفويض خارج المعاملة Roles: SIGNED PROVIDER",
+        "x-proposed-only": true,
+        "x-roles": "SIGNED PROVIDER",
+        "parameters": [
+          {
+            "name": "X-Provider-Timestamp",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 accepted؛ الأحداث المتأخرة لا تعيد حجزًا منتهيًا؛ فك التفويض خارج المعاملة",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accepted"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden or wrong tenant/resource scope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found or intentionally concealed cross-tenant entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SLOT_CONFLICT / IDEMPOTENCY_CONFLICT / INVALID_TRANSITION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "HOLD_EXPIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "VERSION_CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input, reason or evidence",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Availability/provider unknown. Fail closed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ProviderSignature": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "event_id",
+                  "authorization_id",
+                  "status",
+                  "amount_minor",
+                  "currency"
+                ],
+                "properties": {
+                  "event_id": {
+                    "type": "string"
+                  },
+                  "authorization_id": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "amount_minor": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "currency": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "event_id": "demo-provider-01",
+                "authorization_id": "demo-auth-01",
+                "status": "AUTHORIZED",
+                "amount_minor": 18000,
+                "currency": "SAR"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "ServiceAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Restricted service identity; separate audience and scopes."
+      },
+      "ProviderSignature": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Provider-Signature",
+        "description": "Verify provider canonical signature AND signed timestamp tolerance before parsing events."
+      }
+    },
+    "parameters": {
+      "IdempotencyKey": {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 128
+        },
+        "description": "Scope to authenticated principal + endpoint; save body hash and original response. Same key/different body: 409."
+      },
+      "IfMatch": {
+        "name": "If-Match",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Strong ETag representing expected current entity version. Stale: 412."
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message",
+              "retryable",
+              "correlation_id"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "retryable": {
+                "type": "boolean"
+              },
+              "correlation_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Booking": {
+        "type": "object",
+        "required": [
+          "booking_id",
+          "room_id",
+          "resource_id",
+          "state",
+          "version",
+          "quote"
+        ],
+        "properties": {
+          "booking_id": {
+            "type": "string"
+          },
+          "room_id": {
+            "type": "string"
+          },
+          "resource_id": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "REQUESTED",
+              "TEMPORARY_SLOT_HOLD",
+              "VENUE_NOTIFIED",
+              "CLAIMED",
+              "CONFIRMED",
+              "VALID_REJECT",
+              "CANCELLED",
+              "EXPIRED"
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "quote": {
+            "type": "object",
+            "required": [
+              "amount_minor",
+              "currency",
+              "price_version",
+              "policy_version"
+            ],
+            "properties": {
+              "amount_minor": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "currency": {
+                "type": "string",
+                "enum": [
+                  "SAR"
+                ]
+              },
+              "price_version": {
+                "type": "integer"
+              },
+              "policy_version": {
+                "type": "string"
+              }
+            }
+          },
+          "payment_resolution": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "AUTHORIZED",
+              "VOID_PENDING",
+              "VOIDED",
+              "CAPTURED",
+              "REFUND_PENDING",
+              "REFUNDED"
+            ]
+          }
+        }
+      },
+      "Venue": {
+        "type": "object",
+        "required": [
+          "venue_id",
+          "partner_id",
+          "version",
+          "timezone"
+        ],
+        "properties": {
+          "venue_id": {
+            "type": "string"
+          },
+          "partner_id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "timezone": {
+            "type": "string",
+            "enum": [
+              "Asia/Riyadh"
+            ]
+          },
+          "city": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "VENUE",
+              "CENTER",
+              "ACADEMY"
+            ]
+          }
+        }
+      },
+      "Block": {
+        "type": "object",
+        "required": [
+          "block_id",
+          "resource_id",
+          "status",
+          "version"
+        ],
+        "properties": {
+          "block_id": {
+            "type": "string"
+          },
+          "resource_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "CLOSED"
+            ]
+          },
+          "version": {
+            "type": "integer"
+          }
+        }
+      },
+      "AuthorizationPending": {
+        "type": "object",
+        "required": [
+          "booking_id",
+          "status",
+          "authorization_request_id"
+        ],
+        "properties": {
+          "booking_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "AUTHORIZATION_PENDING"
+            ]
+          },
+          "authorization_request_id": {
+            "type": "string"
+          }
+        }
+      },
+      "Partner": {
+        "type": "object",
+        "required": [
+          "partner_id",
+          "status",
+          "version"
+        ],
+        "properties": {
+          "partner_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "SUBMITTED",
+              "UNDER_REVIEW",
+              "APPROVED",
+              "CHANGES_REQUIRED",
+              "SUSPENDED"
+            ]
+          },
+          "version": {
+            "type": "integer"
+          }
+        }
+      },
+      "Resource": {
+        "type": "object",
+        "required": [
+          "resource_id",
+          "venue_id",
+          "version"
+        ],
+        "properties": {
+          "resource_id": {
+            "type": "string"
+          },
+          "venue_id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "capacity": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sport": {
+            "type": "string"
+          }
+        }
+      },
+      "Matches": {
+        "type": "object",
+        "required": [
+          "matches",
+          "exclusions",
+          "checked_at",
+          "availability_version"
+        ],
+        "properties": {
+          "matches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "resource_id",
+                "quote"
+              ],
+              "properties": {
+                "resource_id": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "object",
+                  "required": [
+                    "amount_minor",
+                    "currency"
+                  ],
+                  "properties": {
+                    "amount_minor": {
+                      "type": "integer"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "enum": [
+                        "SAR"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "resource_id": {
+                  "type": "string"
+                },
+                "reason_codes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "availability_version": {
+            "type": "integer"
+          }
+        }
+      },
+      "Accepted": {
+        "type": "object",
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean"
+          },
+          "correlation_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+import {build} from 'esbuild';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+await mkdir('work',{recursive:true});
+await build({entryPoints:['tests/run.ts'],outfile:'work/test.mjs',bundle:true,platform:'node',format:'esm'});
+await import('../work/test.mjs?run='+Date.now());
+if(process.exitCode)process.exit(process.exitCode);
+await build({entryPoints:['tests/workflow.test.ts'],outfile:'work/market-test.mjs',bundle:true,platform:'node',format:'esm'});
+await import('../work/market-test.mjs?run='+Date.now());
+if(process.exitCode)process.exit(process.exitCode);
+await build({entryPoints:['scripts/generate-review.ts'],outfile:'work/generate.mjs',bundle:true,platform:'node',format:'esm'});
+await import('../work/generate.mjs?run='+Date.now());
+await writeFile('work/offline.tsx',`import React from 'react';import {createRoot} from 'react-dom/client';import Workspace from '../components/workspace';createRoot(document.getElementById('root')!).render(<Workspace/>);`);
+const result=await build({entryPoints:['work/offline.tsx'],bundle:true,write:false,minify:true,format:'iife',platform:'browser',target:['es2020'],define:{'process.env.NODE_ENV':'"production"'},jsx:'automatic'});
+const css=(await readFile('app/globals.css','utf8')).replace("@import 'tailwindcss';",'');
+const script=result.outputFiles[0].text.replaceAll('</script','<\\/script');
+const html=`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="SPORTIX Partners & Rooms Connect — private local review, synthetic data only"><title>SPORTIX PARTNERS & ROOMS CONNECT MVP</title><style>${css}</style></head><body><div id="root"></div><script>${script}</script></body></html>`;
+await writeFile('public/SPORTIX_PARTNERS_ROOMS_CONNECT_REVIEW.html',html);
+console.log('Self-contained review HTML built. No external assets or network calls required.');

@@ -1,0 +1,146 @@
+{
+  "executedAt": "2026-11-09T05:50:22.138Z",
+  "scope": "Single-process in-memory simulator; not distributed backend, auth or provider testing",
+  "results": [
+    {
+      "id": "AC-01",
+      "passed": true,
+      "detail": "نجاح قفل واحد وSLOT_CONFLICT للآخر"
+    },
+    {
+      "id": "AC-02",
+      "passed": true,
+      "detail": "رفض التداخل حتى مع اختلاف وقت البداية"
+    },
+    {
+      "id": "AC-03",
+      "passed": true,
+      "detail": "السماح بفترتين [start,end) متجاورتين"
+    },
+    {
+      "id": "AC-04",
+      "passed": true,
+      "detail": "إعادة المعرّف نفسه دون إنشاء حجز ثانٍ"
+    },
+    {
+      "id": "AC-05",
+      "passed": true,
+      "detail": "IDEMPOTENCY_CONFLICT"
+    },
+    {
+      "id": "AC-06",
+      "passed": true,
+      "detail": "يبقى CLAIMED حتى تحقق بوابة التأكيد"
+    },
+    {
+      "id": "AC-07",
+      "passed": true,
+      "detail": "CONFIRMED عند استيفاء جميع الشروط"
+    },
+    {
+      "id": "AC-08",
+      "passed": true,
+      "detail": "EXPIRED وتحرير المورد وفك التفويض قيد المعالجة"
+    },
+    {
+      "id": "AC-09",
+      "passed": true,
+      "detail": "قفل جديد بعد تحديث التوافر"
+    },
+    {
+      "id": "AC-10",
+      "passed": true,
+      "detail": "CANCELLED، تحرير المورد، VOID_PENDING دون ادعاء استرداد"
+    },
+    {
+      "id": "AC-11",
+      "passed": true,
+      "detail": "MAINTENANCE_OPEN يمنع التأكيد"
+    },
+    {
+      "id": "AC-12",
+      "passed": true,
+      "detail": "SAFETY_BLOCK يمنع التأكيد"
+    },
+    {
+      "id": "AC-13",
+      "passed": true,
+      "detail": "AVAILABILITY_STALE بعد 60 ثانية"
+    },
+    {
+      "id": "AC-14",
+      "passed": true,
+      "detail": "UNAVAILABLE"
+    },
+    {
+      "id": "AC-15",
+      "passed": true,
+      "detail": "CAPACITY_EXCEEDED"
+    },
+    {
+      "id": "AC-16",
+      "passed": true,
+      "detail": "OUTSIDE_SCHEDULE"
+    },
+    {
+      "id": "AC-17",
+      "passed": true,
+      "detail": "FORBIDDEN لشريك مؤسسة أخرى"
+    },
+    {
+      "id": "AC-18",
+      "passed": true,
+      "detail": "FORBIDDEN رغم انتمائه للمؤسسة نفسها"
+    },
+    {
+      "id": "AC-19",
+      "passed": true,
+      "detail": "FORBIDDEN؛ لا يجمع التدقيق والتشغيل"
+    },
+    {
+      "id": "AC-20",
+      "passed": true,
+      "detail": "VERSION_CONFLICT دون تغيير الحالة"
+    },
+    {
+      "id": "AC-21",
+      "passed": true,
+      "detail": "LEASE_MISMATCH"
+    },
+    {
+      "id": "AC-22",
+      "passed": true,
+      "detail": "PAYMENT_REQUIRED"
+    },
+    {
+      "id": "AC-23",
+      "passed": true,
+      "detail": "PAYMENT_REQUIRED"
+    },
+    {
+      "id": "AC-24",
+      "passed": true,
+      "detail": "REASON_REQUIRED"
+    },
+    {
+      "id": "AC-25",
+      "passed": true,
+      "detail": "VALID_REJECT وتحرير المورد"
+    },
+    {
+      "id": "AC-26",
+      "passed": true,
+      "detail": "SELF_APPROVAL"
+    },
+    {
+      "id": "AC-27",
+      "passed": true,
+      "detail": "INVALID_TRANSITION"
+    },
+    {
+      "id": "AC-28",
+      "passed": true,
+      "detail": "VENUE_INELIGIBLE ثم POLICY_BLOCK"
+    }
+  ]
+}
