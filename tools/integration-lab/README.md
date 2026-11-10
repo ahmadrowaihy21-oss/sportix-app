@@ -7,7 +7,7 @@
 | الأداة | داخل ChatGPT | بيئة التطوير في الجلسة |
 |---|---|---|
 | GitHub | تم التحقق من اتصال الحساب `ahmadrowaihy21-oss` | تجهيز فرع `codex/integration-tools` |
-| GitHub Actions | عبر مستودع GitHub؛ ليس اتصالًا منفصلًا | سير اختبار Postman مرفق؛ نجاحه على GitHub يتحدد من صفحة Actions |
+| GitHub Actions | يستخدم `GITHUB_TOKEN` الخاص بالمهمة | نجح اختبار Postman المنشور عند `319007b` في تشغيلَي الدفع وطلب الدمج |
 | VS Code | لم تظهر إضافة مطابقة في البحث | ثُبت الإصدار 1.145.2 وتحقق تشغيل CLI؛ لم تُختبر الواجهة الرسومية |
 | Postman | لم تظهر إضافة مطابقة في البحث | ثُبت Postman CLI 1.87.0؛ نجحت 4 طلبات و10 assertions محليًا؛ لم يُربط حساب Postman Cloud |
 | n8n | لم تظهر إضافة مطابقة في البحث | ثُبت 2.46.7 وشُغل سير عمل محلي يقرأ health/catalog؛ لا توجد استضافة دائمة أو حساب n8n Cloud مربوط |
@@ -65,7 +65,11 @@ npm run cloud:check -- YOUR_PROJECT_ID
 
 ## حدود GitHub Actions
 
-الملف `.github/workflows/integration-tools.yml` يشغل مجموعة Postman على بيانات اصطناعية، بصلاحية قراءة المستودع فقط. لا ينشر تطبيق SPORTIX ولا يتصل بالحسابات الإنتاجية. اختبار n8n منفذ محليًا، وليس ضمن هذا السير. نتيجة هذا المختبر لا تمثل نتيجة اختبارات التطبيق الكامل.
+يستخدم [سير المختبر](../../.github/workflows/integration-tools.yml) رمز المهمة المدمج `GITHUB_TOKEN` لجلب كود `sportix-app`، ويحدد `contents: read` تحت `permissions`. يضبط `actions/checkout` على `persist-credentials: false`. يجري تثبيت الحزم داخل المشغّل، ويستخدم اختبار Postman بيانات اصطناعية محلية. لا تتطلب هذه العمليات PAT أو تفويض OAuth خارجيًا أو صلاحيات كتابة أو صلاحيات مؤسسة. يبقى n8n ضمن التحقق المحلي في الالتزام المراجع.
+
+في مراجعة 2026-11-10، طابق ملف فرع `codex/integration-tools` النسخة المفحوصة سابقًا عند `319007b9b2a032a2d6dafa1addeac702949de321`. نجح الجلب وتثبيت الحزم و`npm test` في التشغيلين المسجلين على الفرع. [تشغيل الدفع](https://github.com/ahmadrowaihy21-oss/sportix-app/actions/runs/42635064064) · [تشغيل طلب الدمج](https://github.com/ahmadrowaihy21-oss/sportix-app/actions/runs/42635164372)
+
+عند الفشل، افحص الوظيفة والخطوة ورسالة الخطأ وسجلها قبل اقتراح تغيير الصلاحيات. إذا أثبت السجل حاجة إلى عملية GitHub إضافية، وثّق العملية والمستودع والدليل والبديل الأقل صلاحية وأثر التغيير، واعرضه للموافقة الصريحة قبل التنفيذ. `admin:org` و`repo` و`workflow` ليست صلاحيات افتراضية للمختبر. [مرجع صلاحيات GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions)
 
 ## مصادر الإعداد
 
@@ -77,4 +81,4 @@ npm run cloud:check -- YOUR_PROJECT_ID
 - [Secret Manager API setup](https://docs.cloud.google.com/secret-manager/docs/configuring-secret-manager)
 - [Monitoring API setup](https://docs.cloud.google.com/monitoring/api/enable-api)
 
-هذا العمل يثبت تجهيز أدوات واختبارًا محليًا فقط؛ لا يمثل تدقيقًا لامتثال سدايا أو اعتمادًا لموقع معالجة بيانات SPORTIX.
+تغطي نتائج الاختبار أدوات المختبر وبياناته الاصطناعية. تدقيق امتثال سدايا واعتماد موقع معالجة بيانات SPORTIX خارج نطاق هذا المختبر.
