@@ -6,19 +6,21 @@ function pad(n: number) {
 }
 
 export function WeekCountdown({ endsAt }: { endsAt: number }) {
-  const [now, setNow] = useState(Date.now());
+  // A stable first render prevents server/client clock skew during hydration.
+  const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
+    setNow(Date.now());
     const t = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(t);
   }, []);
-  const left = Math.max(0, endsAt - now);
+  const left = now === null ? 0 : Math.max(0, endsAt - now);
   const d = Math.floor(left / 86_400_000);
   const h = Math.floor((left % 86_400_000) / 3_600_000);
   const m = Math.floor((left % 3_600_000) / 60_000);
   const s = Math.floor((left % 60_000) / 1000);
   return (
     <p className="font-display text-2xl tabular tracking-tight">
-      {d}D {pad(h)}H {pad(m)}M {pad(s)}S
+      {now === null ? "—" : `${d}D ${pad(h)}H ${pad(m)}M ${pad(s)}S`}
     </p>
   );
 }
