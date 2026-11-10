@@ -1,0 +1,4 @@
+node_modules/
+.netlify/
+.grok/preview.log
+.grok/preview.pid
