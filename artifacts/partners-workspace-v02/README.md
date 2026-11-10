@@ -26,3 +26,20 @@ npm run build
 - `public/SPORTIX_PARTNERS_ROOMS_CONNECT_REVIEW.html`: portable offline review. Local rooms lab works; server-persisted Market requires the live Site.
 
 The managed Sites source repository is canonical for the live workspace. A separate GitHub review package is additive and does not wire the existing ATHLETE routes to this sandbox. No Slack messages, payment calls, calendar events or Analytics Hub data exchanges are sent or created by this app.
+
+## Sandbox ingress identity
+
+The managed ingress must authenticate the browser session and pass the
+canonical user ID in the request-scoped Worker runtime property
+`ctx.props.SPORTIX_SANDBOX_OWNER`. Preserve the same canonical ID previously
+used for D1 owner keys. Set this property from the verified session on every
+request, including reads. Never populate it from browser input or static
+service-binding configuration. Direct production requests without the
+runtime property return 401 before accessing D1. Local Vite development uses
+a fixed synthetic owner when no runtime owner is present.
+
+Before enabling this build in a managed Site, verify that the ingress
+supports setting the property and validate the authenticated browser path
+and a direct unauthenticated request in staging.
+
+Run the identity unit tests with `node --test tests/sandbox-identity.test.mjs`.

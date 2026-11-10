@@ -1,12 +1,13 @@
 import handler from "vinext/server/fetch-handler";
 import { runWithConnectorBinding } from "../lib/connector-context";
 import type { ConnectorBinding } from "../lib/connector-contract.mjs";
+import { sandboxOwner, type SandboxIdentityProps } from "../lib/sandbox-identity.mjs";
 import { sandboxApi } from '../lib/sandbox-api';
 
 const worker = {
-  fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+  fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<SandboxIdentityProps & { CONNECTORS?: ConnectorBinding }>) {
     if(new URL(request.url).pathname==='/api/sandbox'){
-      const identity=request.headers.get('oai-authenticated-user-id') || (import.meta.env.DEV ? 'local-preview-owner' : null);
+      const identity = sandboxOwner(ctx.props, import.meta.env.DEV);
       return sandboxApi(request,env.DB,identity);
     }
     let binding = ctx.props?.CONNECTORS;
