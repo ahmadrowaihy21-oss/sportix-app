@@ -1,0 +1,20 @@
+name: SPORTIX Market pilot rules
+on:
+  push:
+    branches: [codex/sportix-market-quality-20261111]
+    paths: [pilots/athlete-market/**, .github/workflows/sportix-market-pilot.yml]
+  pull_request:
+    paths: [pilots/athlete-market/**, .github/workflows/sportix-market-pilot.yml]
+permissions:
+  contents: read
+jobs:
+  market-invariants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate partial coverage and wallet invariants
+        run: node --test pilots/athlete-market/tests/domain.test.mjs
