@@ -1,12 +1,12 @@
 import { create } from "zustand";
-import { VIEWER_ID } from "@/lib/sportix/mock";
+import { useAthlete } from "../athlete/store.ts";
+import { syncSyntheticViews } from "../athlete/bridge.ts";
 import { useSportix } from "@/lib/sportix/store";
-import type { CommunityPost } from "@/lib/sportix/types";
 import { useSportId } from "@/lib/sport-id/store";
 import { useWeekly } from "@/lib/weekly-legends/store";
 import { useShell } from "@/lib/shell/store";
 import { useRooms } from "@/lib/rooms/store";
-import { ACTIVITIES, currentPace, DEMO_SPEED, formatDuration, formatKm, formatPace } from "./format";
+import { ACTIVITIES, DEMO_SPEED } from "./format";
 import type {
   ActivityKey,
   ActivitySession,
@@ -21,11 +21,7 @@ import type {
 let seq = 1;
 function nid(prefix: string) {
   seq += 1;
-  return `${prefix}-${seq}`;
-}
-
-function todayLabel() {
-  return new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  return `${prefix}-${Date.now()}-${seq}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
 export interface GoStore {
@@ -79,114 +75,17 @@ function emptySession(activity: ActivityKey): ActivitySession {
   };
 }
 
-function setState(session: ActivitySession, state: SessionState): ActivitySession {
+function setState(
+  session: ActivitySession,
+  state: SessionState,
+): ActivitySession {
   return { ...session, state };
-}
-
-function publishAndSync(session: ActivitySession, outcome: DemoOutcome) {
-  const cfg = ACTIVITIES[session.activity];
-  const paceSec = currentPace(session.elapsedSec, session.distanceKm, cfg.paceSecPerKm);
-  const duration = formatDuration(session.elapsedSec);
-  const pace = formatPace(paceSec);
-  const km = formatKm(session.distanceKm);
-  const mediaUrl = session.media?.url ?? "";
-  const postId = nid("post-go");
-  const recordId = nid("sid-go");
-  const verified = outcome === "verified";
-
-  const post: CommunityPost = {
-    id: postId,
-    authorId: VIEWER_ID,
-    kind: "activity",
-    createdAt: "now",
-    context: `${cfg.sportLabel} · Jeddah Zone`,
-    media: {
-      src: mediaUrl,
-      alt: session.media?.subject_type === "SELF" ? "Self media from activity" : "Place media from activity",
-    },
-    caption: verified
-      ? `SPORTIX VERIFIED · ${km} KM · ${duration} · ${pace}`
-      : `Activity recorded · verification ${outcome === "review" ? "in review" : "insufficient"}`,
-    verification: verified ? "verified" : outcome === "review" ? "pending" : "insufficient",
-    performance: {
-      sportLabel: cfg.sportLabel,
-      headline: `${km} KM`,
-      metrics: [
-        { label: "Duration", value: duration },
-        { label: "Pace", value: pace },
-        { label: "Evidence", value: verified ? "HIGH" : "—" },
-      ],
-      spAi: verified ? 12 : undefined,
-      zone: "Jeddah Zone",
-    },
-    engagement: { likeCount: 0, commentCount: 0, repostCount: 0, likedBy: [] },
-    sponsor: { topSponsorId: null, extraCount: 0 },
-    liked: false,
-    saved: false,
-    reposted: false,
-    goEvidence: session.media
-      ? {
-          sessionId: session.id,
-          subjectType: session.media.subject_type,
-          quality: verified ? "HIGH" : "LIMITED",
-          sportIdUpdated: verified,
-          gps: true,
-          route: true,
-          time: true,
-          health: true,
-          media: true,
-        }
-      : undefined,
-  };
-
-  useSportix.getState().publishGoPost(post);
-
-  if (verified) {
-    useSportId.getState().recordVerifiedActivity({
-      id: recordId,
-      sessionId: session.id,
-      postId,
-      activity: session.activity,
-      distanceKm: session.distanceKm,
-      durationSec: session.elapsedSec,
-      paceLabel: pace,
-      steps: Math.round(session.steps),
-      mediaUrl,
-      subjectType: session.media?.subject_type ?? "PLACE",
-      dateLabel: todayLabel(),
-      quality: "HIGH",
-    });
-    useWeekly.getState().applyVerifiedActivity({
-      sessionId: session.id,
-      activity: session.activity,
-    });
-    useShell.getState().notify({
-      category: "verification",
-      title: "Activity Verified",
-      body: `${cfg.sportLabel} · ${km} KM · SPORT ID updated`,
-      href: "/go-sportix",
-    });
-    useShell.getState().notify({
-      category: "weekly",
-      title: "Weekly Legends updated",
-      body: "Eligible SSP applied from VERIFIED_COMPLETED. Sharing was not required.",
-      href: "/weekly-legends",
-    });
-    useShell.getState().notify({
-      category: "sport-id",
-      title: "SPORT ID updated",
-      body: "Verified activity recorded. Independent of post visibility.",
-      href: "/sport-id",
-    });
-  }
-
-  return { postId, recordId };
 }
 
 export const useGo = create<GoStore>((set, get) => ({
   screen: "home",
   session: null,
-  audience: "FRIENDS",
+  audience: "ONLY ME",
   subjectType: "PLACE",
   demoOutcome: "verified",
   lastTick: 0,
@@ -204,16 +103,24 @@ export const useGo = create<GoStore>((set, get) => ({
   },
   openSettings: () => set({ screen: "settings" }),
 
-  chooseActivity: (key) =>
+  chooseActivity: (key) => {
+    const session = emptySession(key);
+    useAthlete.getState().dispatch(`create-${session.id}`, {
+      op: "activity.create",
+      id: session.id,
+      kind: key,
+    });
     set({
       screen: "preflight",
-      session: emptySession(key),
+      session,
       subjectType: "PLACE",
-    }),
+      audience: "ONLY ME",
+    });
+  },
 
   startActivity: () => {
     const session = get().session;
-    if (!session) return;
+    if (!session || session.state !== "CREATED") return;
     set({
       screen: "live",
       lastTick: performance.now(),
@@ -235,7 +142,8 @@ export const useGo = create<GoStore>((set, get) => ({
     const elapsedSec = session.elapsedSec + activitySec;
     const steps = session.steps + addKm * cfg.stepsPerKm;
     const elevationM = session.elevationM + addKm * cfg.elevationPerKm;
-    const speedKmh = distanceKm > 0.01 ? distanceKm / (elapsedSec / 3600) : cfg.speedKmh;
+    const speedKmh =
+      distanceKm > 0.01 ? distanceKm / (elapsedSec / 3600) : cfg.speedKmh;
     set({
       lastTick: now,
       session: {
@@ -263,11 +171,23 @@ export const useGo = create<GoStore>((set, get) => ({
 
   requestFinish: () => {
     const session = get().session;
-    if (!session) return;
+    if (
+      !session ||
+      !["ACTIVE", "PAUSED", "MEDIA_REQUIRED", "MEDIA_ATTACHED"].includes(
+        session.state,
+      )
+    )
+      return;
     if (!session.media) {
       set({
         screen: "media",
-        session: setState({ ...session, state: session.state === "ACTIVE" ? "PAUSED" : session.state }, "MEDIA_REQUIRED"),
+        session: setState(
+          {
+            ...session,
+            state: session.state === "ACTIVE" ? "PAUSED" : session.state,
+          },
+          "MEDIA_REQUIRED",
+        ),
       });
       return;
     }
@@ -280,7 +200,11 @@ export const useGo = create<GoStore>((set, get) => ({
   returnToActivity: () => {
     const session = get().session;
     if (!session) return;
-    const next: SessionState = session.media ? "PAUSED" : session.state === "MEDIA_REQUIRED" ? "PAUSED" : "PAUSED";
+    const next: SessionState = session.media
+      ? "PAUSED"
+      : session.state === "MEDIA_REQUIRED"
+        ? "PAUSED"
+        : "PAUSED";
     set({ screen: "live", session: { ...session, state: next } });
   },
 
@@ -288,13 +212,20 @@ export const useGo = create<GoStore>((set, get) => ({
 
   attachMedia: (file) => {
     const session = get().session;
-    if (!session) return;
-    if (session.media?.url.startsWith("blob:")) URL.revokeObjectURL(session.media.url);
+    if (
+      !session ||
+      !["MEDIA_REQUIRED", "MEDIA_ATTACHED", "INSUFFICIENT_EVIDENCE"].includes(
+        session.state,
+      )
+    )
+      return;
+    if (session.media?.url.startsWith("blob:"))
+      URL.revokeObjectURL(session.media.url);
     const url = URL.createObjectURL(file);
     const evidence: MediaEvidence = {
       media_evidence_id: nid("med"),
       session_id: session.id,
-      user_id: VIEWER_ID,
+      user_id: useAthlete.getState().data.identity.sportixUserId,
       media_type: file.type.startsWith("video") ? "video" : "photo",
       subject_type: get().subjectType,
       capture_or_attach_time: new Date().toISOString(),
@@ -318,14 +249,25 @@ export const useGo = create<GoStore>((set, get) => ({
   clearMedia: () => {
     const session = get().session;
     if (!session) return;
-    if (session.media?.url.startsWith("blob:")) URL.revokeObjectURL(session.media.url);
+    if (session.media?.url.startsWith("blob:"))
+      URL.revokeObjectURL(session.media.url);
     set({ session: { ...session, media: null, state: "MEDIA_REQUIRED" } });
   },
 
   finishAndVerify: () => {
     const session = get().session;
+    if (
+      session &&
+      !["MEDIA_REQUIRED", "MEDIA_ATTACHED", "INSUFFICIENT_EVIDENCE"].includes(
+        session.state,
+      )
+    )
+      return;
     if (!session?.media) {
-      set({ screen: "media", session: session ? setState(session, "MEDIA_REQUIRED") : session });
+      set({
+        screen: "media",
+        session: session ? setState(session, "MEDIA_REQUIRED") : session,
+      });
       return;
     }
     set({ screen: "verify", session: setState(session, "VERIFYING") });
@@ -335,44 +277,93 @@ export const useGo = create<GoStore>((set, get) => ({
 
   completeVerification: (forced) => {
     const session = get().session;
-    if (!session) return;
-    const cycling = session.activity === "cycling" && !ACTIVITIES.cycling.verificationReady;
-    const outcome: DemoOutcome = cycling ? "review" : forced ?? get().demoOutcome;
-    if (outcome !== "verified") {
+    if (!session || session.state !== "VERIFYING" || !session.media) return;
+    const data = useAthlete.getState().data;
+    const activity = data.activities.find((a) => a.id === session.id);
+    if (
+      !activity ||
+      session.media.session_id !== session.id ||
+      session.media.user_id !== data.identity.sportixUserId
+    )
+      return;
+    if (session.elapsedSec <= 0 || session.distanceKm <= 0) {
       set({
         screen: "success",
         session: {
           ...session,
-          state: outcome === "review" ? "REVIEW_REQUIRED" : "INSUFFICIENT_EVIDENCE",
-          outcome,
+          state: "INSUFFICIENT_EVIDENCE",
+          outcome: "insufficient",
         },
       });
-      if (outcome === "insufficient") return;
+      return;
     }
-    const { postId, recordId } = publishAndSync(session, outcome);
+    const outcome = session.activity === "cycling" ? "review" : forced;
+    useAthlete.getState().dispatch(`submit-${session.id}-${activity.version}`, {
+      op: "activity.submit",
+      id: session.id,
+      version: activity.version,
+      metrics: {
+        durationSec: session.elapsedSec,
+        distanceKm: session.distanceKm,
+        steps: Math.round(session.steps),
+      },
+      evidenceRef: `synthetic-evidence-${session.id}`,
+    });
+    const next = useAthlete
+      .getState()
+      .dispatch(`simulate-${session.id}-${activity.version}`, {
+        op: "activity.simulate",
+        id: session.id,
+        version: activity.version + 1,
+        outcome: outcome === "verified" ? "pass" : outcome,
+      });
+    syncSyntheticViews();
+    const updated = next.activities.find((a) => a.id === session.id)!;
     set({
       screen: "success",
       session: {
         ...session,
-        postId,
-        sportIdRecordId: recordId,
+        state: updated.status as SessionState,
         outcome,
-        state:
-          outcome === "verified"
-            ? "VERIFIED_COMPLETED"
-            : outcome === "review"
-              ? "REVIEW_REQUIRED"
-              : "INSUFFICIENT_EVIDENCE",
-        media: session.media
-          ? { ...session.media, verification_state: outcome === "verified" ? "accepted" : "rejected" }
-          : null,
+        postId: next.posts.find((p) => p.activityId === session.id)?.id ?? null,
+        sportIdRecordId: `sid-${session.id}`,
       },
+    });
+    useShell.getState().notify({
+      category: "sport-id",
+      title: "Simulation recorded",
+      body: "Private SPORT ID test record updated. No verification or rewards granted.",
+      href: "/sport-id",
     });
   },
 
   showPost: () => set({ screen: "post" }),
 
   setAudience: (audience) => {
+    const session = get().session;
+    if (session) {
+      const a = useAthlete
+        .getState()
+        .data.activities.find((x) => x.id === session.id);
+      if (a) {
+        const next = useAthlete
+          .getState()
+          .dispatch(`consent-${a.id}-${a.version}`, {
+            op: "consent.set",
+            id: a.id,
+            version: a.version,
+            audience: audience === "ONLY ME" ? "PRIVATE" : audience,
+            shareMetrics: false,
+          });
+        syncSyntheticViews();
+        set({
+          session: {
+            ...session,
+            postId: next.posts.find((p) => p.activityId === a.id)?.id ?? null,
+          },
+        });
+      }
+    }
     set({ audience });
     useShell.getState().setAudience(audience);
   },
@@ -380,15 +371,18 @@ export const useGo = create<GoStore>((set, get) => ({
 
   resetDemo: () => {
     const session = get().session;
-    if (session?.media?.url.startsWith("blob:")) URL.revokeObjectURL(session.media.url);
+    if (session?.media?.url.startsWith("blob:"))
+      URL.revokeObjectURL(session.media.url);
     useSportix.getState().removeGoPosts();
     useSportId.getState().resetGoRecords();
     useWeekly.getState().revertGoSessions();
+    useAthlete.getState().reset();
+    syncSyntheticViews();
     seq = 1;
     set({
       screen: "home",
       session: null,
-      audience: "FRIENDS",
+      audience: "ONLY ME",
       subjectType: "PLACE",
       demoOutcome: "verified",
       lastTick: 0,

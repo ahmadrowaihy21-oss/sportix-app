@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useAthlete } from "@/lib/athlete/store";
+import { syncSyntheticViews } from "@/lib/athlete/bridge";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, IdCard, Play, Store, Users } from "lucide-react";
 import { OnboardingShell } from "@/components/onboarding/OnboardingShell";
@@ -11,7 +14,9 @@ export function ProductDock() {
   const lang = useShell((s) => s.lang);
   const onHome = pathname === "/";
   const onCommunities = pathname.startsWith("/communities");
-  const onMarket = pathname.startsWith("/marketplace");
+  const onMarket = ["/marketplace", "/services", "/partners"].some((path) =>
+    pathname.startsWith(path),
+  );
   const onSport = pathname.startsWith("/sport-id");
   const onGo = pathname.startsWith("/go-sportix");
 
@@ -22,10 +27,30 @@ export function ProductDock() {
     >
       <div className="mx-auto grid max-w-md grid-cols-5 md:max-w-3xl lg:max-w-4xl">
         <DockLink to="/" current={onHome} icon={Home} label={t(lang, "home")} />
-        <DockLink to="/communities" current={onCommunities} icon={Users} label={t(lang, "communities")} />
-        <DockLink to="/go-sportix" current={onGo} icon={Play} label={t(lang, "go")} />
-        <DockLink to="/marketplace" current={onMarket} icon={Store} label={t(lang, "market")} />
-        <DockLink to="/sport-id" current={onSport} icon={IdCard} label={t(lang, "sportId")} />
+        <DockLink
+          to="/communities"
+          current={onCommunities}
+          icon={Users}
+          label={t(lang, "communities")}
+        />
+        <DockLink
+          to="/go-sportix"
+          current={onGo}
+          icon={Play}
+          label={t(lang, "go")}
+        />
+        <DockLink
+          to="/marketplace"
+          current={onMarket}
+          icon={Store}
+          label={t(lang, "market")}
+        />
+        <DockLink
+          to="/sport-id"
+          current={onSport}
+          icon={IdCard}
+          label={t(lang, "sportId")}
+        />
       </div>
     </nav>
   );
@@ -58,6 +83,17 @@ function DockLink({
 }
 
 export function EcosystemFrame({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    // Read browser storage after hydration so server and first client markup agree.
+    try {
+      if (sessionStorage.getItem("sportix-onboarded") === "1")
+        useShell.setState({ onboarded: true, overlay: "none" });
+    } catch {
+      /* Keep onboarding visible when storage is unavailable. */
+    }
+    useAthlete.getState().hydrate();
+    syncSyntheticViews();
+  }, []);
   const overlay = useShell((s) => s.overlay);
   const onboarded = useShell((s) => s.onboarded);
 

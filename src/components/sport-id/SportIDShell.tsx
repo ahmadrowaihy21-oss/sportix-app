@@ -1,3 +1,5 @@
+import { ServiceHistory } from "@/components/services/ServiceHistory";
+import { IntegrationNotice } from "@/components/athlete/IntegrationNotice";
 import { Link } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { useSportId } from "@/lib/sport-id/store";
@@ -32,6 +34,8 @@ function Home() {
   return (
     <>
       <SportIDHeader />
+      <IntegrationNotice section="sport-id" />
+      {view === "owner" && <ServiceHistory />}
       <Link
         to="/academy"
         className="mx-4 mt-4 flex items-center justify-between gap-3 rounded-xl border border-lime/30 bg-lime/10 p-4 text-sm text-lime"

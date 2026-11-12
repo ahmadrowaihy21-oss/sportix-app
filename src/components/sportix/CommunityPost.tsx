@@ -1,3 +1,4 @@
+import { useAthlete } from "@/lib/athlete/store";
 import { useState } from "react";
 import { Trophy } from "lucide-react";
 import { useSportix } from "@/lib/sportix/store";
@@ -34,20 +35,32 @@ function AchievementHero({ post }: { post: CommunityPostModel }) {
   if (!a) return null;
   return (
     <div className="relative">
-      <img src={post.media.src} alt={post.media.alt} className="aspect-photo w-full object-cover" />
+      <img
+        src={post.media.src}
+        alt={post.media.alt}
+        className="aspect-photo w-full object-cover"
+      />
       <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/20 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-4">
-        <p className="text-2xs tracking-[0.18em] text-lime">{a.badgeLabel.toUpperCase()}</p>
+        <p className="text-2xs tracking-[0.18em] text-lime">
+          {a.badgeLabel.toUpperCase()}
+        </p>
         <div className="mt-1 flex items-center gap-2">
           <Trophy className="size-6 text-lime" aria-hidden="true" />
-          <h3 className="font-display text-3xl leading-none tracking-tight">{a.title}</h3>
+          <h3 className="font-display text-3xl leading-none tracking-tight">
+            {a.title}
+          </h3>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-2xs text-muted">
           <VerificationBadge state={post.verification} />
           <span>{a.date}</span>
-          {typeof a.spAi === "number" ? <span className="text-lime">+{a.spAi} SP AI</span> : null}
+          {typeof a.spAi === "number" ? (
+            <span className="text-lime">+{a.spAi} SP AI</span>
+          ) : null}
           {typeof a.sspAi === "number" ? <span>+{a.sspAi} SSP AI</span> : null}
-          {typeof a.weeklyRank === "number" ? <span>#{a.weeklyRank} Weekly</span> : null}
+          {typeof a.weeklyRank === "number" ? (
+            <span>#{a.weeklyRank} Weekly</span>
+          ) : null}
         </div>
       </div>
     </div>
@@ -59,10 +72,16 @@ function MatchHero({ post }: { post: CommunityPostModel }) {
   if (!m) return null;
   return (
     <div className="relative">
-      <img src={post.media.src} alt={post.media.alt} className="aspect-photo w-full object-cover" />
+      <img
+        src={post.media.src}
+        alt={post.media.alt}
+        className="aspect-photo w-full object-cover"
+      />
       <div className="absolute inset-0 bg-linear-to-t from-bg/90 via-transparent to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-4">
-        <p className="text-2xs tracking-[0.16em] text-muted uppercase">{m.title}</p>
+        <p className="text-2xs tracking-[0.16em] text-muted uppercase">
+          {m.title}
+        </p>
         <div className="mt-1 flex items-end justify-between gap-3">
           <div>
             <p className="text-sm font-medium">
@@ -73,7 +92,9 @@ function MatchHero({ post }: { post: CommunityPostModel }) {
             </p>
           </div>
           {m.score ? (
-            <p className="font-display text-4xl leading-none tracking-tight tabular">{m.score}</p>
+            <p className="font-display text-4xl leading-none tracking-tight tabular">
+              {m.score}
+            </p>
           ) : null}
         </div>
         <div className="mt-2">
@@ -92,7 +113,18 @@ export function CommunityPostCard({ post }: { post: CommunityPostModel }) {
   const blocked = useSportix((s) => s.blocked[post.authorId]);
   const muted = useSportix((s) => s.muted[post.authorId]);
 
+  const projections = useAthlete((s) => s.data.posts);
   if (blocked || muted) return null;
+  // Re-check live consent for deep links and stale component props as well as the feed.
+  if (
+    post.athleteProjection &&
+    !projections.some(
+      (p) =>
+        p.id === post.id &&
+        p.consentVersion === post.athleteProjection?.consentVersion,
+    )
+  )
+    return null;
 
   const showPerformance =
     Boolean(post.performance) &&
@@ -105,11 +137,23 @@ export function CommunityPostCard({ post }: { post: CommunityPostModel }) {
       <UserHeader
         userId={post.authorId}
         timeLabel={post.createdAt}
-        onOverflow={() => openSheet({ type: "overflow", postId: post.id, userId: post.authorId })}
+        onOverflow={() =>
+          openSheet({
+            type: "overflow",
+            postId: post.id,
+            userId: post.authorId,
+          })
+        }
       />
-      <p className="px-4 pb-2 text-2xs uppercase tracking-[0.14em] text-muted">{post.context}</p>
+      <p className="px-4 pb-2 text-2xs uppercase tracking-[0.14em] text-muted">
+        {post.context}
+      </p>
 
-      {post.kind === "achievement" ? (
+      {post.athleteProjection ? (
+        <p className="px-4 text-sm text-muted">
+          Synthetic activity · no media or health data shared
+        </p>
+      ) : post.kind === "achievement" ? (
         <AchievementHero post={post} />
       ) : post.kind === "match" ? (
         <MatchHero post={post} />
@@ -159,15 +203,25 @@ export function CommunityPostCard({ post }: { post: CommunityPostModel }) {
         <Caption text={post.caption} />
       </div>
       {post.goEvidence ? <GoEvidenceRow post={post} /> : null}
-      <EngagementProofBar post={post} onComments={() => openSheet({ type: "comments", postId: post.id })} />
-      <CommunityActionBar
+      <EngagementProofBar
         post={post}
-        onLike={() => toggleLike(post.id)}
-        onComment={() => openSheet({ type: "comments", postId: post.id })}
-        onRepost={() => openSheet({ type: "repost", postId: post.id })}
-        onSponsor={() => openSheet({ type: "sponsor", postId: post.id })}
-        onSave={() => toggleSave(post.id)}
+        onComments={() => openSheet({ type: "comments", postId: post.id })}
       />
+      {!post.athleteProjection ? (
+        <CommunityActionBar
+          post={post}
+          onLike={() => toggleLike(post.id)}
+          onComment={() => openSheet({ type: "comments", postId: post.id })}
+          onRepost={() => openSheet({ type: "repost", postId: post.id })}
+          onSponsor={() => openSheet({ type: "sponsor", postId: post.id })}
+          onSave={() => toggleSave(post.id)}
+        />
+      ) : (
+        <p className="px-4 py-3 text-xs text-muted">
+          Reposting and sponsorship are disabled for synthetic activity
+          projections.
+        </p>
+      )}
       <TopSponsorIndicator
         sponsor={post.sponsor}
         scope="post"
@@ -201,16 +255,27 @@ function GoEvidenceRow({ post }: { post: CommunityPostModel }) {
           WHY VERIFIED?
         </button>
         {ev.sportIdUpdated ? (
-          <span className="text-2xs font-semibold text-lime">SPORT ID UPDATED</span>
+          <span className="text-2xs font-semibold text-lime">
+            SPORT ID UPDATED
+          </span>
         ) : null}
       </div>
-      <BottomSheet open={open} onClose={() => setOpen(false)} title="SPORTIX EVIDENCE">
+      <BottomSheet
+        open={open}
+        onClose={() => setOpen(false)}
+        title="SPORTIX EVIDENCE"
+      >
         <div className="space-y-3 px-4 pb-8">
           <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-bg">
             {rows.map(([k, ok]) => (
-              <li key={k} className="flex items-center justify-between px-4 py-3 text-sm">
+              <li
+                key={k}
+                className="flex items-center justify-between px-4 py-3 text-sm"
+              >
                 <span>{k}</span>
-                <span className={ok ? "font-semibold text-lime" : "text-faint"}>{ok ? "✓" : "○"}</span>
+                <span className={ok ? "font-semibold text-lime" : "text-faint"}>
+                  {ok ? "✓" : "○"}
+                </span>
               </li>
             ))}
           </ul>
@@ -218,18 +283,22 @@ function GoEvidenceRow({ post }: { post: CommunityPostModel }) {
             Media type <span className="font-semibold">{ev.subjectType}</span>
           </p>
           <p className="text-sm">
-            Evidence quality <span className="font-semibold text-lime">{ev.quality}</span>
+            Evidence quality{" "}
+            <span className="font-semibold text-lime">{ev.quality}</span>
           </p>
           <p className="text-sm">
             Verification{" "}
             <span className="font-semibold text-lime">
-              {post.verification === "verified" ? "SPORTIX VERIFIED" : post.verification}
+              {post.verification === "verified"
+                ? "SPORTIX VERIFIED"
+                : post.verification}
             </span>
           </p>
-          <p className="text-3xs text-faint">Protected model internals are not shown.</p>
+          <p className="text-3xs text-faint">
+            Protected model internals are not shown.
+          </p>
         </div>
       </BottomSheet>
     </div>
   );
 }
-

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ScreenHeader } from "@/components/sportix/ScreenHeader";
@@ -7,8 +6,7 @@ import { useSportix } from "@/lib/sportix/store";
 import { useSportId } from "@/lib/sport-id/store";
 import { useGo } from "@/lib/go-sportix/store";
 import { ACTIVITIES, formatKm } from "@/lib/go-sportix/format";
-import { useWeekly } from "@/lib/weekly-legends/store";
-import { WhyVerifiedSheet } from "./WhyVerifiedSheet";
+
 import { ActivityAudienceChip } from "./ActivityAudienceChip";
 
 export function VerifiedActivityPostView() {
@@ -17,17 +15,8 @@ export function VerifiedActivityPostView() {
   const audience = useGo((s) => s.audience);
   const posts = useSportix((s) => s.posts);
   const navigate = useNavigate();
-  const [why, setWhy] = useState(false);
+
   const post = posts.find((p) => p.id === session?.postId);
-  const lastMove = useWeekly((s) => s.lastMove);
-  const entered = useWeekly((s) => s.enteredFromWeekly);
-
-  useEffect(() => {
-    if (!entered || session?.state !== "VERIFIED_COMPLETED") return;
-    const t = window.setTimeout(() => void navigate({ to: "/weekly-legends" }), 2200);
-    return () => window.clearTimeout(t);
-  }, [entered, session?.state, navigate]);
-
   if (!session) return null;
   const cfg = ACTIVITIES[session.activity];
 
@@ -45,31 +34,35 @@ export function VerifiedActivityPostView() {
 
   return (
     <div className="pb-10">
-      <ScreenHeader title="Verified activity post" subtitle={cfg.sportLabel} onBack={goHome} />
+      <ScreenHeader
+        title="Activity simulation"
+        subtitle={cfg.sportLabel}
+        onBack={goHome}
+      />
       <div className="flex items-center justify-between px-4 py-3">
         <ActivityAudienceChip audience={audience} />
-        {session.state === "VERIFIED_COMPLETED" ? (
-          <span className="text-2xs font-semibold text-lime">SPORT ID UPDATED</span>
+        {session.sportIdRecordId ? (
+          <span className="text-2xs text-lime">SPORT ID TEST RECORD</span>
         ) : null}
       </div>
-      {lastMove && session.state === "VERIFIED_COMPLETED" ? (
-        <p className="px-4 pb-2 text-sm font-semibold text-lime">
-          Weekly Legends #{lastMove.from} → #{lastMove.to} · +{lastMove.sspTo - lastMove.sspFrom} SSP AI
+      {post ? (
+        <CommunityPostCard post={post} />
+      ) : (
+        <p className="px-4 text-sm text-muted">
+          Private activity. Choose a sharing audience explicitly to make a
+          synthetic post available.
         </p>
-      ) : null}
-      {post ? <CommunityPostCard post={post} /> : (
-        <p className="px-4 text-sm text-muted">Post unavailable.</p>
       )}
       <div className="space-y-2 px-4 pt-4">
-        <Button className="w-full" onClick={() => setWhy(true)}>
-          WHY VERIFIED?
-        </Button>
+        <p className="text-sm text-muted">
+          Simulation only. No verified metrics or rewards were added.
+        </p>
         <Button variant="outline" className="w-full" onClick={openSportId}>
           VIEW IN SPORT ID
         </Button>
         <Button
           className="w-full"
-          variant={entered ? "lime" : "muted"}
+          variant="muted"
           onClick={() => void navigate({ to: "/weekly-legends" })}
         >
           SEE WEEKLY LEGENDS
@@ -87,9 +80,9 @@ export function VerifiedActivityPostView() {
         </Button>
       </div>
       <p className="px-4 pt-3 text-2xs text-faint">
-        {formatKm(session.distanceKm)} KM · this is the same attached evidence used for verification.
+        {formatKm(session.distanceKm)} KM · media stays in this browser and is
+        never copied to the community projection.
       </p>
-      <WhyVerifiedSheet open={why} onClose={() => setWhy(false)} />
     </div>
   );
 }

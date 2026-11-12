@@ -23,20 +23,36 @@ export function CheckoutScreen({
 
   const items = useMemo(() => {
     if (source === "cart") {
-      return cart.map((c) => ({ listing: listingById[c.listingId]!, qty: c.qty, variant: c.variant }));
+      return cart.map((c) => ({
+        listing: listingById[c.listingId]!,
+        qty: c.qty,
+        variant: c.variant,
+      }));
     }
     if (!listingId || !listingById[listingId]) return [];
-    return [{ listing: listingById[listingId]!, qty: 1, variant: listingById[listingId]!.variants?.[0] }];
+    return [
+      {
+        listing: listingById[listingId]!,
+        qty: 1,
+        variant: listingById[listingId]!.variants?.[0],
+      },
+    ];
   }, [source, cart, listingId]);
 
   const price = items.reduce((n, i) => n + i.listing.priceSar * i.qty, 0);
   const max = Math.min(price, points);
   const [used, setUsed] = useState(max);
-  const [method, setMethod] = useState<PayMethod>(max >= price ? "points" : "split");
+  const [method, setMethod] = useState<PayMethod>(
+    max >= price ? "points" : "split",
+  );
   const [demoFail, setDemoFail] = useState(false);
-  const [step, setStep] = useState<"form" | "processing" | "success" | "failed">("form");
+  const [step, setStep] = useState<
+    "form" | "processing" | "success" | "failed"
+  >("form");
   const [orderId, setOrderId] = useState<string | null>(null);
-  const [clientKey] = useState(() => `ck-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+  const [clientKey] = useState(
+    () => `ck-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+  );
 
   useEffect(() => {
     setUsed(max);
@@ -87,7 +103,7 @@ export function CheckoutScreen({
         <ScreenHeader title="Checkout" onBack={pop} />
         <div className="flex flex-col items-center gap-3 py-20">
           <span className="size-8 animate-spin rounded-full border-2 border-border border-t-lime" />
-          <p className="text-sm text-muted">Processing Marketplace payment</p>
+          <p className="text-sm text-muted">Checking purchase availability</p>
         </div>
       </div>
     );
@@ -96,10 +112,13 @@ export function CheckoutScreen({
   if (step === "failed") {
     return (
       <div>
-        <ScreenHeader title="Payment failed" onBack={pop} />
+        <ScreenHeader title="Backend required" onBack={pop} />
         <div className="space-y-3 px-4 py-8 text-center">
-          <p className="text-sm font-semibold">Payment failed</p>
-          <p className="text-xs text-muted">No points were deducted. Retry with another method.</p>
+          <p className="text-sm font-semibold">Purchase unavailable</p>
+          <p className="text-xs text-muted">
+            No payment, points debit, coupon or purchase was approved. An
+            operational backend is required.
+          </p>
           <Button className="w-full" onClick={() => setStep("form")}>
             Retry
           </Button>
@@ -124,14 +143,18 @@ export function CheckoutScreen({
           <p className="text-lg font-semibold">{first.listing.title}</p>
           <p className="text-sm text-muted">
             {formatSar(order?.pointsUsed ?? used)} in SPORTIX AI Points
-            {(order?.cashSar ?? remaining) > 0 ? ` · ${formatSar(order?.cashSar ?? remaining)} cash` : ""}
+            {(order?.cashSar ?? remaining) > 0
+              ? ` · ${formatSar(order?.cashSar ?? remaining)} cash`
+              : ""}
           </p>
           <p className="text-2xs text-faint">Ref {order?.auditRef}</p>
           <div className="grid gap-2 pt-2">
             {order?.couponId ? (
               <Button
                 className="w-full"
-                onClick={() => push({ type: "coupon-qr", couponId: order.couponId! })}
+                onClick={() =>
+                  push({ type: "coupon-qr", couponId: order.couponId! })
+                }
               >
                 SHOW QR
               </Button>
@@ -143,7 +166,11 @@ export function CheckoutScreen({
             >
               View Marketplace history
             </Button>
-            <Button variant="ghost" className="w-full" onClick={() => useMarket.getState().closeAll()}>
+            <Button
+              variant="ghost"
+              className="w-full"
+              onClick={() => useMarket.getState().closeAll()}
+            >
               Done
             </Button>
           </div>
@@ -159,15 +186,26 @@ export function CheckoutScreen({
       <ScreenHeader title="Checkout" subtitle="Marketplace" onBack={pop} />
       <div className="space-y-5 px-4 py-4">
         {items.map((item) => (
-          <div key={item.listing.id} className="flex gap-3 rounded-xl border border-border bg-surface p-3">
-            <img src={item.listing.image} alt="" className="size-16 rounded-md object-cover" />
+          <div
+            key={item.listing.id}
+            className="flex gap-3 rounded-xl border border-border bg-surface p-3"
+          >
+            <img
+              src={item.listing.image}
+              alt=""
+              className="size-16 rounded-md object-cover"
+            />
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold">{item.listing.title}</p>
               <p className="text-2xs text-muted">
                 {partners[item.listing.partnerId]?.name} · ×{item.qty}
               </p>
-              {partner && item === first ? <VerifiedPartnerBadge trust={partner.trust} compact /> : null}
-              <p className="mt-1 font-display text-lg tabular">{formatSar(item.listing.priceSar * item.qty)}</p>
+              {partner && item === first ? (
+                <VerifiedPartnerBadge trust={partner.trust} compact />
+              ) : null}
+              <p className="mt-1 font-display text-lg tabular">
+                {formatSar(item.listing.priceSar * item.qty)}
+              </p>
             </div>
           </div>
         ))}
@@ -180,7 +218,9 @@ export function CheckoutScreen({
         />
 
         <div>
-          <p className="text-2xs font-semibold uppercase tracking-[0.16em] text-muted">Payment method</p>
+          <p className="text-2xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Payment method
+          </p>
           <div className="mt-2 grid grid-cols-2 gap-2">
             {(
               [
@@ -198,7 +238,8 @@ export function CheckoutScreen({
                   if (id === "points") setUsed(max);
                 }}
                 className={
-                  method === id || (method === "split" && id === "points" && used > 0)
+                  method === id ||
+                  (method === "split" && id === "points" && used > 0)
                     ? "rounded-md border border-lime bg-lime/10 px-3 py-2.5 text-2xs font-medium"
                     : "rounded-md border border-border px-3 py-2.5 text-2xs text-muted"
                 }
@@ -238,11 +279,14 @@ export function CheckoutScreen({
         </div>
 
         <p className="text-3xs text-muted">
-          By confirming you accept partner terms. Partners do not receive SPORT ID or Community graph data.
+          By confirming you accept partner terms. Partners do not receive SPORT
+          ID or Community graph data.
         </p>
 
         <Button className="w-full" onClick={() => setStep("processing")}>
-          {remaining === 0 ? "CONFIRM WITH POINTS" : `PAY ${formatSar(remaining)}`}
+          {remaining === 0
+            ? "CHECK AVAILABILITY"
+            : `CHECK ${formatSar(remaining)} ORDER`}
         </Button>
       </div>
     </div>
