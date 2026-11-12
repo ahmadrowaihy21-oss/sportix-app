@@ -142,7 +142,7 @@ try {
       });
     }
   }
-  // Ignore only external ad-blocked brand/network resources; uncaught errors are never filtered.
+  // A passing journey must also be free of page and console errors.
   assert.deepEqual(errors, []);
   checks.push(
     "Six routes render without overflow or console errors at desktop and mobile sizes",
