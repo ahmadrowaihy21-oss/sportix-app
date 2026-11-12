@@ -257,6 +257,7 @@ export function ServiceWorkspace({ partner = false }: { partner?: boolean }) {
       <nav aria-label="Service sections" className="flex flex-wrap gap-2">
         <button
           className={btn}
+          disabled={!view}
           aria-pressed={tab === "catalog"}
           onClick={() => setTab("catalog")}
         >
@@ -264,13 +265,18 @@ export function ServiceWorkspace({ partner = false }: { partner?: boolean }) {
         </button>
         <button
           className={btn}
+          disabled={!view}
           aria-pressed={tab === "requests"}
           onClick={() => setTab("requests")}
         >
           {text("الطلبات", "Requests")}
         </button>
         {partner && role === "partner" && (
-          <button className={btn} onClick={() => setTab("new")}>
+          <button
+            className={btn}
+            disabled={!view}
+            onClick={() => setTab("new")}
+          >
             {text("عرض جديد", "New offer")}
           </button>
         )}

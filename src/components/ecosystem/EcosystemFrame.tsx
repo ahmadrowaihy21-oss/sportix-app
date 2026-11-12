@@ -14,7 +14,9 @@ export function ProductDock() {
   const lang = useShell((s) => s.lang);
   const onHome = pathname === "/";
   const onCommunities = pathname.startsWith("/communities");
-  const onMarket = pathname.startsWith("/marketplace");
+  const onMarket = ["/marketplace", "/services", "/partners"].some((path) =>
+    pathname.startsWith(path),
+  );
   const onSport = pathname.startsWith("/sport-id");
   const onGo = pathname.startsWith("/go-sportix");
 

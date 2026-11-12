@@ -18,7 +18,11 @@ const child = spawn(
     String(port),
   ],
   {
-    env: { ...process.env, VITE_AUTH_ENABLED: "false" },
+    env: {
+      ...process.env,
+      VITE_AUTH_ENABLED: "false",
+      ...(built ? { NETLIFY: "true" } : {}),
+    },
     stdio: "ignore",
     detached: true,
   },
@@ -50,9 +54,14 @@ try {
   );
   page = await context.newPage();
   await mkdir("evidence/browser", { recursive: true });
+  page.on("response", (response) => {
+    if (response.status() >= 400)
+      console.error(`HTTP ${response.status()} ${response.url()}`);
+  });
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
+    if (message.type() === "error")
+      errors.push(`${message.text()} ${message.location().url ?? ""}`);
   });
   await page.goto(`${base}/services`);
   await page.getByTestId("offer-demo-club").waitFor();
