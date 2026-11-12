@@ -1,7 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useServices } from "@/lib/services/use-services";
 export function ServiceHistory() {
-  const { view } = useServices("athlete");
+  const { view, error } = useServices("athlete");
+  if (!view)
+    return (
+      <p className="m-4 text-sm text-muted" dir="rtl">
+        {error ? "تعذر تحميل طلبات الخدمات." : "جارٍ تحميل طلبات الخدمات…"}
+      </p>
+    );
   return (
     <section
       className="m-4 rounded-xl border border-border p-4 text-sm"

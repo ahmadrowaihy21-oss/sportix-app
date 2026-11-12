@@ -200,9 +200,14 @@ export function ServiceWorkspace({ partner = false }: { partner?: boolean }) {
               "طلبات بحسابات موثقة. قبول الطلب لا يُعد دفعًا أو إصدار قسيمة؛ تظهر حالة كل خطوة في الطلب.",
               "Authenticated requests. Acceptance does not confirm payment or issue an entitlement.",
             )}
-        {sandbox && partner && (
+        {partner && (
           <label className="mt-3 block">
-            {text("شخصية التجربة", "Demo role")}{" "}
+            {sandbox
+              ? text("شخصية التجربة", "Demo role")
+              : text(
+                  "دور العمل — تتحقق منه صلاحيات حسابك",
+                  "Workspace role — verified against your account permissions",
+                )}{" "}
             <select
               aria-label="Demo role"
               className="mx-2 rounded bg-bg p-2"

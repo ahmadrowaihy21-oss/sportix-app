@@ -82,6 +82,13 @@ function DockLink({
 
 export function EcosystemFrame({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Read browser storage after hydration so server and first client markup agree.
+    try {
+      if (sessionStorage.getItem("sportix-onboarded") === "1")
+        useShell.setState({ onboarded: true, overlay: "none" });
+    } catch {
+      /* Keep onboarding visible when storage is unavailable. */
+    }
     useAthlete.getState().hydrate();
     syncSyntheticViews();
   }, []);

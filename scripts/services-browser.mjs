@@ -24,6 +24,7 @@ const child = spawn(
   },
 );
 let browser;
+let page;
 const errors = [];
 const checks = [];
 try {
@@ -47,7 +48,8 @@ try {
   await context.addInitScript(() =>
     sessionStorage.setItem("sportix-onboarded", "1"),
   );
-  const page = await context.newPage();
+  page = await context.newPage();
+  await mkdir("evidence/browser", { recursive: true });
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => {
     if (message.type() === "error") errors.push(message.text());
@@ -101,7 +103,7 @@ try {
   checks.push("Cancellation is visible to athlete");
   await page.goto(`${base}/sport-id`);
   await page.getByText("رحلتي مع الشركاء", { exact: true }).waitFor();
-  assert.match(await page.locator("body").innerText(), /طلبات الخدمات: 2/);
+  await page.getByText(/طلبات الخدمات: 2/).waitFor();
   checks.push("SPORT ID projects the shared request history");
   await mkdir("evidence/browser", { recursive: true });
   for (const [size, width, height] of [
@@ -141,6 +143,33 @@ try {
     JSON.stringify({ passed: true, checks }, null, 2),
   );
   console.log(JSON.stringify({ passed: true, checks }, null, 2));
+} catch (error) {
+  if (page) {
+    await page
+      .screenshot({
+        path: `evidence/browser/${built ? "built" : "dev"}-failure.png`,
+        fullPage: true,
+      })
+      .catch(() => {});
+    await writeFile(
+      `evidence/browser/${built ? "built" : "dev"}-failure.json`,
+      JSON.stringify(
+        {
+          message: String(error),
+          checks,
+          errors,
+          body: await page
+            .locator("body")
+            .innerText()
+            .catch(() => ""),
+        },
+        null,
+        2,
+      ),
+    );
+  }
+  console.error(JSON.stringify({ checks, errors }));
+  throw error;
 } finally {
   if (browser) await browser.close();
   try {

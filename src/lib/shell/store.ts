@@ -72,14 +72,6 @@ function persistOnboarded(v: boolean) {
   }
 }
 
-function wasOnboarded() {
-  try {
-    return sessionStorage.getItem("sportix-onboarded") === "1";
-  } catch {
-    return false;
-  }
-}
-
 let nseq = 1;
 function nid() {
   nseq += 1;
@@ -119,9 +111,9 @@ const seed: AppNotification[] = [
 ];
 
 export const useShell = create<ShellStore>((set, get) => ({
-  onboarded: wasOnboarded(),
+  onboarded: false,
   onboardingStep: 1,
-  overlay: wasOnboarded() ? "none" : "onboarding",
+  overlay: "onboarding",
   lang: "en",
   audience: "FRIENDS",
   sports: ["Football", "Running"],
