@@ -1,0 +1,12 @@
+{
+  "folders": [{ "name": "SPORTIX Integration Lab", "path": "tools/integration-lab" }],
+  "settings": { "telemetry.telemetryLevel": "off" },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      { "label": "Install test tools", "type": "shell", "command": "npm ci", "options": { "cwd": "${workspaceFolder}" }, "problemMatcher": [] },
+      { "label": "Run Postman smoke test", "type": "shell", "command": "npm test", "options": { "cwd": "${workspaceFolder}" }, "group": { "kind": "test", "isDefault": true }, "problemMatcher": [] },
+      { "label": "Check Google Cloud access", "type": "shell", "command": "npm run cloud:check", "options": { "cwd": "${workspaceFolder}" }, "problemMatcher": [] }
+    ]
+  }
+}

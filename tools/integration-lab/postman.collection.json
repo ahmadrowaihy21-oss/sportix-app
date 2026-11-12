@@ -1,0 +1,92 @@
+{
+  "info": {
+    "name": "SPORTIX Integration Lab — synthetic only",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:4318"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/healthz"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Synthetic lab identified', () => pm.expect(pm.response.json().mode).to.eql('synthetic'));",
+              "pm.test('Service is healthy', () => pm.expect(pm.response.json().status).to.eql('ok'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Synthetic catalog",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/catalog"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Currency is SAR', () => pm.expect(pm.response.json().products[0].currency).to.eql('SAR'));",
+              "pm.test('Prices use integer minor units', () => pm.expect(Number.isInteger(pm.response.json().products[0].priceMinor)).to.eql(true));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Unknown route",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/missing"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 404', () => pm.response.to.have.status(404));",
+              "pm.test('Explicit not found', () => pm.expect(pm.response.json().error).to.eql('not_found'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Writes are blocked",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/catalog"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 405', () => pm.response.to.have.status(405));",
+              "pm.test('Read only lab', () => pm.expect(pm.response.json().error).to.eql('read_only_lab'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
