@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScreenHeader } from "@/components/sportix/ScreenHeader";
 import { ACTIVITIES } from "@/lib/go-sportix/format";
@@ -16,29 +15,35 @@ export function ActivityPreflight() {
 
   return (
     <div>
-      <ScreenHeader title={cfg.label} subtitle="Ready to start" onBack={openSelect} />
+      <ScreenHeader
+        title={cfg.label}
+        subtitle="Ready to start"
+        onBack={openSelect}
+      />
       <div className="space-y-4 px-4 py-4">
         <ActivityAudienceChip audience={audience} onClick={openSettings} />
         <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
-          <ReadyRow k="GPS" v="READY ✓" />
-          <ReadyRow k="HEALTH" v="CONNECTED ✓" />
-          <ReadyRow k="WATCH" v="CONNECTED ✓" />
-          <ReadyRow k="LOCATION" v="READY ✓" />
+          <ReadyRow k="GPS" v="SIMULATED · NOT CONNECTED" />
+          <ReadyRow k="HEALTH" v="NOT CONNECTED" />
+          <ReadyRow k="WATCH" v="NOT CONNECTED" />
+          <ReadyRow k="LOCATION" v="SIMULATED · NOT CONNECTED" />
         </ul>
         <div className="rounded-2xl border border-lime/35 bg-lime/10 p-4">
           <p className="text-2xs font-semibold uppercase tracking-[0.16em] text-lime">
             Media evidence
           </p>
-          <p className="mt-1 text-sm font-semibold">Required before completion</p>
+          <p className="mt-1 text-sm font-semibold">
+            Required before completion
+          </p>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            You may add a photo/video of yourself or the activity place. You are never required to
-            show yourself.
+            You may add a photo/video of yourself or the activity place. You are
+            never required to show yourself.
           </p>
         </div>
         {session.activity === "cycling" ? (
           <p className="rounded-xl border border-warn/40 bg-warn/10 px-3 py-2 text-2xs text-warn">
-            Cycling is a target experience. Technical verification profile is pending — this will not
-            claim SPORTIX VERIFIED production cycling.
+            Cycling is a target experience. Technical verification profile is
+            pending — this will not claim SPORTIX VERIFIED production cycling.
           </p>
         ) : null}
         <Button className="h-14 w-full text-base" onClick={startActivity}>
@@ -54,7 +59,6 @@ function ReadyRow({ k, v }: { k: string; v: string }) {
     <li className="flex items-center justify-between px-4 py-3 text-sm">
       <span className="tracking-[0.12em] text-muted">{k}</span>
       <span className="inline-flex items-center gap-1 font-semibold text-lime">
-        <Check className="size-3.5" />
         {v.replace(" ✓", "")}
       </span>
     </li>

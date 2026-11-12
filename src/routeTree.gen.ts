@@ -14,6 +14,9 @@ import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as CommunitiesRouteImport } from './routes/communities'
 import { Route as GoSportixRouteImport } from './routes/go-sportix'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as MarketplaceIntegrationRouteImport } from './routes/marketplace-integration'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SportIdRouteImport } from './routes/sport-id'
 import { Route as WeeklyLegendsRouteImport } from './routes/weekly-legends'
 
@@ -42,6 +45,21 @@ const MarketplaceRoute = MarketplaceRouteImport.update({
   path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketplaceIntegrationRoute = MarketplaceIntegrationRouteImport.update({
+  id: '/marketplace-integration',
+  path: '/marketplace-integration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportIdRoute = SportIdRouteImport.update({
   id: '/sport-id',
   path: '/sport-id',
@@ -59,6 +77,9 @@ export interface FileRoutesByFullPath {
   '/communities': typeof CommunitiesRoute
   '/go-sportix': typeof GoSportixRoute
   '/marketplace': typeof MarketplaceRoute
+  '/marketplace-integration': typeof MarketplaceIntegrationRoute
+  '/partners': typeof PartnersRoute
+  '/services': typeof ServicesRoute
   '/sport-id': typeof SportIdRoute
   '/weekly-legends': typeof WeeklyLegendsRoute
 }
@@ -68,6 +89,9 @@ export interface FileRoutesByTo {
   '/communities': typeof CommunitiesRoute
   '/go-sportix': typeof GoSportixRoute
   '/marketplace': typeof MarketplaceRoute
+  '/marketplace-integration': typeof MarketplaceIntegrationRoute
+  '/partners': typeof PartnersRoute
+  '/services': typeof ServicesRoute
   '/sport-id': typeof SportIdRoute
   '/weekly-legends': typeof WeeklyLegendsRoute
 }
@@ -78,6 +102,9 @@ export interface FileRoutesById {
   '/communities': typeof CommunitiesRoute
   '/go-sportix': typeof GoSportixRoute
   '/marketplace': typeof MarketplaceRoute
+  '/marketplace-integration': typeof MarketplaceIntegrationRoute
+  '/partners': typeof PartnersRoute
+  '/services': typeof ServicesRoute
   '/sport-id': typeof SportIdRoute
   '/weekly-legends': typeof WeeklyLegendsRoute
 }
@@ -89,6 +116,9 @@ export interface FileRouteTypes {
     | '/communities'
     | '/go-sportix'
     | '/marketplace'
+    | '/marketplace-integration'
+    | '/partners'
+    | '/services'
     | '/sport-id'
     | '/weekly-legends'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +128,9 @@ export interface FileRouteTypes {
     | '/communities'
     | '/go-sportix'
     | '/marketplace'
+    | '/marketplace-integration'
+    | '/partners'
+    | '/services'
     | '/sport-id'
     | '/weekly-legends'
   id:
@@ -107,6 +140,9 @@ export interface FileRouteTypes {
     | '/communities'
     | '/go-sportix'
     | '/marketplace'
+    | '/marketplace-integration'
+    | '/partners'
+    | '/services'
     | '/sport-id'
     | '/weekly-legends'
   fileRoutesById: FileRoutesById
@@ -117,6 +153,9 @@ export interface RootRouteChildren {
   CommunitiesRoute: typeof CommunitiesRoute
   GoSportixRoute: typeof GoSportixRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  MarketplaceIntegrationRoute: typeof MarketplaceIntegrationRoute
+  PartnersRoute: typeof PartnersRoute
+  ServicesRoute: typeof ServicesRoute
   SportIdRoute: typeof SportIdRoute
   WeeklyLegendsRoute: typeof WeeklyLegendsRoute
 }
@@ -158,6 +197,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marketplace-integration': {
+      id: '/marketplace-integration'
+      path: '/marketplace-integration'
+      fullPath: '/marketplace-integration'
+      preLoaderRoute: typeof MarketplaceIntegrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sport-id': {
       id: '/sport-id'
       path: '/sport-id'
@@ -181,6 +241,9 @@ const rootRouteChildren: RootRouteChildren = {
   CommunitiesRoute: CommunitiesRoute,
   GoSportixRoute: GoSportixRoute,
   MarketplaceRoute: MarketplaceRoute,
+  MarketplaceIntegrationRoute: MarketplaceIntegrationRoute,
+  PartnersRoute: PartnersRoute,
+  ServicesRoute: ServicesRoute,
   SportIdRoute: SportIdRoute,
   WeeklyLegendsRoute: WeeklyLegendsRoute,
 }

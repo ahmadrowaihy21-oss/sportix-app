@@ -1,0 +1,42 @@
+name: ATHLETE MVP acceptance
+on:
+  pull_request:
+    paths:
+      [
+        "src/**",
+        "tests/**",
+        "scripts/services-browser.mjs",
+        "scripts/athlete-test-loader.mjs",
+        "migrations/**",
+        "package*.json",
+        ".github/workflows/athlete-mvp.yml",
+      ]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  journeys:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VITE_AUTH_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run test:mvp
+      - run: npm run typecheck:athlete
+      - run: npm run build:netlify
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/services-browser.mjs
+      - run: node scripts/services-browser.mjs --built
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: athlete-browser-evidence
+          path: evidence/browser/

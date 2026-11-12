@@ -4,7 +4,8 @@ export type TabId = "feed" | "achievements" | "matches" | "discover" | "people";
 
 export type FriendshipState = "none" | "requested" | "incoming" | "friends";
 
-export type VerificationState = "verified" | "pending" | "insufficient" | "unverified";
+export type VerificationState =
+  "verified" | "pending" | "insufficient" | "unverified";
 
 export type PostKind = "activity" | "social" | "match" | "achievement";
 
@@ -70,6 +71,11 @@ export interface EngagementSummary {
 }
 
 export interface CommunityPost {
+  athleteProjection?: {
+    activityId: string;
+    consentVersion: number;
+    audience: "FRIENDS" | "PUBLIC";
+  };
   id: string;
   authorId: string;
   kind: PostKind;

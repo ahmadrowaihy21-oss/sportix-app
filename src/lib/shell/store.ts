@@ -146,10 +146,10 @@ export const useShell = create<ShellStore>((set, get) => ({
     set({
       onboarded: true,
       overlay: "none",
-      location: "granted",
-      camera: "granted",
-      health: "connected",
-      notifPerm: "granted",
+      location: "prompt",
+      camera: "prompt",
+      health: "prompt",
+      notifPerm: "prompt",
     });
   },
   resetOnboarding: () => {
@@ -173,7 +173,9 @@ export const useShell = create<ShellStore>((set, get) => ({
   setPerm: (k, v) => set({ [k]: v } as Partial<ShellStore>),
   toggleMute: (c) =>
     set((s) => ({
-      muted: s.muted.includes(c) ? s.muted.filter((x) => x !== c) : [...s.muted, c],
+      muted: s.muted.includes(c)
+        ? s.muted.filter((x) => x !== c)
+        : [...s.muted, c],
     })),
   setDigest: (digest) => set({ digest }),
   notify: (n) => {
@@ -187,7 +189,12 @@ export const useShell = create<ShellStore>((set, get) => ({
   },
   markRead: (id) =>
     set((s) => ({
-      notifications: s.notifications.map((n) => (n.id === id ? { ...n, read: true } : n)),
+      notifications: s.notifications.map((n) =>
+        n.id === id ? { ...n, read: true } : n,
+      ),
     })),
-  markAllRead: () => set((s) => ({ notifications: s.notifications.map((n) => ({ ...n, read: true })) })),
+  markAllRead: () =>
+    set((s) => ({
+      notifications: s.notifications.map((n) => ({ ...n, read: true })),
+    })),
 }));

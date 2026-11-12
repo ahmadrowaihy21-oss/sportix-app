@@ -1,5 +1,5 @@
 import { Bell, Play, Plus, Swords, Trophy } from "lucide-react";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useGo } from "@/lib/go-sportix/store";
 import { useMarket } from "@/lib/marketplace/store";
@@ -25,9 +25,17 @@ export function HomeShell() {
   const records = useSportId((s) => s.goRecords);
   const points = useMarket((s) => s.pointsBalance);
   const rooms = useRooms((s) => s.rooms);
-  const pending = rooms.filter((r) => r.viewerIn && (r.state === "CONFIRMING" || r.state === "FULL" || r.state === "REVIEW"));
+  const pending = rooms.filter(
+    (r) =>
+      r.viewerIn &&
+      (r.state === "CONFIRMING" || r.state === "FULL" || r.state === "REVIEW"),
+  );
   const prayer = nextPrayer();
-  const live = session && ["ACTIVE", "PAUSED", "MEDIA_REQUIRED", "MEDIA_ATTACHED"].includes(session.state);
+  const live =
+    session &&
+    ["ACTIVE", "PAUSED", "MEDIA_REQUIRED", "MEDIA_ATTACHED"].includes(
+      session.state,
+    );
 
   const goStart = () => {
     useGo.getState().openSelect();
@@ -43,7 +51,9 @@ export function HomeShell() {
     <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col pb-16 md:max-w-3xl lg:max-w-4xl">
       <header className="flex h-14 items-center justify-between px-4">
         <div>
-          <p className="font-display text-sm tracking-[0.18em] text-lime">SPORTIX</p>
+          <p className="font-display text-sm tracking-[0.18em] text-lime">
+            SPORTIX
+          </p>
           <p className="text-2xs text-muted">What should I do next?</p>
         </div>
         <div className="flex items-center gap-1">
@@ -64,18 +74,35 @@ export function HomeShell() {
       </header>
 
       <div className="space-y-4 px-4 pb-8">
+        <Link
+          to="/services"
+          className="block rounded-2xl border border-lime/30 bg-lime/10 p-4 text-lime"
+          dir="rtl"
+        >
+          <strong>خدمات الرياضي والشركاء</strong>
+          <span className="mt-1 block text-sm">
+            أندية · أكاديميات · مدربون · ملاعب · منتجات · قسائم · اشتراكات ·
+            IMPACT
+          </span>
+        </Link>
         {prayerOn ? (
           <div className="rounded-2xl border border-border bg-surface px-4 py-3">
-            <p className="text-2xs font-semibold tracking-[0.14em] text-muted">{t(lang, "prayer")}</p>
+            <p className="text-2xs font-semibold tracking-[0.14em] text-muted">
+              {t(lang, "prayer")}
+            </p>
             <p className="mt-1 text-sm">
               Next {prayer.name} · {prayer.at} · in {prayer.mins} min
             </p>
-            <p className="text-3xs text-faint">Optional awareness. Not scored. Not rewarded.</p>
+            <p className="text-3xs text-faint">
+              Optional awareness. Not scored. Not rewarded.
+            </p>
           </div>
         ) : null}
 
         <section>
-          <p className="text-2xs font-semibold tracking-[0.16em] text-lime">{t(lang, "nextMove")}</p>
+          <p className="text-2xs font-semibold tracking-[0.16em] text-lime">
+            {t(lang, "nextMove")}
+          </p>
           {live ? (
             <Button
               className="mt-3 h-14 w-full"
@@ -94,9 +121,15 @@ export function HomeShell() {
             </Button>
           )}
           <div className="mt-2 grid grid-cols-2 gap-2">
-            <button type="button" onClick={goFind} className="rounded-2xl border border-border bg-surface px-3 py-3 text-left">
+            <button
+              type="button"
+              onClick={goFind}
+              className="rounded-2xl border border-border bg-surface px-3 py-3 text-left"
+            >
               <Swords className="size-4 text-lime" />
-              <p className="mt-2 text-2xs font-semibold">{t(lang, "findGame")}</p>
+              <p className="mt-2 text-2xs font-semibold">
+                {t(lang, "findGame")}
+              </p>
             </button>
             <button
               type="button"
@@ -108,7 +141,9 @@ export function HomeShell() {
               className="rounded-2xl border border-border bg-surface px-3 py-3 text-left"
             >
               <Plus className="size-4 text-lime" />
-              <p className="mt-2 text-2xs font-semibold">{t(lang, "createGame")}</p>
+              <p className="mt-2 text-2xs font-semibold">
+                {t(lang, "createGame")}
+              </p>
             </button>
           </div>
         </section>
@@ -122,7 +157,9 @@ export function HomeShell() {
             <Trophy className="size-4" /> {t(lang, "weekly")}
           </p>
           <div className="mt-2 flex items-end justify-between">
-            <p className="font-display text-5xl leading-none">#{meGlobal?.rank ?? "—"}</p>
+            <p className="font-display text-5xl leading-none">
+              #{meGlobal?.rank ?? "—"}
+            </p>
             <WeekCountdown endsAt={endsAt} />
           </div>
           <p className="mt-2 text-sm">
@@ -137,7 +174,9 @@ export function HomeShell() {
           onClick={() => void navigate({ to: "/sport-id" })}
           className="w-full rounded-2xl border border-border bg-surface px-4 py-4 text-left"
         >
-          <p className="text-2xs font-semibold tracking-[0.16em] text-muted">SPORT ID</p>
+          <p className="text-2xs font-semibold tracking-[0.16em] text-muted">
+            SPORT ID
+          </p>
           <p className="mt-1 text-sm">
             {records[0]
               ? `Latest: ${records[0].distanceKm.toFixed(2)} KM ${records[0].activity} · verified`
@@ -146,7 +185,9 @@ export function HomeShell() {
         </button>
 
         <section>
-          <p className="text-2xs font-semibold tracking-[0.16em] text-muted">MATCHES FOR YOU</p>
+          <p className="text-2xs font-semibold tracking-[0.16em] text-muted">
+            MATCHES FOR YOU
+          </p>
           <div className="mt-2 space-y-2">
             {rooms.slice(0, 2).map((r) => (
               <button
@@ -184,11 +225,20 @@ export function HomeShell() {
           onClick={() => void navigate({ to: "/marketplace" })}
           className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-left"
         >
-          <p className="text-2xs font-semibold tracking-[0.16em] text-muted">MARKETPLACE VALUE</p>
-          <p className="mt-1 text-sm">{points.toLocaleString()} SPORTIX AI Points · spending never changes SSP</p>
+          <p className="text-2xs font-semibold tracking-[0.16em] text-muted">
+            MARKETPLACE VALUE
+          </p>
+          <p className="mt-1 text-sm">
+            {points.toLocaleString()} SPORTIX AI Points · spending never changes
+            SSP
+          </p>
         </button>
 
-        <button type="button" onClick={() => overlay("settings")} className="w-full text-center text-2xs text-faint">
+        <button
+          type="button"
+          onClick={() => overlay("settings")}
+          className="w-full text-center text-2xs text-faint"
+        >
           {t(lang, "settings")}
         </button>
       </div>

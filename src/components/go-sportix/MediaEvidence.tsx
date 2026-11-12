@@ -2,7 +2,13 @@ import { useRef } from "react";
 import { Camera, ImagePlus, MapPin, User, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScreenHeader } from "@/components/sportix/ScreenHeader";
-import { ACTIVITIES, currentPace, formatDuration, formatKm, formatPace } from "@/lib/go-sportix/format";
+import {
+  ACTIVITIES,
+  currentPace,
+  formatDuration,
+  formatKm,
+  formatPace,
+} from "@/lib/go-sportix/format";
 import { useGo } from "@/lib/go-sportix/store";
 import { cn } from "@/lib/utils";
 import { EvidenceStatus } from "./EvidenceStatus";
@@ -23,7 +29,9 @@ export function MediaEvidenceRequirement() {
   if (!session) return null;
   const cfg = ACTIVITIES[session.activity];
   const ready = Boolean(session.media);
-  const pace = formatPace(currentPace(session.elapsedSec, session.distanceKm, cfg.paceSecPerKm));
+  const pace = formatPace(
+    currentPace(session.elapsedSec, session.distanceKm, cfg.paceSecPerKm),
+  );
 
   const onFile = (file: File | undefined) => {
     if (file) attachMedia(file);
@@ -31,22 +39,46 @@ export function MediaEvidenceRequirement() {
 
   return (
     <div className="pb-8">
-      <ScreenHeader title="Media evidence required" subtitle="Stop safely first" onBack={returnToActivity} />
+      <ScreenHeader
+        title="Media evidence required"
+        subtitle="Stop safely first"
+        onBack={returnToActivity}
+      />
       <div className="space-y-4 px-4 py-4">
         <p className="rounded-xl border border-warn/40 bg-warn/10 px-3 py-3 text-sm text-warn">
-          Please stop safely before capturing media. Never take a photo while running or cycling.
+          Please stop safely before capturing media. Never take a photo while
+          running or cycling.
         </p>
         <p className="text-sm leading-relaxed text-muted">
-          Add a photo or short video from this activity before SPORTIX can complete verification.
+          Use the synthetic sample to test this flow. Uploaded media stays local
+          and is not verified.
         </p>
 
+        <Button
+          className="w-full"
+          onClick={() =>
+            attachMedia(
+              new File(
+                [
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="640" height="360" fill="#101811"/><text x="60" y="190" fill="#b4ff52" font-size="30">SPORTIX SYNTHETIC TEST</text></svg>',
+                ],
+                "synthetic-evidence.svg",
+                { type: "image/svg+xml" },
+              ),
+            )
+          }
+        >
+          USE SYNTHETIC EVIDENCE
+        </Button>
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => setSubjectType("SELF")}
             className={cn(
               "rounded-2xl border px-3 py-4 text-left",
-              subjectType === "SELF" ? "border-lime bg-lime/10" : "border-border bg-surface",
+              subjectType === "SELF"
+                ? "border-lime bg-lime/10"
+                : "border-border bg-surface",
             )}
           >
             <User className="size-5 text-lime" />
@@ -58,12 +90,16 @@ export function MediaEvidenceRequirement() {
             onClick={() => setSubjectType("PLACE")}
             className={cn(
               "rounded-2xl border px-3 py-4 text-left",
-              subjectType === "PLACE" ? "border-lime bg-lime/10" : "border-border bg-surface",
+              subjectType === "PLACE"
+                ? "border-lime bg-lime/10"
+                : "border-border bg-surface",
             )}
           >
             <MapPin className="size-5 text-lime" />
             <p className="mt-2 text-sm font-semibold">PLACE</p>
-            <p className="text-2xs text-muted">Photo/video of the activity place</p>
+            <p className="text-2xs text-muted">
+              Photo/video of the activity place
+            </p>
           </button>
         </div>
 
@@ -123,20 +159,31 @@ export function MediaEvidenceRequirement() {
             RECORD VIDEO
           </Button>
         </div>
-        <Button variant="muted" className="w-full" onClick={() => attachRef.current?.click()}>
+        <Button
+          variant="muted"
+          className="w-full"
+          onClick={() => attachRef.current?.click()}
+        >
           <ImagePlus className="size-4" />
           ATTACH PHOTO
         </Button>
 
         <div className="rounded-2xl border border-border bg-surface p-4">
-          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.16em] text-muted">Evidence</p>
+          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Evidence
+          </p>
           <EvidenceStatus media={ready} />
           <p className="mt-3 text-2xs text-faint">
-            {formatKm(session.distanceKm)} KM · {formatDuration(session.elapsedSec)} · {pace}
+            {formatKm(session.distanceKm)} KM ·{" "}
+            {formatDuration(session.elapsedSec)} · {pace}
           </p>
         </div>
 
-        <Button className="h-14 w-full text-base" disabled={!ready} onClick={finishAndVerify}>
+        <Button
+          className="h-14 w-full text-base"
+          disabled={!ready}
+          onClick={finishAndVerify}
+        >
           FINISH & VERIFY
         </Button>
         <Button variant="outline" className="w-full" onClick={returnToActivity}>
